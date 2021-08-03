@@ -1,0 +1,31 @@
+@mixin border($borderStyle, $borderRadius) {
+  border: $borderStyle;
+  border-radius: $borderRadius;
+}
+
+@mixin contentPosition($position, $top, $right, $bottom, $left) {
+  position: $position;
+  top: $top;
+  right: $right;
+  bottom: $bottom;
+  left: $left;
+}
+
+@mixin size($width, $height) {
+  width: $width;
+  height: $height;
+}
+
+@mixin imageTopText($font-size) {
+  z-index: 1;
+  font-size: $font-size;
+  color: white;
+  backgroung-color: rgba(104, 104, 104, 0.4);
+}
+
+@mixin sort($display, $flex-direction, $align-content, $justify-content) {
+  display: $display;
+  flex-direction: $flex-direction;
+  align-content: $align-content;
+  justify-content: $justify-content;
+}

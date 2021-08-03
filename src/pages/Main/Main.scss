@@ -1,28 +1,12 @@
-@mixin border($borderStyle, $borderRadius) {
-  border: $borderStyle;
-  border-radius: $borderRadius;
-}
-
-@mixin contentPosition($position, $top, $right, $bottom, $left) {
-  position: $position;
-  top: $top;
-  right: $right;
-  bottom: $bottom;
-  left: $left;
-}
-
-@mixin size($width, $height) {
-  width: $width;
-  height: $height;
-}
+@import './style/variable.scss';
+@import './ShopListContainer/ShopListContainer.scss';
 
 .MainHeader {
   @include size(100%, 500px);
   position: relative;
-  border: 1px solid black;
-  background-image: url('./image/ex_food.jpg');
+  background-image: url('../Main/images/ex_food.jpg');
   background-size: 1600px;
-  .MainTopMent {
+  .MainTitle {
     @include contentPosition(relative, 50%, 0, 0, 50%);
     display: flex;
     flex-direction: column;
@@ -31,12 +15,12 @@
     width: 700px;
     h2 {
       margin-top: 15px;
-      font-size: 35px;
       color: white;
+      font-size: 35px;
     }
     .searchForm {
-      width: 100%;
       position: relative;
+      width: 100%;
       .searchIcon {
         @include contentPosition(absolute, inherit, inherit, 12px, 40px);
         @include size(25px, 25px);
@@ -51,6 +35,7 @@
         font-size: 22px;
         &::placeholder {
           color: rgba(196, 196, 196, 0.8);
+          font-size: 18px;
         }
       }
       .searchButton {
@@ -58,8 +43,8 @@
         @include contentPosition(absolute, inherit, 0, 0, inherit);
         padding: 10px 70px;
         background-color: #f97100;
-        font-size: 22px;
         color: white;
+        font-size: 22px;
       }
     }
   }
