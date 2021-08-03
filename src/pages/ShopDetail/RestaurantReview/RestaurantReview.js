@@ -11,6 +11,7 @@ class RestaurantReview extends React.Component {
             <img
               className="RestaurantReviewUserPicture"
               src="/images/shopDetail/도현님.png"
+              alt="userimg"
             />
           </div>
           <span className="RestaurantReviewUserNickName">DohyunNim</span>
