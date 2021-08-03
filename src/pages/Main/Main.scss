@@ -1,3 +1,66 @@
-* {
-  width: 100%;
+@mixin border($borderStyle, $borderRadius) {
+  border: $borderStyle;
+  border-radius: $borderRadius;
+}
+
+@mixin contentPosition($position, $top, $right, $bottom, $left) {
+  position: $position;
+  top: $top;
+  right: $right;
+  bottom: $bottom;
+  left: $left;
+}
+
+@mixin size($width, $height) {
+  width: $width;
+  height: $height;
+}
+
+.MainHeader {
+  @include size(100%, 500px);
+  position: relative;
+  border: 1px solid black;
+  background-image: url('./image/ex_food.jpg');
+  background-size: 1600px;
+  .MainTopMent {
+    @include contentPosition(relative, 50%, 0, 0, 50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transform: translate(-50%, -50%);
+    width: 700px;
+    h2 {
+      margin-top: 15px;
+      font-size: 35px;
+      color: white;
+    }
+    .searchForm {
+      width: 100%;
+      position: relative;
+      .searchIcon {
+        @include contentPosition(absolute, inherit, inherit, 12px, 40px);
+        @include size(25px, 25px);
+        color: rgba(196, 196, 196, 0.8);
+      }
+      .searchInput {
+        @include border(2px solid #f97100, 30px);
+        margin-top: 30px;
+        padding: 10px 200px 10px 90px;
+        width: 100%;
+        background-color: white;
+        font-size: 22px;
+        &::placeholder {
+          color: rgba(196, 196, 196, 0.8);
+        }
+      }
+      .searchButton {
+        @include border(1px solid #f97100, 30px);
+        @include contentPosition(absolute, inherit, 0, 0, inherit);
+        padding: 10px 70px;
+        background-color: #f97100;
+        font-size: 22px;
+        color: white;
+      }
+    }
+  }
 }
