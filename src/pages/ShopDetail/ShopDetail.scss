@@ -1,3 +1,75 @@
-* {
-  width: 100%;
+.ShopDetail {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  .foodimg {
+    display: flex;
+    padding-bottom: 60px;
+
+    img {
+      width: 400px;
+      height: 340px;
+      padding: 5px;
+    }
+  }
+
+  .inner {
+    height: 100vh;
+    // border: 1px solid rebeccapurple;
+    width: 100vh;
+    padding-top: 30px;
+
+    .restaurantHeader {
+      display: flex;
+      justify-content: space-between;
+      padding-bottom: 20px;
+      border-bottom: 1px solid #e9e9e9;
+
+      .restaurantTitle {
+        font-size: 40px;
+        display: flex;
+        text-align: center;
+      }
+      .grade {
+        color: rgba(79, 79, 79, 0.15);
+        padding-left: 15px;
+      }
+      .restaurantTitleButton {
+        margin: auto 0;
+        display: flex;
+
+        .reveiwAndLikeIcon {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          color: rgba(79, 79, 79, 0.4);
+          font-size: 15px;
+        }
+        i {
+          font-size: 40px;
+
+          padding-bottom: 4px;
+
+          padding-bottom: 14px;
+        }
+        .write {
+          font-weight: lighter;
+        }
+        .write:hover,
+        .wanted {
+          color: #ff7100;
+        }
+      }
+    }
+
+    .RestaurantReviewList {
+      border-top: 1px solid #e9e9e9;
+      padding-top: 20px;
+      margin-top: 30px;
+      .reviewAllCount {
+        color: rgba(79, 79, 79, 0.6);
+        padding-left: 10px;
+      }
+    }
+  }
 }

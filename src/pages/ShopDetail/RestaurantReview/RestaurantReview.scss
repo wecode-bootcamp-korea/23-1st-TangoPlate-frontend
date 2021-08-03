@@ -1,0 +1,48 @@
+.RestaurantReview {
+  display: flex;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  border-bottom: 1px solid rgba(79, 79, 79, 0.3);
+  .RestaurantReviewUser {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    margin: 15px 35px 0 8px;
+
+    .RestaurantReviewUserPictureWrap {
+      width: 70px;
+      height: 70px;
+
+      .RestaurantReviewUserPicture {
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+      }
+    }
+
+    .RestaurantReviewUserNickName {
+      padding-top: 10px;
+    }
+  }
+
+  .RestaurantReviewContent {
+    width: 100%;
+  }
+  .RestaurantReviewTextWrap {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .RestaurantReviewDate {
+    color: rgba(79, 79, 79, 0.6);
+    padding-bottom: 3px;
+    display: block;
+  }
+  .RestaurantReviewText {
+    margin-right: 30px;
+  }
+}
+.RestaurantReview:hover {
+  background-color: rgba(79, 79, 79, 0.1);
+}

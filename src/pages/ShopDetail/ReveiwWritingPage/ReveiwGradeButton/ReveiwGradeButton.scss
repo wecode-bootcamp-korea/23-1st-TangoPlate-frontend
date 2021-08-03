@@ -1,0 +1,12 @@
+.RestaurantReveiwGradeButton {
+  display: flex;
+  align-items: center;
+
+  span {
+    padding-left: 10px;
+    color: rgba(79, 79, 79, 0.5);
+  }
+  .GradeButtonOnText {
+    color: #ff7100;
+  }
+}
