@@ -1,10 +1,26 @@
 import React from 'react';
+import Nav from '../../components/Nav/Nav';
+import ShopListHeader from './ShopListHeader';
 
 class ShopList extends React.Component {
   render() {
     return (
       <div className="ShopList">
-        <div>ShopList 입니다</div>
+        <Nav />
+        <ShopListHeader />
+        <main>
+          <ul className="shopContainer">
+            <li className="shopList">
+              <div className="userReview">
+                <figure className="shopItem">
+                  <figcaption>
+                    <div className="info"></div>
+                  </figcaption>
+                </figure>
+              </div>
+            </li>
+          </ul>
+        </main>
       </div>
     );
   }

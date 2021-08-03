@@ -1,3 +1,18 @@
-* {
-  width: 100%;
+.shopContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+
+  .shopList {
+    height: 238px;
+    width: 774px;
+    margin: 43px 0;
+    padding: 0 28px;
+
+    .userReview {
+      height: 238px;
+      width: 774px;
+    }
+  }
 }
