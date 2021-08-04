@@ -4,9 +4,9 @@ import './ShopListHeader.scss';
 export class ShopListHeader extends Component {
   render() {
     return (
-      <div>
+      <div className="headerContainer">
         <header className="headLine">
-          <div className="innerContainer">
+          <div className="innerWrapper">
             <h4 className="clickCountAndDate">
               729,662클릭 | <time dateTime="2021-08-02">2021-08-02</time>
             </h4>

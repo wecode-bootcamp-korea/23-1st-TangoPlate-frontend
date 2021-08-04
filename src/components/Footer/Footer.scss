@@ -1,3 +1,104 @@
-* {
-  width: 100%;
+.Footer {
+  height: 650px;
+  background-color: #3e3e3e;
+
+  .footerContainer {
+    padding-top: 65px;
+    margin: 0 20px;
+
+    .footerTop {
+      height: 310px;
+      display: flex;
+      justify-content: space-between;
+
+      .logoAndSlogan {
+        height: 103px;
+        width: 137px;
+
+        .footerLogo {
+          width: 120px;
+        }
+        .subtitle {
+          margin-top: 28px;
+          padding-top: 15px;
+          color: #9b9b9b;
+          font-size: 13px;
+
+          &:before {
+            content: '';
+            display: block;
+            margin: -20px 0 20px 0;
+            width: 30px;
+            height: 2px;
+            background-color: #6a6a6a;
+          }
+        }
+      }
+      .companyIntro {
+        height: 100%;
+        line-height: 30px;
+        color: #9b9b9b;
+      }
+      .siteInfo {
+        height: 100%;
+        line-height: 30px;
+        color: #9b9b9b;
+      }
+      .snsLink {
+        .fa-facebook-f {
+          border: 1px solid #9b9b9b;
+          border-radius: 50%;
+          padding: 15px 17px 15px 17px;
+          font-size: 15px;
+          color: #9b9b9b;
+        }
+        .fa-instagram {
+          border: 1px solid #9b9b9b;
+          border-radius: 50%;
+          padding: 15px;
+          margin-left: 30px;
+          font-size: 15px;
+          color: #9b9b9b;
+        }
+      }
+    }
+    .footerMiddle {
+      height: 60px;
+      line-height: 30px;
+      padding-top: 15px;
+      margin-bottom: 30px;
+      border-top: 1px solid #9b9b9b;
+      border-bottom: 1px solid #9b9b9b;
+      color: #9b9b9b;
+    }
+    .footerBottom {
+      display: flex;
+      justify-content: space-between;
+
+      .companyInfo {
+        color: #9b9b9b;
+        font-size: 15px;
+        line-height: 20px;
+        .copyright {
+          margin-top: 20px;
+        }
+      }
+
+      .foreignLanguage {
+        display: flex;
+        justify-content: space-between;
+
+        .supportLanguage {
+          font-size: 17px;
+          color: #9b9b9b;
+
+          .support {
+            &:hover {
+              color: white;
+            }
+          }
+        }
+      }
+    }
+  }
 }

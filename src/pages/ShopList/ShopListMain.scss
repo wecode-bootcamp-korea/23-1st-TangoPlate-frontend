@@ -1,0 +1,101 @@
+.shopListMain {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  main {
+    height: 284px;
+    width: 774px;
+    padding: 24px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    border-bottom: 1px solid #dbdbdb;
+
+    .reviewPicture {
+      height: 234px;
+      width: 234px;
+      margin-right: 24px;
+    }
+    .reviewContainer {
+      height: 100%;
+
+      .reviewInner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        .reviewTitleWrapper {
+          width: 80%;
+          display: inline-block;
+
+          .shopTitle {
+            font-size: 30px;
+
+            span {
+              color: #ff792a;
+            }
+          }
+
+          .shopAddress {
+            display: inline-block;
+            color: #888888;
+            margin-top: 10px;
+            font-size: 17px;
+          }
+        }
+
+        .wannaGoWrapper {
+          .wannaGo {
+            font-size: 30px;
+            color: #bcbcbc;
+            &:hover {
+              cursor: pointer;
+            }
+          }
+          div {
+            margin-top: 10px;
+            font-size: 10px;
+            color: black;
+          }
+        }
+      }
+
+      .reviewWrapper {
+        display: flex;
+        margin-top: 20px;
+
+        .userPic {
+          height: 35px;
+          width: 35px;
+          border-radius: 50%;
+          border: 1px double white;
+          margin-right: 10px;
+        }
+
+        .reviewDetail {
+          line-height: 25px;
+
+          .userReview {
+            word-break: keep-all;
+
+            .userId {
+              font-weight: 700;
+              margin-right: 7px;
+            }
+          }
+        }
+      }
+      .goToDetail {
+        margin-top: 30px;
+        color: #888888;
+        text-align: right;
+      }
+    }
+  }
+}
+
+.userPic {
+  width: 50px;
+}
