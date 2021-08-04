@@ -1,4 +1,6 @@
 import React from 'react';
+import ListInfo from './ListInfo/ListInfo';
+import SlideButton from './SlideButton/SlideButton';
 import './ShopListContainer.scss';
 
 class ShopListContainer extends React.Component {
@@ -6,6 +8,7 @@ class ShopListContainer extends React.Component {
     super();
     this.state = {
       listData: [],
+      listPage: true,
     };
   }
 
@@ -19,26 +22,25 @@ class ShopListContainer extends React.Component {
       });
   }
 
+  moveImg = () => {
+    this.setState({
+      listPage: !this.state.listPage,
+    });
+  };
+
   render() {
-    const { listData } = this.state;
+    const { listData, listPage } = this.state;
     return (
       <div className="shopListContainer">
         <span className="containerTitle">믿고 보는 맛집 리스트</span>
-        <div className="filterList">
-          {listData.map(data => {
-            return (
-              <div className="listInfo" key={data.id}>
-                <img
-                  src={data.img}
-                  alt="image_file"
-                  className="listBackground"
-                />
-                <span className="listTilte">{data.title}</span>
-                <span className="listSubTitle">{data.subTitle}</span>
-              </div>
-            );
-          })}
+        <div className="rowContainer">
+          <div className={listPage ? 'filterListLeft' : 'filterListRight'}>
+            {listData.map((data, idx) => {
+              return <ListInfo Info={data} key={idx} />;
+            })}
+          </div>
         </div>
+        <SlideButton click={this.moveImg} data={this.state.listPage} />
       </div>
     );
   }

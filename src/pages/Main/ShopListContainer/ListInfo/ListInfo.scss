@@ -1,0 +1,24 @@
+.listInfo {
+  @include size(25em, 12em);
+  @include sort(column, space-between);
+  position: relative;
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+  overflow: hidden;
+  cursor: pointer;
+
+  .listBackground {
+    z-index: -1;
+    object-fit: cover;
+  }
+
+  .listTilte {
+    @include contentPosition(40%, inherit, inherit, 13%);
+    @include imageTopText(30px);
+  }
+
+  .listSubTitle {
+    @include contentPosition(60%, inherit, inherit, 25%);
+    @include imageTopText(17px);
+  }
+}

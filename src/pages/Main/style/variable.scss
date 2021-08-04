@@ -3,12 +3,12 @@
   border-radius: $borderRadius;
 }
 
-@mixin contentPosition($position, $top, $right, $bottom, $left) {
-  position: $position;
+@mixin contentPosition($top, $right, $bottom, $left, $position: absolute) {
   top: $top;
   right: $right;
   bottom: $bottom;
   left: $left;
+  position: $position;
 }
 
 @mixin size($width, $height) {
@@ -23,9 +23,24 @@
   backgroung-color: rgba(104, 104, 104, 0.4);
 }
 
-@mixin sort($display, $flex-direction, $align-content, $justify-content) {
-  display: $display;
+@mixin sort(
+  $flex-direction: column,
+  $justify-content: inherit,
+  $align-content: inherit
+) {
+  display: flex;
   flex-direction: $flex-direction;
-  align-content: $align-content;
   justify-content: $justify-content;
+  align-content: $align-content;
+}
+
+@mixin alignClickBtun {
+  position: absolute;
+  top: 50%;
+  cursor: pointer;
+}
+
+@mixin hide {
+  opacity: 0;
+  pointer-events: none;
 }

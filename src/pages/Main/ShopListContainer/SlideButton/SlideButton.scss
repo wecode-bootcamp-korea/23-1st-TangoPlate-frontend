@@ -1,0 +1,19 @@
+@import '../../style/variable.scss';
+
+.clickRight {
+  @include alignClickBtun;
+  right: 70px;
+}
+
+.clickRightHidden {
+  @include hide;
+}
+
+.clickLeft {
+  @include alignClickBtun;
+  left: 70px;
+}
+
+.clickLeftHidden {
+  @include hide;
+}

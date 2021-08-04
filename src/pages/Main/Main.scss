@@ -1,31 +1,35 @@
 @import './style/variable.scss';
 @import './ShopListContainer/ShopListContainer.scss';
 
-.MainHeader {
+.mainHeader {
   @include size(100%, 500px);
   position: relative;
   background-image: url('../Main/images/ex_food.jpg');
   background-size: 1600px;
-  .MainTitle {
-    @include contentPosition(relative, 50%, 0, 0, 50%);
-    display: flex;
-    flex-direction: column;
+
+  .mainTitle {
+    @include contentPosition(50%, 0, 0, 50%, relative);
+    @include sort();
     align-items: center;
     transform: translate(-50%, -50%);
     width: 700px;
+
     h2 {
       margin-top: 15px;
       color: white;
       font-size: 35px;
     }
+
     .searchForm {
       position: relative;
       width: 100%;
+
       .searchIcon {
-        @include contentPosition(absolute, inherit, inherit, 12px, 40px);
+        @include contentPosition(inherit, inherit, 12px, 40px);
         @include size(25px, 25px);
         color: rgba(196, 196, 196, 0.8);
       }
+
       .searchInput {
         @include border(2px solid #f97100, 30px);
         margin-top: 30px;
@@ -33,14 +37,16 @@
         width: 100%;
         background-color: white;
         font-size: 22px;
+
         &::placeholder {
           color: rgba(196, 196, 196, 0.8);
           font-size: 18px;
         }
       }
+
       .searchButton {
         @include border(1px solid #f97100, 30px);
-        @include contentPosition(absolute, inherit, 0, 0, inherit);
+        @include contentPosition(inherit, 0, 0, inherit);
         padding: 10px 70px;
         background-color: #f97100;
         color: white;

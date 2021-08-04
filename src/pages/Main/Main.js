@@ -8,9 +8,9 @@ import './Main.scss';
 class Main extends React.Component {
   render() {
     return (
-      <div className="Main">
-        <header className="MainHeader">
-          <div className="MainTitle">
+      <div className="main">
+        <header className="mainHeader">
+          <div className="mainTitle">
             <h2>솔직한 리뷰, 믿을 수 있는 평점!</h2>
             <h2>탱고플레이트</h2>
             <form className="searchForm">
@@ -20,7 +20,7 @@ class Main extends React.Component {
                 className="searchInput"
                 maxLength="30"
                 placeholder="맛집"
-              ></input>
+              />
               <button className="searchButton">검색</button>
             </form>
           </div>

@@ -3,28 +3,34 @@
 .eatDealContainer {
   padding: 40px 7%;
   border-bottom: 1px solid rgba(100, 100, 100, 0.2);
+
   .containerTitle {
     color: #f97100;
     font-size: 25px;
   }
+
   .shopList {
-    @include sort(flex, inherit, inherit, space-between);
+    @include sort(inherit, space-between);
     margin-top: 30px;
     padding: 20px;
     flex-wrap: wrap;
+
     .shopInfo {
-      @include sort(flex, column, inherit, inherit);
+      @include sort(column, inherit);
       width: 17em;
       padding-bottom: 20px;
       margin-bottom: 20px;
+
       .shopMenu {
         width: 100%;
         margin-bottom: 15px;
       }
+
       .shopTitle {
         margin-bottom: 10px;
         font-size: 20px;
       }
+
       .shopDetailInfo {
         color: rgba(100, 100, 100, 0.5);
         font-size: 15px;
