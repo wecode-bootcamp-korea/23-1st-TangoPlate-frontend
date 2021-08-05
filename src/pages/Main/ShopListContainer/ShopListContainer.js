@@ -8,7 +8,7 @@ class ShopListContainer extends React.Component {
     super();
     this.state = {
       listData: [],
-      listPage: true,
+      isLeftSide: true,
     };
   }
 
@@ -24,23 +24,23 @@ class ShopListContainer extends React.Component {
 
   moveImg = () => {
     this.setState({
-      listPage: !this.state.listPage,
+      isLeftSide: !this.state.isLeftSide,
     });
   };
 
   render() {
-    const { listData, listPage } = this.state;
+    const { listData, isLeftSide } = this.state;
     return (
       <div className="shopListContainer">
         <span className="containerTitle">믿고 보는 맛집 리스트</span>
         <div className="rowContainer">
-          <div className={listPage ? 'filterListLeft' : 'filterListRight'}>
+          <div className={isLeftSide ? 'filterListLeft' : 'filterListRight'}>
             {listData.map((data, idx) => {
-              return <ListInfo Info={data} key={idx} />;
+              return <ListInfo info={data} key={idx} />;
             })}
           </div>
         </div>
-        <SlideButton click={this.moveImg} data={this.state.listPage} />
+        <SlideButton click={this.moveImg} rightButton={this.state.isLeftSide} />
       </div>
     );
   }

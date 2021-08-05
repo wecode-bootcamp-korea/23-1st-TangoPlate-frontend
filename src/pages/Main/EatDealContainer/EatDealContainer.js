@@ -28,6 +28,9 @@ class EatDealContainer extends React.Component {
           {shopData.map(data => {
             return (
               <div className="shopInfo" key={data.id}>
+                <div className="iconBorder">
+                  <span className="eatDealIcon">%</span>
+                </div>
                 <img src={data.img} alt="image_file" className="shopMenu" />
                 <span className="shopTitle">{data.shop}</span>
                 <span className="shopDetailInfo">{data.location}</span>

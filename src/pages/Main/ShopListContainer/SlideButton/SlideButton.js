@@ -11,12 +11,12 @@ class SlideButton extends React.Component {
         <FontAwesomeIcon
           icon={faChevronRight}
           onClick={this.props.click}
-          className={this.props.data ? 'clickRight' : 'clickRightHidden'}
+          className={this.props.rightButton ? 'clickRight' : 'clickRightHidden'}
         />
         <FontAwesomeIcon
           icon={faChevronLeft}
           onClick={this.props.click}
-          className={this.props.data ? 'clickLeftHidden' : 'clickLeft'}
+          className={this.props.rightButton ? 'clickLeftHidden' : 'clickLeft'}
         />
       </>
     );

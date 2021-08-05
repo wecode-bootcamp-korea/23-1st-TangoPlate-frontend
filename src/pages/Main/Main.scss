@@ -1,11 +1,10 @@
 @import './style/variable.scss';
-@import './ShopListContainer/ShopListContainer.scss';
 
 .mainHeader {
   @include size(100%, 500px);
   position: relative;
   background-image: url('../Main/images/ex_food.jpg');
-  background-size: 1600px;
+  background-size: cover;
 
   .mainTitle {
     @include contentPosition(50%, 0, 0, 50%, relative);
@@ -24,9 +23,9 @@
       position: relative;
       width: 100%;
 
-      .searchIcon {
-        @include contentPosition(inherit, inherit, 12px, 40px);
-        @include size(25px, 25px);
+      .fa-search {
+        @include contentPosition(48px, inherit, inherit, 40px);
+        @include size(20px, 20px);
         color: rgba(196, 196, 196, 0.8);
       }
 
@@ -46,7 +45,7 @@
 
       .searchButton {
         @include border(1px solid #f97100, 30px);
-        @include contentPosition(inherit, 0, 0, inherit);
+        @include contentPosition(inherit, 0, 0);
         padding: 10px 70px;
         background-color: #f97100;
         color: white;

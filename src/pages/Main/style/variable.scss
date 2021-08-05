@@ -3,7 +3,13 @@
   border-radius: $borderRadius;
 }
 
-@mixin contentPosition($top, $right, $bottom, $left, $position: absolute) {
+@mixin contentPosition(
+  $top,
+  $right,
+  $bottom: inherit,
+  $left: inherit,
+  $position: absolute
+) {
   top: $top;
   right: $right;
   bottom: $bottom;

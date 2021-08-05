@@ -1,3 +1,5 @@
+@import '../../style/variable.scss';
+
 .listInfo {
   @include size(25em, 12em);
   @include sort(column, space-between);
