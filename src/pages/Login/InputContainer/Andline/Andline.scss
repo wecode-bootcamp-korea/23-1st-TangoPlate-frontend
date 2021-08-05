@@ -1,0 +1,19 @@
+.andLine {
+  display: flex;
+  align-items: center;
+  margin: 27px auto 27px;
+  justify-content: center;
+  color: rgba(var(--f52, 142, 142, 142), 1);
+
+  .line {
+    height: 1px;
+    width: 98px;
+    background-color: rgba(var(--f52, 142, 142, 142), 1);
+    font-size: 13px;
+    font-weight: 600;
+  }
+
+  .and {
+    margin: 0 18px;
+  }
+}

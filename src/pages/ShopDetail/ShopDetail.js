@@ -1,27 +1,56 @@
 import React from 'react';
-import './ShopDetail.scss';
+import { REVIEW_URL } from '../../config';
 import RestaurantReview from './RestaurantReview/RestaurantReview';
 import RestaurantInfo from './RestaurantInfo/RestaurantInfo';
+import './ShopDetail.scss';
+
 class ShopDetail extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      wanted: false,
+      // wanted: false,
+      data: [],
     };
   }
   goToWrtingPage = e => {
-    this.props.history.push('/ShopDetail-reveiwWritingPage');
+    this.props.history.push('/shopdetail-reviewwritingpage');
   };
 
-  wanted = () => {
-    this.setState({
-      wanted: !this.state.wanted,
-    });
-  };
+  // handleWanted = () => {
+  //   this.setState({
+  //     wanted: !this.state.wanted,
+  //   });
+  // };
+
+  componentDidMount() {
+    fetch(REVIEW_URL, {
+      headers: { Authorization: localStorage.getItem('token') },
+    })
+      .then(res => res.json())
+      .then(response => {
+        this.setState({
+          data: response.results[0],
+        });
+      });
+  }
+
   render() {
-    const { wanted } = this.state;
+    const { data } = this.state;
+    const { name, rating, is_wished, review } = data;
+    const reviews =
+      review &&
+      review.map(({ description, created_at, images }) => {
+        return (
+          <RestaurantReview
+            description={description}
+            created_at={created_at}
+            images={images}
+          />
+        );
+      });
+
     return (
-      <div className="ShopDetail">
+      <div className="shopDetail">
         <div>
           <aside className="foodimg">
             <img alt="스시작이미지" src="/images/shopDetail/1.jpeg" />
@@ -33,8 +62,8 @@ class ShopDetail extends React.Component {
         <div className="inner">
           <header className="restaurantHeader">
             <div className="restaurantTitle">
-              <span>스시작</span>
-              <span className="grade">4.7</span>
+              <span>{name}</span>
+              <span className="grade">{rating}</span>
             </div>
             <div className="restaurantTitleButton">
               <button
@@ -45,23 +74,20 @@ class ShopDetail extends React.Component {
                 리뷰쓰기
               </button>
               <button
-                className={
-                  wanted ? ' reveiwAndLikeIcon wanted' : 'reveiwAndLikeIcon'
-                }
-                onClick={this.wanted}
+                className={`reviewAndLikeIcon ${is_wished ? 'wanted' : ''}`}
+                onClick={this.handleWanted}
               >
-                <i className={wanted ? 'fas fa-star ' : 'far fa-star'}></i>
+                <i className={is_wished ? 'fas fa-star ' : 'far fa-star'}></i>
                 가고싶다
               </button>
             </div>
           </header>
-          <RestaurantInfo />
-          <h2 class="RestaurantReviewList">
-            <span class="RestaurantNameSuffix"> 리뷰</span>
-            <span class="reviewAllCount">(13)</span>
+          <RestaurantInfo data={data} />
+          <h2 className="restaurantReviewList">
+            <span> 리뷰</span>
+            <span className="reviewAllCount">(13)</span>
           </h2>
-          <RestaurantReview />
-          <RestaurantReview />
+          {reviews}
         </div>
       </div>
     );

@@ -1,0 +1,33 @@
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.modalback {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  background: #00000080;
+  z-index: 10000;
+}
+
+.signPage {
+  @include flex-center;
+  height: 100vh;
+
+  .signContainer {
+    padding: 56px 40px;
+    border: 5px solid #ff792a;
+    text-align: center;
+    background-color: white;
+
+    h1 {
+      margin: 24px auto 41px;
+
+      font-weight: 400;
+      font-size: 37px;
+    }
+  }
+}

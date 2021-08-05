@@ -1,48 +1,52 @@
-.RestaurantReview {
+.review {
   display: flex;
   padding-top: 50px;
   padding-bottom: 50px;
   border-bottom: 1px solid rgba(79, 79, 79, 0.3);
-  .RestaurantReviewUser {
+
+  .reviewUser {
     display: flex;
     flex-direction: column;
     justify-content: center;
     text-align: center;
     margin: 15px 35px 0 8px;
 
-    .RestaurantReviewUserPictureWrap {
+    .reviewUserPictureWrap {
       width: 70px;
       height: 70px;
 
-      .RestaurantReviewUserPicture {
+      .reviewUserPicture {
         width: 100%;
         height: 100%;
         border-radius: 50%;
       }
     }
 
-    .RestaurantReviewUserNickName {
+    .reviewUserNickName {
       padding-top: 10px;
     }
   }
 
-  .RestaurantReviewContent {
+  .reviewContent {
     width: 100%;
-  }
-  .RestaurantReviewTextWrap {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  .RestaurantReviewDate {
-    color: rgba(79, 79, 79, 0.6);
-    padding-bottom: 3px;
-    display: block;
-  }
-  .RestaurantReviewText {
-    margin-right: 30px;
+
+    .reviewTextWrap {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      .reviewDate {
+        color: rgba(79, 79, 79, 0.6);
+        padding-bottom: 3px;
+        display: block;
+      }
+
+      .reviewText {
+        margin-right: 30px;
+      }
+    }
   }
 }
-.RestaurantReview:hover {
+.review:hover {
   background-color: rgba(79, 79, 79, 0.1);
 }

@@ -1,30 +1,32 @@
 import React from 'react';
+import ReviewGradeButton from '../ReviewWritingPage/ReviewGradeButton/ReviewGradeButton';
 import './RestaurantReview.scss';
-import ReveiwGradeButton from '../ReveiwWritingPage/ReveiwGradeButton/ReveiwGradeButton';
 
 class RestaurantReview extends React.Component {
   render() {
+    const { description, created_at, images } = this.props;
     return (
-      <li className="RestaurantReview">
-        <div className="RestaurantReviewUser">
-          <div className="RestaurantReviewUserPictureWrap">
+      <li className="review">
+        <div className="reviewUser">
+          <div className="reviewUserPictureWrap">
             <img
-              className="RestaurantReviewUserPicture"
-              src="/images/shopDetail/도현님.png"
+              className="reviewUserPicture"
+              src={images}
+              // src="/images/shopDetail/도현님.png"
               alt="userimg"
             />
           </div>
-          <span className="RestaurantReviewUserNickName">DohyunNim</span>
+          <span className="reviewUserNickName">DohyunNim</span>
         </div>
 
-        <div className="RestaurantReviewContent">
-          <div className="RestaurantReviewTextWrap">
-            <span className="RestaurantReviewDate">14 시간 전</span>
-            <span className="RestaurantReviewRatingText">
-              <ReveiwGradeButton gradeIconSrc={51} />
+        <div className="reviewContent">
+          <div className="reviewTextWrap">
+            <span className="reviewDate">{created_at}</span>
+            <span className="reviewRatingText">
+              <ReviewGradeButton gradeIconSrc={51} />
             </span>
           </div>
-          <p className="RestaurantReviewText">너무 맛있어 !</p>
+          <p className="reviewText">{description}</p>
         </div>
       </li>
     );
