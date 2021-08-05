@@ -49,6 +49,7 @@
     display: flex;
     align-items: center;
     justify-content: flex-end;
+    position: relative;
 
     li {
       height: 100%;
@@ -68,11 +69,13 @@
     }
 
     .firstChild {
+      position: relative;
       img {
         width: 15px;
         position: fixed;
         top: 10px;
-        right: 380px;
+        right: 35px;
+        position: absolute;
       }
     }
 
@@ -92,7 +95,7 @@
     .userInfoAlarm {
       height: 18px;
       width: 18px;
-      position: fixed;
+      position: absolute;
       text-align: center;
       top: 5px;
       right: 25px;

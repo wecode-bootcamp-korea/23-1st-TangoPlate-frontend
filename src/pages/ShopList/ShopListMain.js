@@ -15,7 +15,7 @@ export class ShopListMain extends Component {
             <div className="reviewInner">
               <div className="reviewTitleWrapper">
                 <div className="shopTitle">
-                  1. 탱플 <span>4.7</span>
+                  매장이름<span> 매장 평점</span>
                 </div>
                 <span className="shopAddress">
                   서울특별시 마포구 토정로 316 성진빌딩 1F
@@ -31,11 +31,20 @@ export class ShopListMain extends Component {
               <div className="reviewDetail">
                 <p className="userReview">
                   <span className="userId">탱고춤을춘다탬버린</span>
-                  망고플레이트 클론하면서 여기저기 맛집 많이 보니깐 내 배가
-                  고프고 맛있어 보이는게 너무나도 많아서 기분이 좋다. 다음엔
-                  망고플레이트로 맛집 찾아보고 맛집 헌팅하러 다녀야지. 여기서
-                  이제 더보기 기능을 써야 하는데 어떻게 쓰는지는 다음시간에 계속
+                  <span className={this.props.moreReview}>
+                    망고플레이트 클론하면서 여기저기 맛집 많이 보니깐 내 배가
+                    고프고 맛있어 보이는게 너무나도 많아서 기분이 좋다. 다음엔
+                    망고플레이트로 맛집 찾아보고 맛집 헌팅하러 다녀야지. 여기서
+                    이제 더보기 기능을 써야 하는데 어떻게 쓰는지는 다음시간에
+                    계속
+                  </span>
                 </p>
+                <button
+                  className="moreReviewButton"
+                  onClick={this.props.buttonHandle}
+                >
+                  {this.props.close}
+                </button>
               </div>
             </div>
             <h3 className="goToDetail">탱플 더보기 {'>'}</h3>

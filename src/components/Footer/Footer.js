@@ -4,7 +4,7 @@ import './Footer.scss';
 class Footer extends React.Component {
   render() {
     return (
-      <div className="Footer">
+      <div className="footer">
         <div className="footerContainer">
           <div className="footerTop">
             <div className="logoAndSlogan">
