@@ -2,8 +2,8 @@
 
 .shopListContainer {
   position: relative;
-  border-bottom: 1px solid rgba(100, 100, 100, 0.2);
   padding: 40px 7%;
+  border-bottom: 1px solid rgba(100, 100, 100, 0.2);
 
   .containerTitle {
     color: #f97100;
@@ -16,21 +16,21 @@
 
     .filterListLeft {
       @include sort(row, space-between);
-      transition-duration: 0.5s;
+      margin-top: 30px;
+      padding: 10px 20px;
       width: 200%;
       flex-wrap: wrap;
       overflow: hidden;
-      margin-top: 30px;
-      padding: 10px 20px;
+      transition-duration: 0.5s;
     }
 
     .filterListRight {
       @include sort(row, space-between);
+      margin-top: 30px;
+      padding: 10px 20px;
       width: 200%;
       flex-wrap: wrap;
       overflow: hidden;
-      margin-top: 30px;
-      padding: 10px 20px;
       transition-duration: 0.5s;
       transform: translateX(-50%);
     }

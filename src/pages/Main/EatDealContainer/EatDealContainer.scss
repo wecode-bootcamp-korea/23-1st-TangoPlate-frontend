@@ -14,6 +14,11 @@
     margin-top: 30px;
     padding: 20px;
     flex-wrap: wrap;
+    // display: grid;
+    // grid-template-columns: repeat(4, calc((100% - 120px) / 4));
+    // grid-template-columns: 200px 100px 300px 100px;
+    // grid-column-gap: 40px;
+    // grid-row-gap: 50px;
 
     .shopInfo {
       @include sort(column, inherit);
@@ -23,24 +28,17 @@
       margin-bottom: 20px;
 
       .iconBorder {
-        position: absolute;
-        top: 5%;
-        left: 5%;
-        padding: 5px;
-        border: 1px solid #35cbb2;
-        border-radius: 50px;
-        width: 50px;
-        height: 50px;
-        display: flex;
+        @include contentPosition(5%, none, none, 5%);
+        @include border(1px solid #35cbb2, 50px);
+        @include size(50px, 50px);
+        @include sort(inherit, center);
         text-align: center;
-        justify-content: center;
+        padding: 7px;
 
         .eatDealIcon {
-          width: 35px;
-          height: 35x;
+          @include border(2px dashed white, 17px);
+          @include size(35px, 35px);
           line-height: 35px;
-          border: 2px dashed white;
-          border-radius: 17px;
           background-color: #35cbb2;
           color: white;
         }

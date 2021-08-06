@@ -1,29 +1,37 @@
 import React from 'react';
+import SearchFocus from './SearchFocus/SearchFocus';
 import Nav from '../Main/Nav/Nav';
+import SearchForm from './SearchForm/SearchForm';
 import ShopListContainer from './ShopListContainer/ShopListContainer';
 import EatDealContainer from './EatDealContainer/EatDealContainer';
 import './Main.scss';
 
 class Main extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      isVaild: true,
+    };
+  }
+
+  searchStart = () => {
+    this.setState({
+      isVaild: !this.state.isVaild,
+    });
+  };
+
   render() {
+    const { isVaild } = this.state;
     return (
       <div className="main">
+        <SearchFocus modalActive={isVaild} />
         <Nav />
         <header className="mainHeader">
           <div className="mainTitle">
             <h2>솔직한 리뷰, 믿을 수 있는 평점!</h2>
             <h2>탱고플레이트</h2>
-            <form className="searchForm">
-              <i className="fas fa-search fa-lg"></i>
-              <input
-                type="text"
-                className="searchInput"
-                maxLength="30"
-                placeholder="맛집"
-              />
-              <button className="searchButton">검색</button>
-            </form>
           </div>
+          <SearchForm focusInput={this.searchStart} />
         </header>
         <article>
           <ShopListContainer />

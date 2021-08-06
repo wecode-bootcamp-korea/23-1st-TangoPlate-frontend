@@ -24,7 +24,8 @@ class Nav extends React.Component {
           <li>
             <span>맛집 리스트</span>
           </li>
-          {/* <li>
+          {/* 망고스토리라는 메뉴가 구성된다면 활성화
+         <li>
             <span className="storyMenu">
               망고 스토리
               <span className="userInfoAlarm">3</span>

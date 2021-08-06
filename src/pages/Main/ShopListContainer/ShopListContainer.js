@@ -1,6 +1,6 @@
 import React from 'react';
-import ListInfo from './ListInfo/ListInfo';
-import SlideButton from './SlideButton/SlideButton';
+import ListInfo from '../ListInfo/ListInfo';
+import SlideButton from '../SlideButton/SlideButton';
 import './ShopListContainer.scss';
 
 class ShopListContainer extends React.Component {

@@ -1,23 +1,22 @@
 import React from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faChevronRight } from '@fortawesome/free-solid-svg-icons';
-import { faChevronLeft } from '@fortawesome/free-solid-svg-icons';
 import './SlideButton.scss';
 
 class SlideButton extends React.Component {
   render() {
     return (
       <>
-        <FontAwesomeIcon
-          icon={faChevronRight}
+        <div
           onClick={this.props.click}
           className={this.props.rightButton ? 'clickRight' : 'clickRightHidden'}
-        />
-        <FontAwesomeIcon
-          icon={faChevronLeft}
+        >
+          <i className="fas fa-chevron-right"></i>
+        </div>
+        <div
           onClick={this.props.click}
           className={this.props.rightButton ? 'clickLeftHidden' : 'clickLeft'}
-        />
+        >
+          <i className="fas fa-chevron-left"></i>
+        </div>
       </>
     );
   }

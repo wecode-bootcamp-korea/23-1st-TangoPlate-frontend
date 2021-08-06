@@ -39,20 +39,21 @@
       }
     }
 
-    .storyMenu {
-      position: relative;
-      .userInfoAlarm {
-        @include size(18px, 18px);
-        @include contentPosition(5px, 14%);
-        @include border(1px solid white, 50%);
-        text-align: center;
-        line-height: 20px;
-        background-color: #ff792a;
-        color: #ffffff;
-        font-size: 14px;
-        font-weight: 600;
-      }
-    }
+    // 망고스토리라는 메뉴가 추가 된다면 해당 부분 활성화
+    // .storyMenu {
+    //   position: relative;
+    //   .userInfoAlarm {
+    //     @include size(18px, 18px);
+    //     @include contentPosition(5px, 14%);
+    //     @include border(1px solid white, 50%);
+    //     text-align: center;
+    //     line-height: 20px;
+    //     background-color: #ff792a;
+    //     color: #ffffff;
+    //     font-size: 14px;
+    //     font-weight: 600;
+    //   }
+    // }
 
     .myPage {
       @include sort(inherit, center, center);

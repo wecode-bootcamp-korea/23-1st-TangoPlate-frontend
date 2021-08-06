@@ -6,8 +6,8 @@
 @mixin contentPosition(
   $top,
   $right,
-  $bottom: inherit,
-  $left: inherit,
+  $bottom: none,
+  $left: none,
   $position: absolute
 ) {
   top: $top;

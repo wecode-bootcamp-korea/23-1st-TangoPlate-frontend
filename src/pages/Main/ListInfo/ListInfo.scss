@@ -1,7 +1,7 @@
-@import '../../style/variable.scss';
+@import '../style/variable.scss';
 
 .listInfo {
-  @include size(25em, 12em);
+  @include size(26em, 12em);
   @include sort(column, space-between);
   position: relative;
   padding-bottom: 20px;
@@ -15,12 +15,12 @@
   }
 
   .listTilte {
-    @include contentPosition(40%, inherit, inherit, 13%);
+    @include contentPosition(40%, inherit, inherit, 16%);
     @include imageTopText(30px);
   }
 
   .listSubTitle {
-    @include contentPosition(60%, inherit, inherit, 25%);
-    @include imageTopText(17px);
+    @include contentPosition(60%, inherit, inherit, 28%);
+    @include imageTopText(18px);
   }
 }

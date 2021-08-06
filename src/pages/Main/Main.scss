@@ -9,48 +9,14 @@
   .mainTitle {
     @include contentPosition(50%, 0, 0, 50%, relative);
     @include sort();
+    width: 700px;
     align-items: center;
     transform: translate(-50%, -50%);
-    width: 700px;
 
     h2 {
       margin-top: 15px;
       color: white;
       font-size: 35px;
-    }
-
-    .searchForm {
-      position: relative;
-      width: 100%;
-
-      .fa-search {
-        @include contentPosition(48px, inherit, inherit, 40px);
-        @include size(20px, 20px);
-        color: rgba(196, 196, 196, 0.8);
-      }
-
-      .searchInput {
-        @include border(2px solid #f97100, 30px);
-        margin-top: 30px;
-        padding: 10px 200px 10px 90px;
-        width: 100%;
-        background-color: white;
-        font-size: 22px;
-
-        &::placeholder {
-          color: rgba(196, 196, 196, 0.8);
-          font-size: 18px;
-        }
-      }
-
-      .searchButton {
-        @include border(1px solid #f97100, 30px);
-        @include contentPosition(inherit, 0, 0);
-        padding: 10px 70px;
-        background-color: #f97100;
-        color: white;
-        font-size: 22px;
-      }
     }
   }
 }
