@@ -8,7 +8,7 @@ class InputBox extends React.Component {
     changeState(name, value);
   };
   render() {
-    const { name, type, id, placeholder, goTo } = this.props;
+    const { name, value, type, id, placeholder, goTo } = this.props;
     return (
       <form className="inputBox" onSubmit={e => goTo(e)}>
         <input
@@ -16,6 +16,7 @@ class InputBox extends React.Component {
           name={name}
           type={type}
           id={id}
+          value={value}
           placeholder={placeholder}
           onChange={this.handleChange}
         />

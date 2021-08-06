@@ -1,5 +1,5 @@
 import React from 'react';
-import { REVIEW_URL } from '../../config';
+// import { REVIEW_URL } from '../../config';
 import RestaurantReview from './RestaurantReview/RestaurantReview';
 import RestaurantInfo from './RestaurantInfo/RestaurantInfo';
 import './ShopDetail.scss';
@@ -21,18 +21,30 @@ class ShopDetail extends React.Component {
   //     wanted: !this.state.wanted,
   //   });
   // };
-
+  // mock data
   componentDidMount() {
-    fetch(REVIEW_URL, {
-      headers: { Authorization: localStorage.getItem('token') },
-    })
+    fetch('http://localhost:3000/data/restaurantdetail.json')
       .then(res => res.json())
       .then(response => {
+        console.log(response);
         this.setState({
           data: response.results[0],
         });
       });
   }
+  // server 연결
+  // componentDidMount() {
+  //   fetch(REVIEW_URL, {
+  //     headers: { Authorization: localStorage.getItem('token') },
+  //   })
+  //     .then(res => res.json())
+  //     .then(response => {
+  //       console.log(response);
+  //       this.setState({
+  //         data: response.results[0],
+  //       });
+  //     });
+  // }
 
   render() {
     const { data } = this.state;

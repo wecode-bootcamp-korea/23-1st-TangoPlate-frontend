@@ -13,6 +13,7 @@ class ReviewWritingPage extends React.Component {
       grade: 5,
       reviewEditorText: '',
       img: '',
+      edit: false,
     };
   }
 
@@ -22,27 +23,54 @@ class ReviewWritingPage extends React.Component {
     });
   };
 
-  postingOrCancel = () => {
+  postingOrCancel = e => {
     const { reviewEditorText, img } = this.state;
-
-    fetch(NEWREVIEW_URL, {
-      method: 'POST',
-      body: JSON.stringify({ description: reviewEditorText, image: img }),
-      headers: { authorization: localStorage.getItem('token') },
-    })
-      .then(response => response.json())
-      .then(response => {
-        console.log(response);
-      });
+    if (e.target.name === '취소') {
+      this.props.history.push('/shopdetail');
+    } else if (this.state.edit) {
+      fetch(NEWREVIEW_URL, {
+        method: 'PUT',
+        body: JSON.stringify({ description: reviewEditorText, image: img }),
+        headers: { authorization: localStorage.getItem('token') },
+      })
+        .then(response => response.json())
+        .then(response => {
+          console.log(response);
+        });
+    } else {
+      fetch(NEWREVIEW_URL, {
+        method: 'POST',
+        body: JSON.stringify({ description: reviewEditorText, image: img }),
+        headers: { authorization: localStorage.getItem('token') },
+      })
+        .then(response => response.json())
+        .then(response => {
+          console.log(response);
+        });
+    }
+    this.props.history.push('/shopdetail');
   };
 
   changeState = (name, value) => {
     this.setState({ [name]: value });
   };
 
+  componentDidMount() {
+    console.log(this.props.location);
+    if (this.props.location.state) {
+      const { description, images } = this.props.location.state;
+      this.setState({
+        reviewEditorText: description,
+        img: images,
+        edit: !this.state.edit,
+      });
+    }
+  }
+
   render() {
     const { grade } = this.state;
     const { SelectGrade, postingOrCancel, changeState } = this;
+    console.log(this.props.location.state);
     return (
       <section className="reviewWritingPage">
         <div className="reviewWritingPageInner">
@@ -76,6 +104,7 @@ class ReviewWritingPage extends React.Component {
                 className="reviewEditor"
                 onChange={e => changeState('reviewEditorText', e.target.value)}
                 maxlength="10000"
+                value={this.state.reviewEditorText}
                 required
                 placeholder="최정민님, 주문하신 메뉴는 어떠셨나요? 식당의 분위기와 서비스도 궁금해요!"
               ></textarea>
@@ -91,18 +120,21 @@ class ReviewWritingPage extends React.Component {
             name="img"
             type="text"
             placeholder="사진첨부를 하려면 이미지 URL을 입력하세요"
-            changeState={changeState}
+            changeState={e => changeState('img', e.target.value)}
             goTo={e => e.preventDefault()}
+            value={this.state.img}
           />
 
           <div className="reviewPostingButtonWrap">
             <Button
               buttonName="리뷰 올리기"
               className="reviewPostingButton"
+              name="리뷰올리기"
               goTo={postingOrCancel}
             />
             <Button
               buttonName="취소"
+              name="취소"
               className="reviewPostingButton"
               goTo={postingOrCancel}
             />

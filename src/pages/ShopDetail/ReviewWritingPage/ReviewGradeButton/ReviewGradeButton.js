@@ -6,12 +6,14 @@ class ReviewGradeButton extends React.Component {
     const { SelectGrade, gradeIconSrc, isButtonClicked, content } = this.props;
 
     return (
-      <button className="reviewGradeButton" onClick={SelectGrade}>
-        <img alt="gradeIcon" src={`/images/shopDetail/${gradeIconSrc}.svg`} />
-        <span className={isButtonClicked ? 'gradeButtonOnText' : ''}>
-          {content}
-        </span>
-      </button>
+      <div>
+        <button className="reviewGradeButton" onClick={SelectGrade}>
+          <img alt="gradeIcon" src={`/images/shopDetail/${gradeIconSrc}.svg`} />
+          <span className={isButtonClicked ? 'gradeButtonOnText' : ''}>
+            {content}
+          </span>
+        </button>
+      </div>
     );
   }
 }
