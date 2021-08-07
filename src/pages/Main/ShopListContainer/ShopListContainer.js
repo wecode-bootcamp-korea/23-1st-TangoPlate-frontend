@@ -40,7 +40,7 @@ class ShopListContainer extends React.Component {
             })}
           </div>
         </div>
-        <SlideButton click={this.moveImg} rightButton={this.state.isLeftSide} />
+        <SlideButton click={this.moveImg} isLeftSide={isLeftSide} />
       </div>
     );
   }

@@ -1,19 +1,15 @@
 @import '../style/variable.scss';
 
-.clickRight {
-  @include alignClickBtun;
+.rightBtn {
+  @include slideBtn;
   right: 70px;
 }
 
-.clickRightHidden {
-  @include hide;
-}
-
-.clickLeft {
-  @include alignClickBtun;
+.leftBtn {
+  @include slideBtn;
   left: 70px;
 }
 
-.clickLeftHidden {
+.hidden {
   @include hide;
 }

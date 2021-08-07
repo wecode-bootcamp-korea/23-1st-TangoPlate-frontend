@@ -7,22 +7,22 @@ class Nav extends React.Component {
     return (
       <nav className="menu">
         <div className="leftWrapper">
-          <Link to="/main">
+          <Link to="/">
             <img src="images/tangoLogo.png" alt="tangoPlate Logo" />
           </Link>
         </div>
         <ul className="rightWrapper">
           <li>
-            <span className="eatDealMenu">
+            <p className="eatDealMenu">
               EAT딜
               <img
                 src="https://mp-seoul-image-production-s3.mangoplate.com/web/resources/uo3o88vopcmdsket.png"
                 alt="새로운 맛집 알람"
               />
-            </span>
+            </p>
           </li>
           <li>
-            <span>맛집 리스트</span>
+            <p>맛집 리스트</p>
           </li>
           {/* 망고스토리라는 메뉴가 구성된다면 활성화
          <li>
@@ -32,7 +32,7 @@ class Nav extends React.Component {
             </span>
           </li> */}
           <div className="myPage">
-            <i className="far fa-user fa-2x"></i>
+            <i className="far fa-user fa-2x" />
           </div>
         </ul>
       </nav>

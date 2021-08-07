@@ -3,19 +3,20 @@ import './SlideButton.scss';
 
 class SlideButton extends React.Component {
   render() {
+    const { click, isLeftSide } = this.props;
     return (
       <>
         <div
-          onClick={this.props.click}
-          className={this.props.rightButton ? 'clickRight' : 'clickRightHidden'}
+          onClick={click}
+          className={`rightBtn ${isLeftSide ? '' : 'hidden'}`}
         >
-          <i className="fas fa-chevron-right"></i>
+          <i className="fas fa-chevron-right" />
         </div>
         <div
-          onClick={this.props.click}
-          className={this.props.rightButton ? 'clickLeftHidden' : 'clickLeft'}
+          onClick={click}
+          className={`leftBtn ${isLeftSide ? 'hidden' : ''}`}
         >
-          <i className="fas fa-chevron-left"></i>
+          <i className="fas fa-chevron-left" />
         </div>
       </>
     );

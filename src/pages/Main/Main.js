@@ -10,21 +10,21 @@ class Main extends React.Component {
   constructor() {
     super();
     this.state = {
-      isVaild: true,
+      isSearchModalActive: true,
     };
   }
 
   searchStart = () => {
     this.setState({
-      isVaild: !this.state.isVaild,
+      isSearchModalActive: !this.state.isSearchModalActive,
     });
   };
 
   render() {
-    const { isVaild } = this.state;
+    const { isSearchModalActive } = this.state;
     return (
       <div className="main">
-        <SearchFocus modalActive={isVaild} />
+        <SearchFocus modalActive={isSearchModalActive} />
         <Nav />
         <header className="mainHeader">
           <div className="mainTitle">

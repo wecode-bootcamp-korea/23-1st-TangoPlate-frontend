@@ -5,7 +5,7 @@ class SearchFocus extends React.Component {
   render() {
     return (
       <div
-        className={this.props.modalActive ? 'modlaHidden' : 'searchInputFocus'}
+        className={this.props.modalActive ? 'modalHidden' : 'searchInputFocus'}
       ></div>
     );
   }
