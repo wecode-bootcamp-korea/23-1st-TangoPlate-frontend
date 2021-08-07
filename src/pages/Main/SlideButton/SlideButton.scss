@@ -1,0 +1,15 @@
+@import '../style/variable.scss';
+
+.rightBtn {
+  @include slideBtn;
+  right: 70px;
+}
+
+.leftBtn {
+  @include slideBtn;
+  left: 70px;
+}
+
+.hidden {
+  @include hide;
+}

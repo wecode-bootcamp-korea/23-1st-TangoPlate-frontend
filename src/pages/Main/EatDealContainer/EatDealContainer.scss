@@ -1,0 +1,63 @@
+@import '../style/variable.scss';
+
+.eatDealContainer {
+  padding: 40px 7%;
+  border-bottom: 1px solid rgba(100, 100, 100, 0.2);
+
+  .containerTitle {
+    color: #f97100;
+    font-size: 25px;
+  }
+
+  .shopList {
+    @include sort(inherit, space-between);
+    margin-top: 30px;
+    padding: 20px;
+    flex-wrap: wrap;
+    // display: grid;
+    // grid-template-columns: repeat(4, calc((100% - 120px) / 4));
+    // grid-template-columns: 200px 100px 300px 100px;
+    // grid-column-gap: 40px;
+    // grid-row-gap: 50px;
+
+    .shopInfo {
+      @include sort(column, inherit);
+      position: relative;
+      width: 17em;
+      padding-bottom: 20px;
+      margin-bottom: 20px;
+
+      .iconBorder {
+        @include contentPosition(5%, none, none, 5%);
+        @include border(1px solid #35cbb2, 50px);
+        @include size(50px, 50px);
+        @include sort(inherit, center);
+        text-align: center;
+        padding: 7px;
+
+        .eatDealIcon {
+          @include border(2px dashed white, 17px);
+          @include size(35px, 35px);
+          line-height: 35px;
+          background-color: #35cbb2;
+          color: white;
+        }
+      }
+
+      .shopMenu {
+        width: 100%;
+        margin-bottom: 15px;
+      }
+
+      .shopTitle {
+        margin-bottom: 10px;
+        font-size: 20px;
+      }
+
+      .shopDetailInfo {
+        color: rgba(100, 100, 100, 0.5);
+        font-size: 15px;
+      }
+    }
+  }
+}
