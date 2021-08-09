@@ -49,6 +49,18 @@ class RestaurantReview extends React.Component {
   render() {
     const { description, created_at, images, rating } = this.props;
     // console.log(rating);
+    // const img =
+    //   images &&
+    //   images.map(el => {
+    //     return (
+    //       <img
+    //         className="reviewimg"
+    //         src={el.images}
+    //         // src="/images/shopDetail/도현님.png"
+    //         alt="userimg"
+    //       />
+    //     );
+    //   });
     return (
       <li className="review">
         <div className="reviewUser">
@@ -71,6 +83,7 @@ class RestaurantReview extends React.Component {
             </span>
           </div>
           <p className="reviewText">{description}</p>
+          {/* {img} */}
         </div>
         <div className="reviewItemOptionButton">
           <Button

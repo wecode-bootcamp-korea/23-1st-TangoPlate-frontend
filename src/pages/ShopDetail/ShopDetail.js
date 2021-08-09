@@ -47,8 +47,7 @@ class ShopDetail extends React.Component {
   moreButton = () => {
     const { data, quantity } = this.state;
     let updateReviewdata = [];
-    let reveiw = [...data.review];
-    if (reveiw.length > quantity) {
+    if (data.review.length > quantity) {
       for (let i = 0; i <= quantity; i++) {
         updateReviewdata = updateReviewdata.concat(data.review[i]);
       }
@@ -56,8 +55,8 @@ class ShopDetail extends React.Component {
         updateReviewdata: [...updateReviewdata],
         quantity: quantity + 5,
       });
-    } else if (4 > quantity - reveiw.length > 0) {
-      for (let i = quantity - 4; i < reveiw.length; i++) {
+    } else if (4 > quantity - data.review.length > 0) {
+      for (let i = quantity - 4; i < data.review.length; i++) {
         updateReviewdata = updateReviewdata.concat(data.review[i]);
       }
       let remain = [...this.state.updateReviewdata];
@@ -70,30 +69,8 @@ class ShopDetail extends React.Component {
     }
   };
   // mock data
-  // componentDidMount() {
-  //   fetch('http://localhost:3000/data/restaurantdetail.json')
-  //     .then(res => res.json())
-  //     .then(response => {
-  //       // console.log(response);
-  //       let updateReviewdata = [];
-  //       for (let i = 0; i <= 4; i++) {
-  //         if (response.results[0].review[i]) {
-  //           updateReviewdata = updateReviewdata.concat(
-  //             response.results[0].review[i]
-  //           );
-  //         }
-  //       }
-  //       this.setState({
-  //         data: response.results[0],
-  //         updateReviewdata: [...updateReviewdata],
-  //       });
-  //     });
-  // }
-  // server 연결
   componentDidMount() {
-    fetch(REVIEW_URL, {
-      headers: { authorization: localStorage.getItem('token') },
-    })
+    fetch('http://localhost:3000/data/restaurantdetail.json')
       .then(res => res.json())
       .then(response => {
         let updateReviewdata = [];
@@ -116,6 +93,33 @@ class ShopDetail extends React.Component {
         });
       });
   }
+  // server 연결
+  // componentDidMount() {
+  //   fetch(REVIEW_URL, {
+  //     headers: { authorization: localStorage.getItem('token') },
+  //   })
+  //     .then(res => res.json())
+  //     .then(response => {
+  //       let updateReviewdata = [];
+  //       for (let i = 0; i <= 4; i++) {
+  //         if (response.results[0].review[i]) {
+  //           updateReviewdata = updateReviewdata.concat(
+  //             response.results[0].review[i]
+  //           );
+  //         }
+  //         if (response.results[0].review.length <= 5) {
+  //           this.setState({
+  //             moreButtonHidden: true,
+  //           });
+  //         }
+  //       }
+
+  //       this.setState({
+  //         data: response.results[0],
+  //         updateReviewdata: [...updateReviewdata],
+  //       });
+  //     });
+  // }
 
   render() {
     const { data, updateReviewdata, moreButtonHidden } = this.state;
@@ -134,7 +138,7 @@ class ShopDetail extends React.Component {
           />
         );
       });
-
+    console.log(updateReviewdata.length);
     return (
       <div className="shopDetail">
         <div>
