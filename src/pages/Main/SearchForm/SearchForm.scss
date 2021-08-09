@@ -1,0 +1,36 @@
+@import '../style/variable.scss';
+
+.searchForm {
+  @include contentPosition(50%, 0, 0, 50%, relative);
+  width: 700px;
+  z-index: 4;
+  transform: translate(-50%, -50%);
+
+  .fa-search {
+    @include contentPosition(15px, inherit, inherit, 40px);
+    @include size(20px, 20px);
+    color: rgba(196, 196, 196, 0.8);
+  }
+
+  .searchInput {
+    @include border(2px solid #f97100, 30px);
+    padding: 12px 200px 12px 90px;
+    width: 100%;
+    background-color: white;
+    font-size: 18px;
+
+    &::placeholder {
+      color: rgba(196, 196, 196, 0.8);
+      font-size: 18px;
+    }
+  }
+
+  .searchButton {
+    @include border(1px solid #f97100, 30px);
+    @include contentPosition(0, 0, 0, none);
+    padding: 10px 70px;
+    background-color: #f97100;
+    color: white;
+    font-size: 22px;
+  }
+}
