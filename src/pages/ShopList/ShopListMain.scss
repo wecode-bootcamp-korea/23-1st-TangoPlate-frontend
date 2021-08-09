@@ -47,9 +47,18 @@
         }
 
         .wannaGoWrapper {
-          .wannaGo {
+          .far {
             font-size: 30px;
             color: #bcbcbc;
+
+            &:hover {
+              cursor: pointer;
+            }
+          }
+
+          .fas {
+            font-size: 30px;
+            color: #ff782a;
             &:hover {
               cursor: pointer;
             }
@@ -107,20 +116,27 @@
             right: 0;
             color: #ff782a94;
             font-weight: 600;
+
             &:hover {
               cursor: pointer;
               color: #ff782a;
             }
+
             &:active {
               color: black;
             }
           }
         }
       }
+
       .goToDetail {
         margin-top: 30px;
-        color: #888888;
         text-align: right;
+
+        a {
+          color: #888888;
+          font-weight: 600;
+        }
       }
     }
   }
