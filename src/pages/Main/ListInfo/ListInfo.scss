@@ -1,0 +1,26 @@
+@import '../style/variable.scss';
+
+.listInfo {
+  @include size(26em, 12em);
+  @include sort(column, space-between);
+  position: relative;
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+  overflow: hidden;
+  cursor: pointer;
+
+  .listBackground {
+    z-index: -1;
+    object-fit: cover;
+  }
+
+  .listTilte {
+    @include contentPosition(40%, inherit, inherit, 16%);
+    @include imageTopText(30px);
+  }
+
+  .listSubTitle {
+    @include contentPosition(60%, inherit, inherit, 28%);
+    @include imageTopText(18px);
+  }
+}
