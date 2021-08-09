@@ -42,7 +42,7 @@ export class ShopListMain extends Component {
             <div className="reviewInner">
               <div className="reviewTitleWrapper">
                 <div className="shopTitle">
-                  {shopId}. {shopName} <span>{shopRating}</span>
+                  {shopId - 20}. {shopName} <span>{shopRating}</span>
                 </div>
                 <span className="shopAddress">{shopAddress}</span>
               </div>
