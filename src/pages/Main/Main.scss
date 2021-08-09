@@ -1,3 +1,22 @@
-* {
-  width: 100%;
+@import './style/variable.scss';
+
+.mainHeader {
+  @include size(100%, 500px);
+  position: relative;
+  background-image: url('../Main/images/ex_food.jpg');
+  background-size: cover;
+
+  .mainTitle {
+    @include contentPosition(50%, 0, 0, 50%, relative);
+    @include sort();
+    width: 700px;
+    align-items: center;
+    transform: translate(-50%, -50%);
+
+    h2 {
+      margin-top: 15px;
+      color: white;
+      font-size: 35px;
+    }
+  }
 }

@@ -1,0 +1,52 @@
+@mixin border($borderStyle, $borderRadius) {
+  border: $borderStyle;
+  border-radius: $borderRadius;
+}
+
+@mixin contentPosition(
+  $top,
+  $right,
+  $bottom: none,
+  $left: none,
+  $position: absolute
+) {
+  top: $top;
+  right: $right;
+  bottom: $bottom;
+  left: $left;
+  position: $position;
+}
+
+@mixin size($width, $height) {
+  width: $width;
+  height: $height;
+}
+
+@mixin imageTopText($font-size) {
+  z-index: 1;
+  font-size: $font-size;
+  color: white;
+  backgroung-color: rgba(104, 104, 104, 0.4);
+}
+
+@mixin sort(
+  $flex-direction: column,
+  $justify-content: inherit,
+  $align-content: inherit
+) {
+  display: flex;
+  flex-direction: $flex-direction;
+  justify-content: $justify-content;
+  align-content: $align-content;
+}
+
+@mixin slideBtn {
+  position: absolute;
+  top: 50%;
+  cursor: pointer;
+}
+
+@mixin hide {
+  opacity: 0;
+  pointer-events: none;
+}
