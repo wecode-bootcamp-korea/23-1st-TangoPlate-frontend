@@ -1,33 +1,62 @@
 import React from 'react';
 import { withRouter } from 'react-router';
+import { NEWREVIEW_URL } from '../../../config';
 import Button from '../../Login/InputContainer/Button/Button';
 import ReviewGradeButton from '../ReviewWritingPage/ReviewGradeButton/ReviewGradeButton';
 import './RestaurantReview.scss';
 
 class RestaurantReview extends React.Component {
   handleEdit = e => {
-    const { description, images } = this.props;
-    console.log('수정', e.target.name);
+    const { description, rating, images } = this.props;
+
     if (e.target.name === '수정') {
       this.props.history.push('/shopdetail-reviewwritingpage', {
         description,
         images,
+        rating,
       });
     }
     if (e.target.name === '삭제') {
-      alert('삭제하실건가요?');
+      if (window.confirm('삭제하실건가ㄴ요?')) {
+        fetch(NEWREVIEW_URL, {
+          method: 'DELETE',
+          headers: { authorization: localStorage.getItem('token') },
+        })
+          .then(response => response.json())
+          .then(response => {
+            console.log(response);
+            this.props.handleDelete(response);
+            // let updateReviewdata = [];
+            // for (let i = 0; i <= 4; i++) {
+            //   if (!response.results[0].review[i]) {
+            //     updateReviewdata = [];
+            //   } else if (response.results[0].review[i]) {
+            //     updateReviewdata = updateReviewdata.concat(
+            //       response.results[0].review[i]
+            //     );
+            //   }
+            // }
+
+            // this.props.handleWanted(response.results[0], updateReviewdata);
+          });
+      }
+
+      // } else {
+      //   console.log('안돼애ㅐ애');
+      // }
     }
   };
   render() {
-    const { description, created_at, images } = this.props;
+    const { description, created_at, images, rating } = this.props;
+    // console.log(rating);
     return (
       <li className="review">
         <div className="reviewUser">
           <div className="reviewUserPictureWrap">
             <img
               className="reviewUserPicture"
-              src={images}
-              // src="/images/shopDetail/도현님.png"
+              // src={images}
+              src="/images/shopDetail/도현님.png"
               alt="userimg"
             />
           </div>

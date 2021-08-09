@@ -33,8 +33,44 @@
           "images": " 안녕하세요"
         },
         {
-          "user_id": 1,
-          "description": "JMTGR",
+          "user_id": 99,
+          "description": "JMTGR sdfgsfdgsfgsdfgsdfg",
+          "created_at": "2021-08-05",
+          "images": " 안녕하세요"
+        },
+        {
+          "user_id": 78,
+          "description": "JMTGR sdfgsfdgsfgsdfgsdfg",
+          "created_at": "2021-08-05",
+          "images": " 안녕하세요"
+        },
+        {
+          "user_id": 2,
+          "description": "JMTGR5",
+          "created_at": "2021-08-05",
+          "images": {}
+        },
+        {
+          "user_id": 3,
+          "description": "JMTGR4",
+          "created_at": "2021-08-05",
+          "images": {}
+        },
+        {
+          "user_id": 4,
+          "description": "JMTGR3",
+          "created_at": "2021-08-05",
+          "images": {}
+        },
+        {
+          "user_id": 5,
+          "description": "JMTGR2",
+          "created_at": "2021-08-05",
+          "images": {}
+        },
+        {
+          "user_id": 6,
+          "description": "JMTGR1",
           "created_at": "2021-08-05",
           "images": {}
         }

@@ -61,6 +61,23 @@
         }
       }
     }
+    .more {
+      display: flex;
+      justify-content: center;
+      margin-top: 30px;
+    }
+    .moreButton {
+      color: white;
+      font-weight: normal;
+      padding: 10px 25px;
+      cursor: pointer;
+      background: rgb(254, 121, 42);
+      border-radius: 30px;
+    }
+
+    .hidden {
+      display: none;
+    }
 
     .restaurantReviewList {
       border-top: 1px solid #e9e9e9;

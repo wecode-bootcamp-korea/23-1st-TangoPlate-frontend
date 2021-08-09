@@ -8,7 +8,7 @@ class SigninUser extends React.Component {
   };
   goToLogout = () => {
     const { onOffModal, changeState } = this.props;
-    localStorage.removeItem('TOKEN');
+    localStorage.removeItem('token');
     onOffModal('login');
     onOffModal('logout');
     changeState('username', '');

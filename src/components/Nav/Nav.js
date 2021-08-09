@@ -18,7 +18,18 @@ class Nav extends React.Component {
       logout: true,
     };
   }
-
+  componentDidMount() {
+    if (localStorage.getItem('token')) {
+      const nickname = localStorage.getItem('nickname');
+      const email = localStorage.getItem('email');
+      this.setState({
+        isSignInModalOn: !this.state.isSignInModalOn,
+        logout: !this.state.logout,
+        username: nickname,
+        email: email,
+      });
+    }
+  }
   changeState = (name, value) => {
     this.setState({
       [name]: value,
@@ -106,7 +117,11 @@ class Nav extends React.Component {
             />
           )}
           {this.state.isSignUpModalOn && (
-            <Signup onOffModal={this.onOffModal} state={this.state} />
+            <Signup
+              onOffModal={this.onOffModal}
+              changeState={this.changeState}
+              state={this.state}
+            />
           )}
           {this.state.login && (
             <SigninUser

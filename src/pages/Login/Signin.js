@@ -1,5 +1,6 @@
 import React from 'react';
 import { SIGNIN_URL } from '../../config';
+import { withRouter } from 'react-router';
 import InputContainer from './InputContainer/InputContainer';
 import Button from './InputContainer/Button/Button';
 import './Sign.scss';
@@ -25,10 +26,13 @@ class Signin extends React.Component {
         console.log(result);
         if (result.TOKEN) {
           localStorage.setItem('token', result.TOKEN);
+          localStorage.setItem('nickname', result.NICKNAME);
+          localStorage.setItem('email', result.EMAIL);
           onOffModal('signin');
           onOffModal('logout');
           changeState('username', result.NICKNAME);
           changeState('email', result.EMAIL);
+          this.props.history.push('/shopdetail');
         } else {
           alert('이메일과 비밀번호를 확인해주세요 !');
         }
@@ -79,7 +83,7 @@ class Signin extends React.Component {
   }
 }
 
-export default Signin;
+export default withRouter(Signin);
 
 const inputBox = [
   {
