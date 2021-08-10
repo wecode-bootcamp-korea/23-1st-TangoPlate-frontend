@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import './FilterButton.scss';
 
 export class FilterButton extends Component {
+  handleFilterButton = e => {};
+
   render() {
     return (
       <div className="filterButton">
@@ -47,23 +49,31 @@ const FOOD_BUTTON_LIST = [
     id: 4,
     buttonName: '#일식',
   },
+  {
+    id: 5,
+    buttonName: '#세계음식',
+  },
 ];
 
 const LOCATION_BUTTON_LIST = [
   {
-    id: 5,
-    buttonName: '#선릉',
+    id: 24,
+    buttonName: '#역삼/선릉',
   },
   {
-    id: 6,
+    id: 2,
     buttonName: '#강남',
   },
   {
-    id: 7,
+    id: 17,
     buttonName: '#삼성',
   },
   {
-    id: 8,
-    buttonName: '#역삼',
+    id: 20,
+    buttonName: '#신사/압구정',
+  },
+  {
+    id: 1,
+    buttonName: '#가로수길',
   },
 ];

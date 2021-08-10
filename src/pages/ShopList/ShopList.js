@@ -1,8 +1,9 @@
 import React from 'react';
-import Nav from '../../components/Nav/Nav';
 import ShopListHeader from './ShopListHeader';
 import ShopListMain from './ShopListMain';
+import Nav from '../../components/Nav/Nav';
 import Footer from '../../components/Footer/Footer';
+import { FILTER_LIST_URL } from './config.js';
 
 class ShopList extends React.Component {
   constructor(props) {
@@ -12,22 +13,16 @@ class ShopList extends React.Component {
       shopInfo: [],
     };
   }
-
   componentDidMount() {
-    fetch('http://10.58.0.54:8000/restaurants?category=3')
-      // fetch('http://172.16.2.214:8000/restaurants/search?search=초밥')
+    fetch(FILTER_LIST_URL + '?category=3')
       .then(res => res.json())
       .then(res => this.setState({ shopInfo: res.restaurant }));
-    // fetch('/data/shopData.json')
-    // .then(res => res.json())
-    // .then(res => this.setState({ shopInfo: res }));
   }
 
-  buttonHandler = e => {
+  handleButton = e => {
     const changeList = [...this.state.shopInfo];
-    changeList.map(el => {
+    changeList.forEach(el => {
       if (Number(e.target.name) === el.id) {
-        console.log('aaa');
         el.btn_toggle = !el.btn_toggle;
       }
     });
@@ -36,9 +31,9 @@ class ShopList extends React.Component {
     });
   };
 
-  likeHandler = e => {
+  handleWishButton = e => {
     const changeList = [...this.state.shopInfo];
-    changeList.map(el => {
+    changeList.forEach(el => {
       if (Number(e.target.id) === el.id) {
         el.is_wished = !el.is_wished;
       }
@@ -49,29 +44,20 @@ class ShopList extends React.Component {
   };
 
   render() {
+    console.log(this.state.shopInfo);
     const { shopInfo } = this.state;
     return (
       <div className="shopList">
         <Nav />
-        <ShopListHeader />
+        <ShopListHeader shopInfo={shopInfo.length} />
         {shopInfo &&
           shopInfo.map(list => {
             return (
               <ShopListMain
-                //mock data key
-                // id={list.id}
-                // img={list.img}
-                // shopName={list.shopName}
-                // shopRate={list.shopRate}
-                // shopAddress={list.shopAddress}
-                // userPic={list.userPic}
-                // userId={list.userId}
-                // userReview={list.userReview}
-                // isLiked={list.isLiked}
-                // buttonToggle={list.buttonToggle}
-                //back data key
+                key={list.id}
                 shopId={list.id}
                 shopName={list.name}
+                shopImage={list.image}
                 shopRating={list.rating}
                 shopAddress={list.address}
                 isWished={list.is_wished}
@@ -81,8 +67,8 @@ class ShopList extends React.Component {
                 userName={list.user_name}
                 userReview={list.description}
                 //handler
-                likeHandle={this.likeHandler}
-                buttonHandle={this.buttonHandler}
+                likeHandle={this.handleWishButton}
+                buttonHandle={this.handleButton}
               />
             );
           })}

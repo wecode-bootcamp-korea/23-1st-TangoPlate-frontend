@@ -10,8 +10,8 @@ class Footer extends React.Component {
             <div className="logoAndSlogan">
               <img
                 className="footerLogo"
+                alt="탱고플레이트 로고"
                 src="images/tangoGreyLogo.svg"
-                alt=""
               />
               <p className="subtitle">Eat, Share, Be Happy</p>
             </div>

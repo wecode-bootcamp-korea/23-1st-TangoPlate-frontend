@@ -1,6 +1,6 @@
 import React from 'react';
-import './Nav.scss';
 import { Link } from 'react-router-dom';
+import './Nav.scss';
 
 class Nav extends React.Component {
   render() {
@@ -22,8 +22,8 @@ class Nav extends React.Component {
               <span className="eatDealMenu">
                 EAT딜
                 <img
-                  src="https://mp-seoul-image-production-s3.mangoplate.com/web/resources/uo3o88vopcmdsket.png"
                   alt="새로운 맛집 알람"
+                  src="https://mp-seoul-image-production-s3.mangoplate.com/web/resources/uo3o88vopcmdsket.png"
                 />
               </span>
             </Link>

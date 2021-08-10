@@ -1,29 +1,17 @@
 import React, { Component } from 'react';
-import './ShopListMain.scss';
 import { Link } from 'react-router-dom';
+import './ShopListMain.scss';
 
 export class ShopListMain extends Component {
   render() {
     const {
-      //mock data
-      // id
-      // img
-      // shopName
-      // shopRate
-      // shopAddress
-      // userPic
-      // userId
-      // userReview
-      // isLiked
-      // buttonToggle
       shopId,
       shopName,
+      shopImage,
       shopRating,
       shopAddress,
       buttonToggle,
       isWished,
-      // reviewId,
-      // userId,
       userName,
       userReview,
       // handler
@@ -33,16 +21,12 @@ export class ShopListMain extends Component {
     return (
       <div className="shopListMain">
         <main>
-          <img
-            className="reviewPicture"
-            src="images/foodSample.jpg"
-            alt="식당 사진"
-          />
+          <img className="reviewPicture" alt="식당 사진" src={shopImage} />
           <div className="reviewContainer">
             <div className="reviewInner">
               <div className="reviewTitleWrapper">
                 <div className="shopTitle">
-                  {shopId - 20}. {shopName} <span>{shopRating}</span>
+                  {shopId}. {shopName} <span>{shopRating}</span>
                 </div>
                 <span className="shopAddress">{shopAddress}</span>
               </div>
@@ -59,7 +43,7 @@ export class ShopListMain extends Component {
               </div>
             </div>
             <div className="reviewWrapper">
-              <img className="userPic" src="./images/foodsample.jpg" alt=" " />
+              <img className="userPic" src="./images/foodSample.jpg" alt=" " />
               <div className="reviewDetail">
                 <p className="userReview">
                   <span className="userId">{userName}</span>
