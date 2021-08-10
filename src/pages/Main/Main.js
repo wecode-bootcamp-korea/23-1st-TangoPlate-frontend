@@ -1,9 +1,10 @@
 import React from 'react';
 import SearchFocus from './SearchFocus/SearchFocus';
-import Nav from '../Main/Nav/Nav';
+import Nav from '../../components/Nav/Nav';
 import SearchForm from './SearchForm/SearchForm';
 import ShopListContainer from './ShopListContainer/ShopListContainer';
-import EatDealContainer from './EatDealContainer/EatDealContainer';
+// import EatDealContainer from './EatDealContainer/EatDealContainer';
+import Footer from '../../components/Footer/Footer';
 import './Main.scss';
 
 class Main extends React.Component {
@@ -35,8 +36,9 @@ class Main extends React.Component {
         </header>
         <article>
           <ShopListContainer />
-          <EatDealContainer />
+          {/* <EatDealContainer /> */}
         </article>
+        <Footer />
       </div>
     );
   }
