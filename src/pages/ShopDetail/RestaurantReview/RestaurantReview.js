@@ -7,20 +7,24 @@ import './RestaurantReview.scss';
 
 class RestaurantReview extends React.Component {
   handleEdit = e => {
-    const { description, rating, images } = this.props;
+    const { description, rating, images, review_id, Restaurantid } = this.props;
 
     if (e.target.name === '수정') {
       this.props.history.push('/shopdetail-reviewwritingpage', {
         description,
         images,
         rating,
+        review_id,
+        Restaurantid,
       });
     }
     if (e.target.name === '삭제') {
       if (window.confirm('삭제하실건가ㄴ요?')) {
         fetch(NEWREVIEW_URL, {
           method: 'DELETE',
-          headers: { authorization: localStorage.getItem('token') },
+          headers: {
+            authorization: localStorage.getItem('token'),
+          },
         })
           .then(response => response.json())
           .then(response => {
@@ -47,20 +51,10 @@ class RestaurantReview extends React.Component {
     }
   };
   render() {
-    const { description, created_at, images, rating } = this.props;
-    // console.log(rating);
-    // const img =
-    //   images &&
-    //   images.map(el => {
-    //     return (
-    //       <img
-    //         className="reviewimg"
-    //         src={el.images}
-    //         // src="/images/shopDetail/도현님.png"
-    //         alt="userimg"
-    //       />
-    //     );
-    //   });
+    const { description, created_at, images, rating, review_id, Restaurantid } =
+      this.props;
+    console.log('saas', review_id, Restaurantid);
+    // console.log(images);
     return (
       <li className="review">
         <div className="reviewUser">
@@ -77,13 +71,18 @@ class RestaurantReview extends React.Component {
 
         <div className="reviewContent">
           <div className="reviewTextWrap">
-            <span className="reviewDate">{created_at}</span>
+            <p className="reviewDate">{created_at}</p>
             <span className="reviewRatingText">
-              <ReviewGradeButton gradeIconSrc={51} />
+              <ReviewGradeButton gradeIconSrc={rating * 10 + 1} />
             </span>
           </div>
           <p className="reviewText">{description}</p>
-          {/* {img} */}
+          <img
+            className="reviewimg"
+            src={images}
+            // src="/images/shopDetail/도현님.png"
+            alt="reviewimg"
+          />
         </div>
         <div className="reviewItemOptionButton">
           <Button

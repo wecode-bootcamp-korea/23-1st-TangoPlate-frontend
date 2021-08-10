@@ -1,5 +1,5 @@
 import React from 'react';
-import { REVIEW_URL } from '../../config';
+import { RESTAURANT_DETAIL_URL } from '../../config';
 import RestaurantReview from './RestaurantReview/RestaurantReview';
 import RestaurantInfo from './RestaurantInfo/RestaurantInfo';
 import './ShopDetail.scss';
@@ -8,11 +8,11 @@ class ShopDetail extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      wanted: false,
+      isWanted: false,
       data: [],
       updateReviewdata: [],
       quantity: 9,
-      moreButtonHidden: false,
+      isMoreButtonHidden: false,
     };
   }
   goToWrtingPage = () => {
@@ -29,75 +29,48 @@ class ShopDetail extends React.Component {
   //   };
 
   handleDelete = response => {
-    let updateReviewdata = [];
+    let Reviewdata = [];
     for (let i = 0; i <= 4; i++) {
       if (response.results[0].review[i]) {
-        updateReviewdata = updateReviewdata.concat(
-          response.results[0].review[i]
-        );
+        Reviewdata = Reviewdata.concat(response.results[0].review[i]);
       }
     }
 
     this.setState({
       data: response.results[0],
-      updateReviewdata: [...updateReviewdata],
+      updateReviewdata: [...Reviewdata],
     });
   };
 
   moreButton = () => {
     const { data, quantity } = this.state;
-    let updateReviewdata = [];
-    if (data.review.length > quantity) {
+    let reviewlength = [];
+    reviewlength = reviewlength.concat(data.review);
+    let Reviewdata = [];
+    if (reviewlength.length > quantity) {
       for (let i = 0; i <= quantity; i++) {
-        updateReviewdata = updateReviewdata.concat(data.review[i]);
+        Reviewdata = Reviewdata.concat(data.review[i]);
       }
       this.setState({
-        updateReviewdata: [...updateReviewdata],
+        updateReviewdata: [...Reviewdata],
         quantity: quantity + 5,
       });
-    } else if (4 > quantity - data.review.length > 0) {
-      for (let i = quantity - 4; i < data.review.length; i++) {
-        updateReviewdata = updateReviewdata.concat(data.review[i]);
+    } else if (4 > quantity - reviewlength.length > 0) {
+      for (let i = quantity - 4; i < reviewlength.length; i++) {
+        Reviewdata = Reviewdata.concat(data.review[i]);
       }
       let remain = [...this.state.updateReviewdata];
-      remain = remain.concat(updateReviewdata);
+      remain = remain.concat(Reviewdata);
       this.setState({
         updateReviewdata: [...remain],
         quantity: quantity + 4,
-        moreButtonHidden: true,
+        isMoreButtonHidden: true,
       });
     }
   };
   // mock data
-  componentDidMount() {
-    fetch('http://localhost:3000/data/restaurantdetail.json')
-      .then(res => res.json())
-      .then(response => {
-        let updateReviewdata = [];
-        for (let i = 0; i <= 4; i++) {
-          if (response.results[0].review[i]) {
-            updateReviewdata = updateReviewdata.concat(
-              response.results[0].review[i]
-            );
-          }
-          if (response.results[0].review.length <= 5) {
-            this.setState({
-              moreButtonHidden: true,
-            });
-          }
-        }
-
-        this.setState({
-          data: response.results[0],
-          updateReviewdata: [...updateReviewdata],
-        });
-      });
-  }
-  // server 연결
   // componentDidMount() {
-  //   fetch(REVIEW_URL, {
-  //     headers: { authorization: localStorage.getItem('token') },
-  //   })
+  //   fetch('/data/restaurantdetail.json')
   //     .then(res => res.json())
   //     .then(response => {
   //       let updateReviewdata = [];
@@ -109,7 +82,7 @@ class ShopDetail extends React.Component {
   //         }
   //         if (response.results[0].review.length <= 5) {
   //           this.setState({
-  //             moreButtonHidden: true,
+  //            isMoreButtonHidden: true,
   //           });
   //         }
   //       }
@@ -120,16 +93,45 @@ class ShopDetail extends React.Component {
   //       });
   //     });
   // }
+  // server 연결
+  componentDidMount() {
+    fetch(RESTAURANT_DETAIL_URL, {
+      headers: { authorization: localStorage.getItem('token') },
+    })
+      .then(res => res.json())
+      .then(response => {
+        let updateReviewdata = [];
+
+        for (let i = 0; i <= 4; i++) {
+          if (response.results[0].review[i]) {
+            updateReviewdata = updateReviewdata.concat(
+              response.results[0].review[i]
+            );
+          }
+          if (response.results[0].review.length <= 5) {
+            this.setState({
+              isMoreButtonHidden: true,
+            });
+          }
+        }
+
+        this.setState({
+          data: response.results[0],
+          isMoreButtonHidden: [...updateReviewdata],
+        });
+      });
+  }
 
   render() {
     const { data, updateReviewdata, moreButtonHidden } = this.state;
-    const { name, is_wished, rating } = data;
-    console.log(updateReviewdata);
-    const reviews =
-      updateReviewdata &&
-      updateReviewdata.map(({ description, created_at, images, rating }) => {
+    const { name, is_wished, rating, id } = data;
+    const reviews = updateReviewdata.map(
+      ({ description, created_at, images, rating, review_id }) => {
         return (
           <RestaurantReview
+            key={review_id}
+            review_id={review_id}
+            Restaurantid={id}
             description={description}
             created_at={created_at}
             images={images}
@@ -137,8 +139,9 @@ class ShopDetail extends React.Component {
             handleDelete={this.handleDelete}
           />
         );
-      });
-    console.log(updateReviewdata.length);
+      }
+    );
+
     return (
       <div className="shopDetail">
         <div>
@@ -164,7 +167,7 @@ class ShopDetail extends React.Component {
                 리뷰쓰기
               </button>
               <button
-                className={`reviewAndLikeIcon ${is_wished ? 'wanted' : ''}`}
+                className={`reviewAndLikeIcon ${is_wished ? 'isWanted' : ''}`}
                 onClick={this.handleWanted}
               >
                 <i className={is_wished ? 'fas fa-star ' : 'far fa-star'}></i>

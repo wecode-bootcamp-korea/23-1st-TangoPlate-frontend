@@ -9,8 +9,8 @@ class SigninUser extends React.Component {
   goToLogout = () => {
     const { onOffModal, changeState } = this.props;
     localStorage.removeItem('token');
-    onOffModal('login');
-    onOffModal('logout');
+    onOffModal('isUserLogin');
+    onOffModal('isUserLogout');
     changeState('username', '');
     changeState('email', '');
   };
@@ -19,7 +19,10 @@ class SigninUser extends React.Component {
     const { onOffModal } = this.props;
     const { finish, goToLogout } = this;
     return (
-      <div className="signPage modalback" onClick={() => onOffModal('login')}>
+      <div
+        className="signPage modalback"
+        onClick={() => onOffModal('isUserLogin')}
+      >
         <i className="triangle"></i>
         <div className="signContainer modal" onClick={finish}>
           <img

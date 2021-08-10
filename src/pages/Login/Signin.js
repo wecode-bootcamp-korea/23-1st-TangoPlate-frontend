@@ -29,7 +29,7 @@ class Signin extends React.Component {
           localStorage.setItem('nickname', result.NICKNAME);
           localStorage.setItem('email', result.EMAIL);
           onOffModal('signin');
-          onOffModal('logout');
+          onOffModal(' isUserLogout');
           changeState('username', result.NICKNAME);
           changeState('email', result.EMAIL);
           this.props.history.push('/shopdetail');

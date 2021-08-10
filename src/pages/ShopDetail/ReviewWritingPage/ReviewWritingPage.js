@@ -24,6 +24,7 @@ class ReviewWritingPage extends React.Component {
   };
 
   postingOrCancel = e => {
+    // const { review_id, Restaurantid } = this.props.location.state;
     const { reviewEditorText, img, grade } = this.state;
     if (e.target.name === '취소') {
       this.props.history.push('/shopdetail');
@@ -42,7 +43,7 @@ class ReviewWritingPage extends React.Component {
           console.log(response);
         });
     } else {
-      fetch(NEWREVIEW_URL, {
+      fetch(`${NEWREVIEW_URL}/${2}/review/${2}`, {
         method: 'POST',
         body: JSON.stringify({
           description: reviewEditorText,
@@ -93,19 +94,19 @@ class ReviewWritingPage extends React.Component {
                 SelectGrade={() => SelectGrade(5)}
                 gradeIconSrc={grade === 5 ? 51 : 50}
                 isButtonClicked={grade === 5}
-                content={'맛있다'}
+                content="맛있다"
               />
               <ReviewGradeButton
                 SelectGrade={() => SelectGrade(3)}
                 gradeIconSrc={grade === 3 ? 31 : 30}
                 isButtonClicked={grade === 3}
-                content={'괜찮다'}
+                content="괜찮다"
               />
               <ReviewGradeButton
                 SelectGrade={() => SelectGrade(1)}
                 gradeIconSrc={grade === 1 ? 11 : 10}
                 isButtonClicked={grade === 1}
-                content={'별로'}
+                content="별로"
               />
             </div>
             <div className="reviewMessage">

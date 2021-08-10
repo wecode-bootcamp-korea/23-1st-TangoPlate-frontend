@@ -14,8 +14,8 @@ class Nav extends React.Component {
       password: '',
       isSignInModalOn: false,
       isSignUpModalOn: false,
-      login: false,
-      logout: true,
+      isUserLogin: false,
+      isUserLogout: true,
     };
   }
   componentDidMount() {
@@ -24,7 +24,7 @@ class Nav extends React.Component {
       const email = localStorage.getItem('email');
       this.setState({
         isSignInModalOn: !this.state.isSignInModalOn,
-        logout: !this.state.logout,
+        isUserLogout: !this.state.isUserLogout,
         username: nickname,
         email: email,
       });
@@ -45,13 +45,13 @@ class Nav extends React.Component {
       this.setState({
         isSignInModalOn: !this.state.isSignInModalOn,
       });
-    } else if (name === 'logout') {
+    } else if (name === 'isUserLogout') {
       this.setState({
-        logout: !this.state.logout,
+        isUserLogout: !this.state.isUserLogout,
       });
-    } else if (name === 'login') {
+    } else if (name === 'isUserLogin') {
       this.setState({
-        login: !this.state.login,
+        isUserLogin: !this.state.isUserLogin,
       });
     }
   };
@@ -96,9 +96,9 @@ class Nav extends React.Component {
 
             <button
               onClick={() =>
-                this.state.logout
+                this.state.isUserLogout
                   ? this.onOffModal('signin')
-                  : this.onOffModal('login')
+                  : this.onOffModal('isUserLogin')
               }
             >
               <i className="far fa-user"></i>
@@ -109,7 +109,7 @@ class Nav extends React.Component {
         </nav>
         {/* <div className="signup" onClick={this.onOffModal}> */}
         <div>
-          {this.state.logout && this.state.isSignInModalOn && (
+          {this.state.isUserLogout && this.state.isSignInModalOn && (
             <Signin
               onOffModal={this.onOffModal}
               changeState={this.changeState}
@@ -123,7 +123,7 @@ class Nav extends React.Component {
               state={this.state}
             />
           )}
-          {this.state.login && (
+          {this.state.isUserLogin && (
             <SigninUser
               onOffModal={this.onOffModal}
               changeState={this.changeState}

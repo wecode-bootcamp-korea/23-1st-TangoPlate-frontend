@@ -28,7 +28,7 @@ class Signup extends React.Component {
           alert('축하합니다');
           onOffModal('signup');
           onOffModal('signin');
-          onOffModal('logout');
+          onOffModal('isUserLogout');
         } else {
           alert(
             '이름과 이메일 형식을 지켜주세요 . 비밀번호는 5글자 이상입니다.'
