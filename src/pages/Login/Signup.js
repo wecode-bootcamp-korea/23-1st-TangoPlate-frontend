@@ -11,7 +11,7 @@ class Signup extends React.Component {
 
   goToSign = e => {
     e.preventDefault();
-    const { email, username, phone_number, password } = this.props.state;
+    const { email, username, phoneNumber, password } = this.props;
     const { onOffModal } = this.props;
     fetch(SIGNUP_URL, {
       method: 'POST',
@@ -19,7 +19,7 @@ class Signup extends React.Component {
         email: email,
         nickname: username,
         password: password,
-        phone_number: phone_number,
+        phone_number: phoneNumber,
       }),
     })
       .then(response => response.json())
@@ -28,7 +28,7 @@ class Signup extends React.Component {
           alert('축하합니다');
           onOffModal('signup');
           onOffModal('signin');
-          onOffModal('logout');
+          onOffModal('isUserLogout');
         } else {
           alert(
             '이름과 이메일 형식을 지켜주세요 . 비밀번호는 5글자 이상입니다.'
@@ -38,12 +38,12 @@ class Signup extends React.Component {
   };
 
   render() {
-    const { username, email, password, phone_number } = this.props.state;
+    const { username, email, password, phoneNumber } = this.props;
     const { goToSign, finish } = this;
     const { changeState, onOffModal } = this.props;
-    let signupDisable =
+    const signupDisable =
       username === true ||
-      phone_number === true ||
+      phoneNumber === true ||
       email.indexOf('@') === -1 ||
       password.length < 5;
     return (

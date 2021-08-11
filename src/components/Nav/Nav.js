@@ -10,12 +10,12 @@ class Nav extends React.Component {
     this.state = {
       username: '',
       email: '',
-      phone_number: '',
+      phoneNumber: '',
       password: '',
       isSignInModalOn: false,
       isSignUpModalOn: false,
-      login: false,
-      logout: true,
+      isUserLogin: false,
+      isUserLogout: true,
     };
   }
   componentDidMount() {
@@ -24,12 +24,34 @@ class Nav extends React.Component {
       const email = localStorage.getItem('email');
       this.setState({
         isSignInModalOn: !this.state.isSignInModalOn,
-        logout: !this.state.logout,
+        isUserLogout: !this.state.isUserLogout,
         username: nickname,
         email: email,
       });
     }
   }
+
+  // componentDidUpdate(_, prevState) {
+  //   if (prevState.userLogin !== this.state.userLogin) {
+  //     if (localStorage.getItem('token') && this.state.userLogin) {
+
+  //     }
+  //   }
+  // }
+
+  checkLogin() {
+    if (localStorage.getItem('token')) {
+      const nickname = localStorage.getItem('nickname');
+      const email = localStorage.getItem('email');
+      this.setState({
+        isSignInModalOn: !this.state.isSignInModalOn,
+        isUserLogout: !this.state.isUserLogout,
+        username: nickname,
+        email: email,
+      });
+    }
+  }
+
   changeState = (name, value) => {
     this.setState({
       [name]: value,
@@ -45,19 +67,19 @@ class Nav extends React.Component {
       this.setState({
         isSignInModalOn: !this.state.isSignInModalOn,
       });
-    } else if (name === 'logout') {
+    } else if (name === 'isUserLogout') {
       this.setState({
-        logout: !this.state.logout,
+        isUserLogout: !this.state.isUserLogout,
       });
-    } else if (name === 'login') {
+    } else if (name === 'isUserLogin') {
       this.setState({
-        login: !this.state.login,
+        isUserLogin: !this.state.isUserLogin,
       });
     }
   };
 
   render() {
-    console.log(this.state);
+    const { username, email, phoneNumber, password } = this.state;
     return (
       <div className="Nav">
         <nav className="menu">
@@ -96,9 +118,9 @@ class Nav extends React.Component {
 
             <button
               onClick={() =>
-                this.state.logout
+                this.state.isUserLogout
                   ? this.onOffModal('signin')
-                  : this.onOffModal('login')
+                  : this.onOffModal('isUserLogin')
               }
             >
               <i className="far fa-user"></i>
@@ -107,27 +129,31 @@ class Nav extends React.Component {
             <span className="userInfoAlarm">3</span>
           </ul>
         </nav>
-        {/* <div className="signup" onClick={this.onOffModal}> */}
         <div>
-          {this.state.logout && this.state.isSignInModalOn && (
+          {this.state.isUserLogout && this.state.isSignInModalOn && (
             <Signin
               onOffModal={this.onOffModal}
               changeState={this.changeState}
-              state={this.state}
+              email={email}
+              password={password}
             />
           )}
           {this.state.isSignUpModalOn && (
             <Signup
               onOffModal={this.onOffModal}
               changeState={this.changeState}
-              state={this.state}
+              username={username}
+              phoneNumber={phoneNumber}
+              email={email}
+              password={password}
             />
           )}
-          {this.state.login && (
+          {this.state.isUserLogin && (
             <SigninUser
               onOffModal={this.onOffModal}
               changeState={this.changeState}
-              state={this.state}
+              username={username}
+              email={email}
             ></SigninUser>
           )}
         </div>

@@ -10,7 +10,7 @@ class InputBox extends React.Component {
   render() {
     const { name, imgUrl, type, id, placeholder, goTo } = this.props;
     return (
-      <form className="inputBox" onSubmit={e => goTo(e)}>
+      <form className="inputBox" onSubmit={goTo}>
         <input
           className="input"
           name={name}

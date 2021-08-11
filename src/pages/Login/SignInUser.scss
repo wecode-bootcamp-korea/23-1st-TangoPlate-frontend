@@ -8,11 +8,12 @@
   position: fixed;
   top: 72px;
   right: 10px;
-  z-index: 1100;
   width: 320px;
   border-radius: 0 0 3px 3px;
   background-color: #ffffff;
+  z-index: 1100;
 }
+
 .triangle {
   position: absolute;
   top: 56px;
@@ -23,28 +24,112 @@
   border-style: solid;
 }
 
-.userProfileName {
-  padding-bottom: 12px;
-}
-
 .signPage {
   @include flex-center;
   height: 100vh;
-  .userimg {
-    width: 70px;
-    height: 70px;
-    border-radius: 50%;
-    margin-bottom: 20px;
-  }
-  .signContainer {
-    padding: 56px 40px;
+
+  .signUserContainer {
     border: 5px solid #ff792a;
-    text-align: center;
     background-color: white;
-    h1 {
-      margin: 24px auto 41px;
-      font-weight: 400;
-      font-size: 37px;
+    // text-align: center;
+    .optionButtonBox {
+      display: flex;
+      justify-content: space-around;
+
+      .userinfo {
+        width: 100%;
+        padding: 10px 0px 10px;
+        margin-bottom: 20px;
+        border-bottom: 1px solid #dbdbdb;
+        color: #9b9b9b;
+        font-size: 16px;
+        font-weight: 600;
+        text-align: center;
+      }
+
+      .selectUserinfoWanted {
+        border-bottom: 3px solid #ff792a;
+        color: #ff792a;
+      }
+    }
+    .content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 56px 40px;
+
+      .userimg {
+        width: 70px;
+        height: 70px;
+        margin-bottom: 20px;
+        border-radius: 50%;
+      }
+
+      .userProfileName {
+        padding-bottom: 12px;
+      }
+
+      .wantedIcon {
+        color: #ff792a;
+        font-size: 100px;
+        font-weight: 100;
+        margin-bottom: 14px;
+      }
+
+      .EmptyWatedListTitle {
+        margin-bottom: 14px;
+        font-size: 23px;
+        line-height: 25px;
+        color: #4f4f4f;
+      }
+
+      .EmptyWatedListDescription {
+        width: 100%;
+        padding: 0 20px;
+        box-sizing: border-box;
+        font-size: 17px;
+        line-height: 25px;
+        text-align: center;
+        color: #ff792a;
+      }
+    }
+
+    .wantedItem {
+      display: flex;
+      padding: 5px;
+      .wantedItemImg {
+        width: 70px;
+        height: 70px;
+      }
+
+      .wantedItemInfo {
+        display: flex;
+        flex-direction: column;
+        flex: 3;
+        padding: 7px;
+        .wantedItemTitleAndRating {
+          padding-bottom: 10px;
+          font-weight: 500;
+          .wantedItemTitle {
+            justify-content: left;
+          }
+
+          .wantedItemRating {
+            color: #ff792a;
+            padding-left: 5px;
+          }
+        }
+        .wantedAdressAndCategory {
+          font-size: 12px;
+          opacity: 0.8;
+        }
+      }
+
+      .starButton {
+        flex: 1;
+        font-size: 30px;
+        padding-bottom: 30px;
+      }
     }
   }
 }
