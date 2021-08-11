@@ -1,5 +1,5 @@
 import React from 'react';
-import { RESTAURANT_DETAIL_URL } from '../../config';
+import { RESTAURANT_DETAIL_URL, WISH_URL } from '../../config';
 import RestaurantReview from './RestaurantReview/RestaurantReview';
 import RestaurantInfo from './RestaurantInfo/RestaurantInfo';
 import './ShopDetail.scss';
@@ -16,28 +16,41 @@ class ShopDetail extends React.Component {
     };
   }
   goToWrtingPage = () => {
-    this.props.history.push('/shopdetail-reviewwritingpage');
+    if (!localStorage.getItem('token')) {
+      alert('로그인이 필요합니다 !');
+    } else {
+      const edit = false;
+      this.props.history.push(
+        '/shopdetail-reviewwritingpage',
+        this.state.data.id,
+        edit
+      );
+    }
   };
 
-  //   handleWanted = () => {
-  //     let update = [...this.state.data];
-  //     update.
-  // this.setState({
+  handleWanted = () => {
+    fetch(`${WISH_URL}${this.state.data.id}2/wish`, {
+      method: 'POST',
+      headers: { authorization: localStorage.getItem('token') },
+    })
+      .then(response => response.json())
+      .then(response => console.log(response));
 
-  // });
-  //    is_wished
-  //   };
+    this.setState({
+      is_wished: !this.state.is_wished,
+    });
+  };
 
   handleDelete = response => {
     let Reviewdata = [];
     for (let i = 0; i <= 4; i++) {
-      if (response.results[0].review[i]) {
-        Reviewdata = Reviewdata.concat(response.results[0].review[i]);
+      if (response.results.reviews[i]) {
+        Reviewdata = Reviewdata.concat(response.results.reviews[i]);
       }
     }
 
     this.setState({
-      data: response.results[0],
+      data: response.results,
       updateReviewdata: [...Reviewdata],
     });
   };
@@ -45,11 +58,11 @@ class ShopDetail extends React.Component {
   moreButton = () => {
     const { data, quantity } = this.state;
     let reviewlength = [];
-    reviewlength = reviewlength.concat(data.review);
+    reviewlength = reviewlength.concat(data.reviews);
     let Reviewdata = [];
     if (reviewlength.length > quantity) {
       for (let i = 0; i <= quantity; i++) {
-        Reviewdata = Reviewdata.concat(data.review[i]);
+        Reviewdata = Reviewdata.concat(data.reviews[i]);
       }
       this.setState({
         updateReviewdata: [...Reviewdata],
@@ -57,7 +70,7 @@ class ShopDetail extends React.Component {
       });
     } else if (4 > quantity - reviewlength.length > 0) {
       for (let i = quantity - 4; i < reviewlength.length; i++) {
-        Reviewdata = Reviewdata.concat(data.review[i]);
+        Reviewdata = Reviewdata.concat(data.reviews[i]);
       }
       let remain = [...this.state.updateReviewdata];
       remain = remain.concat(Reviewdata);
@@ -95,6 +108,10 @@ class ShopDetail extends React.Component {
   // }
   // server 연결
   componentDidMount() {
+    this.getData();
+  }
+
+  getData = () => {
     fetch(RESTAURANT_DETAIL_URL, {
       headers: { authorization: localStorage.getItem('token') },
     })
@@ -102,41 +119,48 @@ class ShopDetail extends React.Component {
       .then(response => {
         let updateReviewdata = [];
 
-        for (let i = 0; i <= 4; i++) {
-          if (response.results[0].review[i]) {
-            updateReviewdata = updateReviewdata.concat(
-              response.results[0].review[i]
-            );
-          }
-          if (response.results[0].review.length <= 5) {
-            this.setState({
-              isMoreButtonHidden: true,
-            });
-          }
-        }
+        // for (let i = 0; i <= 4; i++) {
+        //   if (response.results.reviews[i]) {
+        //     updateReviewdata = updateReviewdata.concat(
+        //       response.results.reviews[i]
+        //     );
+        //   }
+
+        //   if (response.results.reviews.length <= 5) {
+        //     this.setState({
+        //       isMoreButtonHidden: true,
+        //     });
+        //   }
+        // }
+        console.log(response);
 
         this.setState({
-          data: response.results[0],
-          isMoreButtonHidden: [...updateReviewdata],
+          data: response.results,
+          updateReviewdata: [...updateReviewdata],
+          isWanted: response.results.is_wished,
         });
       });
-  }
+  };
 
   render() {
-    const { data, updateReviewdata, moreButtonHidden } = this.state;
-    const { name, is_wished, rating, id } = data;
+    console.log(this.state.data);
+    const { data, updateReviewdata, isMoreButtonHidden, is_wished } =
+      this.state;
+    const { name, rating } = data;
     const reviews = updateReviewdata.map(
-      ({ description, created_at, images, rating, review_id }) => {
+      ({ description, created_at, image_url, rating, id, user }) => {
         return (
           <RestaurantReview
-            key={review_id}
-            review_id={review_id}
-            Restaurantid={id}
+            key={id}
+            review_id={id}
+            user={user}
+            Restaurantid={data.id}
             description={description}
             created_at={created_at}
-            images={images}
+            images={image_url}
             rating={rating}
             handleDelete={this.handleDelete}
+            getData={this.getData}
           />
         );
       }
@@ -178,10 +202,10 @@ class ShopDetail extends React.Component {
           <RestaurantInfo data={data} />
           <h2 className="restaurantReviewList">
             <span> 리뷰</span>
-            <span className="reviewAllCount">(13)</span>
+            <span className="reviewAllCount">({updateReviewdata.length})</span>
           </h2>
           {reviews}
-          <div className={moreButtonHidden ? 'more hidden' : 'more'}>
+          <div className={isMoreButtonHidden ? 'more hidden' : 'more'}>
             <button className="moreButton" onClick={this.moreButton}>
               5개 더보기 ▼
             </button>

@@ -10,7 +10,7 @@ class Nav extends React.Component {
     this.state = {
       username: '',
       email: '',
-      phone_number: '',
+      phoneNumber: '',
       password: '',
       isSignInModalOn: false,
       isSignUpModalOn: false,
@@ -30,6 +30,28 @@ class Nav extends React.Component {
       });
     }
   }
+
+  // componentDidUpdate(_, prevState) {
+  //   if (prevState.userLogin !== this.state.userLogin) {
+  //     if (localStorage.getItem('token') && this.state.userLogin) {
+
+  //     }
+  //   }
+  // }
+
+  checkLogin() {
+    if (localStorage.getItem('token')) {
+      const nickname = localStorage.getItem('nickname');
+      const email = localStorage.getItem('email');
+      this.setState({
+        isSignInModalOn: !this.state.isSignInModalOn,
+        isUserLogout: !this.state.isUserLogout,
+        username: nickname,
+        email: email,
+      });
+    }
+  }
+
   changeState = (name, value) => {
     this.setState({
       [name]: value,
@@ -57,7 +79,7 @@ class Nav extends React.Component {
   };
 
   render() {
-    console.log(this.state);
+    const { username, email, phoneNumber, password } = this.state;
     return (
       <div className="Nav">
         <nav className="menu">
@@ -107,27 +129,31 @@ class Nav extends React.Component {
             <span className="userInfoAlarm">3</span>
           </ul>
         </nav>
-        {/* <div className="signup" onClick={this.onOffModal}> */}
         <div>
           {this.state.isUserLogout && this.state.isSignInModalOn && (
             <Signin
               onOffModal={this.onOffModal}
               changeState={this.changeState}
-              state={this.state}
+              email={email}
+              password={password}
             />
           )}
           {this.state.isSignUpModalOn && (
             <Signup
               onOffModal={this.onOffModal}
               changeState={this.changeState}
-              state={this.state}
+              username={username}
+              phoneNumber={phoneNumber}
+              email={email}
+              password={password}
             />
           )}
           {this.state.isUserLogin && (
             <SigninUser
               onOffModal={this.onOffModal}
               changeState={this.changeState}
-              state={this.state}
+              username={username}
+              email={email}
             ></SigninUser>
           )}
         </div>

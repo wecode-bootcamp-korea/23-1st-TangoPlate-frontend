@@ -29,7 +29,9 @@ class ReviewWritingPage extends React.Component {
     if (e.target.name === '취소') {
       this.props.history.push('/shopdetail');
     } else if (this.state.edit) {
-      fetch(NEWREVIEW_URL, {
+      const { review_id, Restaurantid } = this.props.location.state;
+      console.log(review_id, Restaurantid);
+      fetch(`${NEWREVIEW_URL}${Restaurantid}/review/${review_id}`, {
         method: 'PUT',
         body: JSON.stringify({
           description: reviewEditorText,
@@ -40,10 +42,10 @@ class ReviewWritingPage extends React.Component {
       })
         .then(response => response.json())
         .then(response => {
-          console.log(response);
+          this.props.history.push('/shopdetail');
         });
     } else {
-      fetch(`${NEWREVIEW_URL}/${2}/review/${2}`, {
+      fetch(`${NEWREVIEW_URL}${this.props.location.state}/review`, {
         method: 'POST',
         body: JSON.stringify({
           description: reviewEditorText,
@@ -54,19 +56,17 @@ class ReviewWritingPage extends React.Component {
       })
         .then(response => response.json())
         .then(response => {
-          console.log(response);
+          this.props.history.push('/shopdetail');
         });
     }
-    this.props.history.push('/shopdetail');
   };
 
   changeState = (name, value) => {
-    console.log(name, value);
     this.setState({ [name]: value });
   };
 
   componentDidMount() {
-    if (this.props.location.state) {
+    if (this.props.location.state.edit) {
       const { description, images, rating } = this.props.location.state;
       this.setState({
         reviewEditorText: description,
@@ -80,7 +80,6 @@ class ReviewWritingPage extends React.Component {
   render() {
     const { grade, img, reviewEditorText } = this.state;
     const { SelectGrade, postingOrCancel, changeState } = this;
-    console.log(this.props.location.state);
     return (
       <section className="reviewWritingPage">
         <div className="reviewWritingPageInner">

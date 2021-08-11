@@ -15,24 +15,23 @@ class Signin extends React.Component {
 
   goToSignin = e => {
     e.preventDefault();
-    const { email, password } = this.props.state;
+    const { email, password } = this.props;
     const { onOffModal, changeState } = this.props;
+
     fetch(SIGNIN_URL, {
       method: 'POST',
       body: JSON.stringify({ email: email, password: password }),
     })
       .then(response => response.json())
       .then(result => {
-        console.log(result);
         if (result.TOKEN) {
           localStorage.setItem('token', result.TOKEN);
           localStorage.setItem('nickname', result.NICKNAME);
           localStorage.setItem('email', result.EMAIL);
           onOffModal('signin');
-          onOffModal(' isUserLogout');
+          onOffModal('isUserLogout');
           changeState('username', result.NICKNAME);
           changeState('email', result.EMAIL);
-          this.props.history.push('/shopdetail');
         } else {
           alert('이메일과 비밀번호를 확인해주세요 !');
         }
@@ -42,8 +41,8 @@ class Signin extends React.Component {
     e.stopPropagation();
   };
   render() {
-    const { email, password } = this.props.state;
-    let signIndisable = email.indexOf('@') === -1 || password.length < 5;
+    const { email, password } = this.props;
+    const signIndisable = email.indexOf('@') === -1 || password.length < 5;
     const { goToSignin, goToSignup, finish } = this;
     const { changeState, onOffModal } = this.props;
     return (

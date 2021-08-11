@@ -8,7 +8,7 @@ import './RestaurantReview.scss';
 class RestaurantReview extends React.Component {
   handleEdit = e => {
     const { description, rating, images, review_id, Restaurantid } = this.props;
-
+    const edit = true;
     if (e.target.name === '수정') {
       this.props.history.push('/shopdetail-reviewwritingpage', {
         description,
@@ -16,11 +16,12 @@ class RestaurantReview extends React.Component {
         rating,
         review_id,
         Restaurantid,
+        edit,
       });
     }
     if (e.target.name === '삭제') {
-      if (window.confirm('삭제하실건가ㄴ요?')) {
-        fetch(NEWREVIEW_URL, {
+      if (window.confirm('삭제하실건가요?')) {
+        fetch(`${NEWREVIEW_URL}${Restaurantid}/review/${review_id}`, {
           method: 'DELETE',
           headers: {
             authorization: localStorage.getItem('token'),
@@ -28,20 +29,7 @@ class RestaurantReview extends React.Component {
         })
           .then(response => response.json())
           .then(response => {
-            console.log(response);
-            this.props.handleDelete(response);
-            // let updateReviewdata = [];
-            // for (let i = 0; i <= 4; i++) {
-            //   if (!response.results[0].review[i]) {
-            //     updateReviewdata = [];
-            //   } else if (response.results[0].review[i]) {
-            //     updateReviewdata = updateReviewdata.concat(
-            //       response.results[0].review[i]
-            //     );
-            //   }
-            // }
-
-            // this.props.handleWanted(response.results[0], updateReviewdata);
+            this.props.getData();
           });
       }
 
@@ -51,10 +39,8 @@ class RestaurantReview extends React.Component {
     }
   };
   render() {
-    const { description, created_at, images, rating, review_id, Restaurantid } =
-      this.props;
-    console.log('saas', review_id, Restaurantid);
-    // console.log(images);
+    const { description, created_at, images, rating, user } = this.props;
+    const IsUser = localStorage.getItem('email') === user.email;
     return (
       <li className="review">
         <div className="reviewUser">
@@ -66,7 +52,7 @@ class RestaurantReview extends React.Component {
               alt="userimg"
             />
           </div>
-          <span className="reviewUserNickName">DohyunNim</span>
+          <span className="reviewUserNickName">{user.name}</span>
         </div>
 
         <div className="reviewContent">
@@ -84,7 +70,11 @@ class RestaurantReview extends React.Component {
             alt="reviewimg"
           />
         </div>
-        <div className="reviewItemOptionButton">
+        <div
+          className={
+            IsUser ? 'reviewItemOptionButton' : 'reviewItemOptionButton hidden'
+          }
+        >
           <Button
             className="reviewItemEditButton"
             buttonName="수정"
