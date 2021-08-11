@@ -165,6 +165,11 @@ class ShopDetail extends React.Component {
         );
       }
     );
+    // const images = updateReviewdata.map(
+    //   ({ alt, created_at, image_url, rating, id, user }) => {
+    //     return <img alt="스시작이미지" src="/images/shopDetail/1.jpeg" />;
+    //   }
+    // );
 
     return (
       <div className="shopDetail">
@@ -194,7 +199,7 @@ class ShopDetail extends React.Component {
                 className={`reviewAndLikeIcon ${is_wished ? 'isWanted' : ''}`}
                 onClick={this.handleWanted}
               >
-                <i className={is_wished ? 'fas fa-star ' : 'far fa-star'}></i>
+                <i className={is_wished ? 'fas fa-star' : 'far fa-star'}></i>
                 가고싶다
               </button>
             </div>
