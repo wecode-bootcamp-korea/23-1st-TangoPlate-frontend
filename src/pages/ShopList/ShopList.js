@@ -16,7 +16,12 @@ class ShopList extends React.Component {
   componentDidMount() {
     fetch(FILTER_LIST_URL + '?category=3')
       .then(res => res.json())
-      .then(res => this.setState({ shopInfo: res.restaurant }));
+      .then(res => {
+        res.restaurant.sort((a, b) => {
+          return b.rating - a.rating;
+        });
+        this.setState({ shopInfo: res.restaurant });
+      });
   }
 
   handleButton = e => {
@@ -44,16 +49,17 @@ class ShopList extends React.Component {
   };
 
   render() {
-    console.log(this.state.shopInfo);
     const { shopInfo } = this.state;
+    console.log(shopInfo);
     return (
       <div className="shopList">
         <Nav />
         <ShopListHeader shopInfo={shopInfo.length} />
         {shopInfo &&
-          shopInfo.map(list => {
+          shopInfo.map((list, index) => {
             return (
               <ShopListMain
+                index={index}
                 key={list.id}
                 shopId={list.id}
                 shopName={list.name}
