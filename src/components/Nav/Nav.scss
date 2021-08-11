@@ -1,3 +1,102 @@
-* {
+.menu {
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 61px;
   width: 100%;
+  background-color: #ffffff;
+  border: 0;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 11px 0px;
+  z-index: 1;
+
+  .leftWrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin: 0 25px;
+
+    .fa-search {
+      position: absolute;
+      top: 20px;
+      left: 150px;
+      height: 25px;
+      width: 24px;
+      color: #cecece;
+      font-size: 25px;
+    }
+
+    input {
+      height: 28px;
+      width: 390px;
+      padding-left: 60px;
+      border: none;
+      font-size: 16px;
+    }
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  .rightWrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    height: 60px;
+
+    li {
+      height: 100%;
+      border-left: 1px solid #cecece;
+      text-align: center;
+      line-height: 60px;
+      text-decoration: none;
+
+      span {
+        display: block;
+        width: 130px;
+        color: #888888;
+      }
+    }
+
+    .eatDealMenu {
+      position: relative;
+
+      img {
+        position: absolute;
+        top: 10px;
+        right: 35px;
+        width: 15px;
+      }
+    }
+
+    .fa-user {
+      position: relative;
+      width: 85px;
+      line-height: 60px;
+      border-left: 1px solid #cecece;
+      color: #888888;
+      font-weight: 400;
+      font-size: 20px;
+      text-align: center;
+
+      .userInfoAlarm {
+        position: absolute;
+        top: 8px;
+        right: 20px;
+        height: 18px;
+        width: 18px;
+        border: 1px solid white;
+        border-radius: 50%;
+        text-align: center;
+        line-height: 20px;
+        background-color: #ff792a;
+        color: #ffffff;
+        font-size: 14px;
+        font-weight: 600;
+      }
+    }
+  }
 }

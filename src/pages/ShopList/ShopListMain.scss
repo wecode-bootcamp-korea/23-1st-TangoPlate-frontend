@@ -1,0 +1,143 @@
+.shopListMain {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+
+  main {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 24px 0;
+    height: 284px;
+    width: 774px;
+    border-bottom: 1px solid #dbdbdb;
+
+    .reviewPicture {
+      flex: 1;
+      height: 234px;
+      width: 234px;
+      margin-right: 24px;
+    }
+
+    .reviewContainer {
+      flex: 2;
+      height: 100%;
+
+      .reviewInner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        .reviewTitleWrapper {
+          display: inline-block;
+
+          .shopTitle {
+            font-size: 30px;
+
+            span {
+              color: #ff792a;
+            }
+          }
+
+          .shopAddress {
+            display: inline-block;
+            margin-top: 10px;
+            color: #888888;
+            font-size: 17px;
+          }
+        }
+
+        .wannaGoWrapper {
+          .fa-star {
+            font-size: 30px;
+            color: #bcbcbc;
+            cursor: pointer;
+
+            &.fas {
+              color: #ff782a;
+            }
+          }
+
+          div {
+            margin-top: 10px;
+            font-size: 10px;
+            color: black;
+          }
+        }
+      }
+
+      .reviewWrapper {
+        display: flex;
+        margin-top: 20px;
+
+        .userPic {
+          height: 35px;
+          width: 35px;
+          margin-right: 10px;
+          border-radius: 50%;
+          border: 1px double white;
+        }
+
+        .reviewDetail {
+          position: relative;
+          line-height: 25px;
+
+          .userReview {
+            word-break: keep-all;
+
+            .userId {
+              margin-right: 7px;
+              font-weight: 700;
+            }
+
+            .reviewWrapperClose {
+              display: -webkit-box;
+              -webkit-line-clamp: 2;
+              -webkit-box-orient: vertical;
+              overflow: hidden;
+              text-overflow: ellipsis;
+            }
+
+            .reviewWrapperOpen {
+              display: inline-block;
+              overflow: unset;
+              text-overflow: unset;
+            }
+          }
+          .moreReviewButton {
+            position: absolute;
+            right: 0;
+            text-align: right;
+            color: #ff782a94;
+            font-size: 17px;
+            font-weight: 600;
+
+            &:hover {
+              color: #ff782a;
+              cursor: pointer;
+            }
+
+            &:active {
+              color: black;
+            }
+          }
+        }
+      }
+
+      .goToDetail {
+        margin-top: 30px;
+        text-align: right;
+
+        a {
+          color: #888888;
+          font-weight: 600;
+        }
+      }
+    }
+  }
+}
+
+.userPic {
+  width: 50px;
+}
