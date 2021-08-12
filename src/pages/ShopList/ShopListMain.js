@@ -17,6 +17,7 @@ export class ShopListMain extends Component {
       // handler
       likeHandle,
       buttonHandle,
+      index,
     } = this.props;
     return (
       <div className="shopListMain">
@@ -26,7 +27,7 @@ export class ShopListMain extends Component {
             <div className="reviewInner">
               <div className="reviewTitleWrapper">
                 <div className="shopTitle">
-                  {shopId}. {shopName} <span>{shopRating}</span>
+                  {index + 1}. {shopName} <span>{shopRating}</span>
                 </div>
                 <span className="shopAddress">{shopAddress}</span>
               </div>
