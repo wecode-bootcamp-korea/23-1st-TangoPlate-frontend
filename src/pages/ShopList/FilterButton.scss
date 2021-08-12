@@ -1,0 +1,38 @@
+.filterButton {
+  display: flex;
+
+  .foodButton {
+    margin-bottom: 10px;
+
+    .foodButtonList {
+      margin: 0 20px;
+      padding: 0 20px;
+      height: 30px;
+      border: 1px solid #ff7002;
+      border-radius: 50px;
+      // background-color: white;
+      color: #ff7002;
+      font-size: 20px;
+    }
+    .keepFoodButton {
+      background-color: #ff700260;
+    }
+  }
+
+  .locationButton {
+    margin-bottom: 20px;
+
+    .locationButtonList {
+      margin: 0 20px;
+      padding: 0 20px;
+      height: 30px;
+      border: 1px solid #ff7002;
+      border-radius: 50px;
+      color: #ff7002;
+      font-size: 20px;
+    }
+    .keepLocationButton {
+      background-color: #ff700244;
+    }
+  }
+}

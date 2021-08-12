@@ -2,30 +2,29 @@
   margin-top: 12px;
 
   .restaurantAddres {
-    border: 0.5px solid rgba(79, 79, 79, 0.35);
     padding: 2px;
     margin-right: 4px;
+    border: 0.5px solid rgba(79, 79, 79, 0.35);
     color: rgba(79, 79, 79, 0.7);
   }
 
   .restaurantInfoAddressText {
     padding-bottom: 12px;
   }
+
   th {
     width: 110px;
-    font-size: 0.9rem;
-    color: rgba(79, 79, 79, 0.6);
+    padding: 5px 10px 5px;
     line-height: 1.7;
     text-align: left;
-    padding-top: 5px;
-    padding-right: 10px;
-    padding-bottom: 5px;
+    font-size: 0.9rem;
+    color: rgba(79, 79, 79, 0.6);
   }
 
   li {
     display: flex;
     justify-content: space-between;
-    border-bottom: 1px solid rgba(79, 79, 79, 0.19);
     padding-top: 10px;
+    border-bottom: 1px solid rgba(79, 79, 79, 0.19);
   }
 }

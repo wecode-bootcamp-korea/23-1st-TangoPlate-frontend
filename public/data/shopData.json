@@ -1,0 +1,62 @@
+[
+  {
+    "id": "1",
+    "img": "images/foodSample.jpg",
+    "name": "shop1",
+    "rating": "5.0",
+    "address": "서울시 1",
+    "userPic": "images/foodSample.jpg",
+    "user_id": "탱고1",
+    "description": "탱고 탱고 여기저기 맛집 많이 보니깐 내 배가 고프고 맛있어 보이는게 너무나도 많아서 기분이 좋다. 다음엔 탱고로 맛집 찾아보고 맛집 헌팅하러 다녀야지. 여기서 이제 더보기 기능을 써야 하는데 어떻게 쓰는지는 다음시간에 계속",
+    "is_wished": false,
+    "btn_toggle": false
+  },
+  {
+    "id": "2",
+    "img": "images/foodSample.jpg",
+    "name": "shop2",
+    "rating": "4.7",
+    "address": "서울시 2",
+    "userPic": "images/foodSample.jpg",
+    "user_id": "탱고2",
+    "description": "탱고 탱고 여기저기 맛집 많이 보니깐 내 배가 고프고 맛있어 보이는게 너무나도 많아서 기분이 좋다. 다음엔 탱고로 맛집 찾아보고 맛집 헌팅하러 다녀야지. 여기서 이제 더보기 기능을 써야 하는데 어떻게 쓰는지는 다음시간에 계속",
+    "is_wished": false,
+    "btn_toggle": false
+  },
+  {
+    "id": "3",
+    "img": "images/foodSample.jpg",
+    "name": "shop3",
+    "rating": "4.5",
+    "address": "서울시 3",
+    "userPic": "images/foodSample.jpg",
+    "user_id": "탱고3",
+    "description": "탱고 탱고 여기저기 맛집 많이 보니깐 내 배가 고프고 맛있어 보이는게 너무나도 많아서 기분이 좋다. 다음엔 탱고로 맛집 찾아보고 맛집 헌팅하러 다녀야지. 여기서 이제 더보기 기능을 써야 하는데 어떻게 쓰는지는 다음시간에 계속",
+    "is_wished": false,
+    "btn_toggle": false
+  },
+  {
+    "id": "4",
+    "img": "images/foodSample.jpg",
+    "name": "shop4",
+    "rating": "4.3",
+    "address": "서울시 4",
+    "userPic": "images/foodSample.jpg",
+    "user_id": "탱고4",
+    "description": "탱고 탱고 여기저기 맛집 많이 보니깐 내 배가 고프고 맛있어 보이는게 너무나도 많아서 기분이 좋다. 다음엔 탱고로 맛집 찾아보고 맛집 헌팅하러 다녀야지. 여기서 이제 더보기 기능을 써야 하는데 어떻게 쓰는지는 다음시간에 계속",
+    "is_wished": false,
+    "btn_toggle": false
+  },
+  {
+    "id": "5",
+    "img": "images/foodSample.jpg",
+    "name": "shop5",
+    "rating": "4.0",
+    "address": "서울시 5",
+    "userPic": "images/foodSample.jpg",
+    "user_id": "탱고5",
+    "description": "탱고 탱고 여기저기 맛집 많이 보니깐 내 배가 고프고 맛있어 보이는게 너무나도 많아서 기분이 좋다. 다음엔 탱고로 맛집 찾아보고 맛집 헌팅하러 다녀야지. 여기서 이제 더보기 기능을 써야 하는데 어떻게 쓰는지는 다음시간에 계속",
+    "is_wished": false,
+    "btn_toggle": false
+  }
+]

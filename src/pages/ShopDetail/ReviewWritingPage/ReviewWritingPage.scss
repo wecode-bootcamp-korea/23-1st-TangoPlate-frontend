@@ -9,52 +9,57 @@
 
 .reviewWritingPageInner {
   width: 678px;
-  //   border: 1px solid black;
 
   .reviewWritingPageTitle {
     margin-bottom: 25px;
-    //   border: 1px solid blue;
+
     .restaurantName {
       color: #ff7100;
-      word-break: break-word;
       font-size: 40px;
+      word-break: break-word;
     }
     .subMessage {
       color: rgba(79, 79, 79, 0.9);
     }
   }
+
   .reviewBox {
-    border: 1px solid rgba(79, 79, 79, 0.5);
     padding: 20px;
+    border: 1px solid rgba(79, 79, 79, 0.5);
 
     .reviewGrade {
       display: flex;
     }
+
     .reviewMessage {
-      overflow-wrap: break-word;
       height: 150px;
+      overflow-wrap: break-word;
     }
+
     textarea {
       height: 150px;
       width: 100%;
-      color: rgba(79, 79, 79, 0.5);
       margin-top: 20px;
-    }
-    textarea::placeholder {
-      color: rgba(79, 79, 79, 0.4);
+      color: rgba(79, 79, 79, 0.5);
+
+      &::placeholder {
+        color: rgba(79, 79, 79, 0.4);
+      }
     }
   }
+
   .reviewEditorTextLengthBox {
     display: flex;
     justify-content: flex-end;
-    color: rgba(79, 79, 79, 0.8);
     padding: 7px;
+    color: rgba(79, 79, 79, 0.8);
   }
 
   .reviewPostingButtonWrap {
     float: right;
     padding-top: 30px;
   }
+
   .reviewPostingButton {
     min-width: 140px;
     min-height: 50px;

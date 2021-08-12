@@ -2,20 +2,21 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+
   .foodimg {
     display: flex;
     padding-bottom: 60px;
 
     img {
-      width: 400px;
-      height: 340px;
+      width: 300px;
+      height: 250px;
       padding: 5px;
+      margin-top: 90px;
     }
   }
 
   .inner {
     height: 100vh;
-    // border: 1px solid rebeccapurple;
     width: 100vh;
     padding-top: 30px;
 
@@ -26,46 +27,50 @@
       border-bottom: 1px solid #e9e9e9;
 
       .restaurantTitle {
-        font-size: 40px;
         display: flex;
+        font-size: 40px;
         text-align: center;
       }
+
       .grade {
-        color: rgba(79, 79, 79, 0.15);
         padding-left: 15px;
+        color: rgba(79, 79, 79, 0.15);
       }
+
       .restaurantTitleButton {
         margin: auto 0;
         display: flex;
 
-        .reveiwAndLikeIcon {
+        .reviewAndLikeIcon {
           display: flex;
           flex-direction: column;
           align-items: center;
           color: rgba(79, 79, 79, 0.4);
           font-size: 15px;
         }
+
         i {
-          font-size: 40px;
-
-          padding-bottom: 4px;
-
           padding-bottom: 14px;
+          font-size: 40px;
         }
+
         .write {
           font-weight: lighter;
         }
+
         .write:hover,
-        .wanted {
+        .isWanted {
           color: #ff7100;
         }
       }
     }
+
     .more {
       display: flex;
       justify-content: center;
       margin-top: 30px;
     }
+
     .moreButton {
       color: white;
       font-weight: normal;
@@ -83,6 +88,7 @@
       border-top: 1px solid #e9e9e9;
       padding-top: 20px;
       margin-top: 30px;
+
       .reviewAllCount {
         color: rgba(79, 79, 79, 0.6);
         padding-left: 10px;

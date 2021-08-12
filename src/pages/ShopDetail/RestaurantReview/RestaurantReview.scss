@@ -1,16 +1,15 @@
 .review {
   display: flex;
-  padding-top: 50px;
-  padding-bottom: 50px;
-  border-bottom: 1px solid rgba(79, 79, 79, 0.3);
   position: relative;
+  padding: 50px 0;
+  border-bottom: 1px solid rgba(79, 79, 79, 0.3);
 
   .reviewUser {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    text-align: center;
     margin: 15px 35px 0 8px;
+    text-align: center;
 
     .reviewUserPictureWrap {
       width: 70px;
@@ -31,6 +30,12 @@
   .reviewContent {
     width: 100%;
 
+    .reviewimg {
+      width: 120px;
+      height: 120px;
+      padding: 5px;
+      margin-top: 15px;
+    }
     .reviewTextWrap {
       display: flex;
       justify-content: space-between;
@@ -39,7 +44,6 @@
       .reviewDate {
         color: rgba(79, 79, 79, 0.6);
         padding-bottom: 3px;
-        display: block;
       }
 
       .reviewText {
@@ -53,6 +57,17 @@
   bottom: 20px;
   right: 0;
 }
+.hidden {
+  display: none;
+}
 .review:hover {
   background-color: rgba(79, 79, 79, 0.1);
+}
+
+.reviewItemEditButton {
+  visibility: hidden;
+}
+
+.reviewItemEditButton:hover {
+  visibility: visible;
 }

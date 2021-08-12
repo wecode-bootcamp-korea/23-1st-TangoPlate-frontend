@@ -7,37 +7,29 @@ import './RestaurantReview.scss';
 
 class RestaurantReview extends React.Component {
   handleEdit = e => {
-    const { description, rating, images } = this.props;
-
+    const { description, rating, images, review_id, Restaurantid } = this.props;
+    const edit = true;
     if (e.target.name === '수정') {
       this.props.history.push('/shopdetail-reviewwritingpage', {
         description,
         images,
         rating,
+        review_id,
+        Restaurantid,
+        edit,
       });
     }
     if (e.target.name === '삭제') {
-      if (window.confirm('삭제하실건가ㄴ요?')) {
-        fetch(NEWREVIEW_URL, {
+      if (window.confirm('삭제하실건가요?')) {
+        fetch(`${NEWREVIEW_URL}${Restaurantid}/review/${review_id}`, {
           method: 'DELETE',
-          headers: { authorization: localStorage.getItem('token') },
+          headers: {
+            authorization: localStorage.getItem('token'),
+          },
         })
           .then(response => response.json())
           .then(response => {
-            console.log(response);
-            this.props.handleDelete(response);
-            // let updateReviewdata = [];
-            // for (let i = 0; i <= 4; i++) {
-            //   if (!response.results[0].review[i]) {
-            //     updateReviewdata = [];
-            //   } else if (response.results[0].review[i]) {
-            //     updateReviewdata = updateReviewdata.concat(
-            //       response.results[0].review[i]
-            //     );
-            //   }
-            // }
-
-            // this.props.handleWanted(response.results[0], updateReviewdata);
+            this.props.getData();
           });
       }
 
@@ -47,8 +39,10 @@ class RestaurantReview extends React.Component {
     }
   };
   render() {
-    const { description, created_at, images, rating } = this.props;
-    // console.log(rating);
+    const { description, created_at, images, rating, user } = this.props;
+    const IsUser = localStorage.getItem('email') === user.email;
+    console.log(images);
+
     return (
       <li className="review">
         <div className="reviewUser">
@@ -60,19 +54,29 @@ class RestaurantReview extends React.Component {
               alt="userimg"
             />
           </div>
-          <span className="reviewUserNickName">DohyunNim</span>
+          <span className="reviewUserNickName">{user.name}</span>
         </div>
 
         <div className="reviewContent">
           <div className="reviewTextWrap">
-            <span className="reviewDate">{created_at}</span>
+            <p className="reviewDate">{created_at}</p>
             <span className="reviewRatingText">
-              <ReviewGradeButton gradeIconSrc={51} />
+              <ReviewGradeButton gradeIconSrc={rating * 10 + 1} />
             </span>
           </div>
           <p className="reviewText">{description}</p>
+          <img
+            className="reviewimg"
+            src={images}
+            // src="/images/shopDetail/도현님.png"
+            alt="reviewimg"
+          />
         </div>
-        <div className="reviewItemOptionButton">
+        <div
+          className={
+            IsUser ? 'reviewItemOptionButton' : 'reviewItemOptionButton hidden'
+          }
+        >
           <Button
             className="reviewItemEditButton"
             buttonName="수정"

@@ -3,7 +3,7 @@
 .searchForm {
   @include contentPosition(50%, 0, 0, 50%, relative);
   width: 700px;
-  z-index: 4;
+  z-index: 3;
   transform: translate(-50%, -50%);
 
   .fa-search {
@@ -32,5 +32,6 @@
     background-color: #f97100;
     color: white;
     font-size: 22px;
+    cursor: pointer;
   }
 }

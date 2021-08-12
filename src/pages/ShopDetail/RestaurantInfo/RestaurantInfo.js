@@ -7,9 +7,9 @@ class RestaurantInfo extends React.Component {
       this.props.data;
     const menu =
       menus &&
-      menus.map(({ item, item_price }) => {
+      menus.map(({ id, item, item_price }) => {
         return (
-          <li>
+          <li key={id}>
             <span>{item}</span>
             <span className="price">{item_price}원</span>
           </li>

@@ -24,11 +24,14 @@ class ReviewWritingPage extends React.Component {
   };
 
   postingOrCancel = e => {
+    // const { review_id, Restaurantid } = this.props.location.state;
     const { reviewEditorText, img, grade } = this.state;
     if (e.target.name === '취소') {
       this.props.history.push('/shopdetail');
     } else if (this.state.edit) {
-      fetch(NEWREVIEW_URL, {
+      const { review_id, Restaurantid } = this.props.location.state;
+      console.log(review_id, Restaurantid);
+      fetch(`${NEWREVIEW_URL}${Restaurantid}/review/${review_id}`, {
         method: 'PUT',
         body: JSON.stringify({
           description: reviewEditorText,
@@ -39,10 +42,10 @@ class ReviewWritingPage extends React.Component {
       })
         .then(response => response.json())
         .then(response => {
-          console.log(response);
+          this.props.history.push('/shopdetail');
         });
     } else {
-      fetch(NEWREVIEW_URL, {
+      fetch(`${NEWREVIEW_URL}${this.props.location.state}/review`, {
         method: 'POST',
         body: JSON.stringify({
           description: reviewEditorText,
@@ -53,19 +56,17 @@ class ReviewWritingPage extends React.Component {
       })
         .then(response => response.json())
         .then(response => {
-          console.log(response);
+          this.props.history.push('/shopdetail');
         });
     }
-    this.props.history.push('/shopdetail');
   };
 
   changeState = (name, value) => {
-    console.log(name, value);
     this.setState({ [name]: value });
   };
 
   componentDidMount() {
-    if (this.props.location.state) {
+    if (this.props.location.state.edit) {
       const { description, images, rating } = this.props.location.state;
       this.setState({
         reviewEditorText: description,
@@ -79,7 +80,6 @@ class ReviewWritingPage extends React.Component {
   render() {
     const { grade, img, reviewEditorText } = this.state;
     const { SelectGrade, postingOrCancel, changeState } = this;
-    console.log(this.props.location.state);
     return (
       <section className="reviewWritingPage">
         <div className="reviewWritingPageInner">
@@ -93,19 +93,19 @@ class ReviewWritingPage extends React.Component {
                 SelectGrade={() => SelectGrade(5)}
                 gradeIconSrc={grade === 5 ? 51 : 50}
                 isButtonClicked={grade === 5}
-                content={'맛있다'}
+                content="맛있다"
               />
               <ReviewGradeButton
                 SelectGrade={() => SelectGrade(3)}
                 gradeIconSrc={grade === 3 ? 31 : 30}
                 isButtonClicked={grade === 3}
-                content={'괜찮다'}
+                content="괜찮다"
               />
               <ReviewGradeButton
                 SelectGrade={() => SelectGrade(1)}
                 gradeIconSrc={grade === 1 ? 11 : 10}
                 isButtonClicked={grade === 1}
-                content={'별로'}
+                content="별로"
               />
             </div>
             <div className="reviewMessage">
