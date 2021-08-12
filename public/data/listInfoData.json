@@ -1,74 +1,86 @@
 [
   {
     "id": 1,
-    "img": "./images/ex_food.jpg",
-    "title": "마포역 맛집 베스트 40곳",
-    "subTitle": "마포 주민 직장인들은 주목!"
+    "img": "https://mblogthumb-phinf.pstatic.net/MjAxOTA0MDVfMTAz/MDAxNTU0NDY4MjQyMDQ2.IJySpGWx2xK-wR5LPeHIntk9EDYUP8xwfT-S0Ck_h-4g.3xq-LpqXi66ZAHZXT2B4V4IUXiPnkR6MB9Dhf9SUJc8g.PNG.oskin671022/DSC_9015.png?type=w800",
+    "title": "신사, 압구정 일식 베스트",
+    "subTitle": "끌린다면 당신은 인싸?",
+    "goto": "?categoryId=3&locationId=20"
   },
   {
     "id": 2,
-    "img": "./images/ex_food.jpg",
-    "title": "마포역 맛집 베스트 40곳",
-    "subTitle": "마포 주민 직장인들은 주목!"
+    "img": "https://eventusstorage.blob.core.windows.net/evs/Image/freshcode/5293/ProjectInfo/edef57a7728c473880d91dd537677247.jpg",
+    "title": "wecode 근처 맛집 베스트",
+    "subTitle": "혹시.. wecode세요?",
+    "goto": "?locationId=24"
   },
   {
     "id": 3,
-    "img": "./images/ex_food.jpg",
-    "title": "마포역 맛집 베스트 40곳",
-    "subTitle": "마포 주민 직장인들은 주목!"
+    "img": "https://blog.kakaocdn.net/dn/vkjBd/btqDpgKP1FV/vY6F0WH7JXMGicEKvatO91/img.jpg",
+    "title": "송가인 추천 베스트",
+    "subTitle": "송파,가락 맛집.. 죄송합니다",
+    "goto": "?locationId=19"
   },
   {
     "id": 4,
-    "img": "./images/ex_food.jpg",
-    "title": "마포역 맛집 베스트 40곳",
-    "subTitle": "마포 주민 직장인들은 주목!"
+    "img": "https://www.thedrive.co.kr/news/data/20200527/p1065575118817105_197_thum.jpg",
+    "title": "FLEX 하고 싶은 날 베스트",
+    "subTitle": "저도 데려가주세요",
+    "goto": "?servingPriceId=4"
   },
   {
     "id": 5,
-    "img": "./images/ex_food.jpg",
-    "title": "마포역 맛집 베스트 40곳",
-    "subTitle": "마포 주민 직장인들은 주목!"
+    "img": "/images/ex_food.jpg",
+    "title": "1-2만원 양식 베스트",
+    "subTitle": "적은 돈으로 분위기 내고 싶다면",
+    "goto": "?servingPriceId=1&categoryId=4"
   },
   {
     "id": 6,
-    "img": "./images/ex_food.jpg",
-    "title": "마포역 맛집 베스트 40곳",
-    "subTitle": "마포 주민 직장인들은 주목!"
+    "img": "https://mblogthumb-phinf.pstatic.net/MjAxNjExMTZfMTc2/MDAxNDc5Mjk5MzMzMTcz.eEw4ItMX-5LLvJBd3JjK1pQGICn3JyUCNJ7FX04I9rcg.i4hlQ0dFN1Qc4qQ_aniIXHl4nTjruM2A4JgOwBG_htAg.JPEG.evolopment/1.%EC%97%AC%EC%9D%98%EB%8F%84_%EC%A0%90%EC%8B%AC_%282%29.JPG?type=w800",
+    "title": "점심에 부담 없는 일식집 베스트",
+    "subTitle": "점심에 일식이 깔끔하죠",
+    "goto": "?servingPriceId=1&categoryId=3"
   },
   {
     "id": 7,
-    "img": "./images/ex_food.jpg",
-    "title": "마포역 맛집 베스트 40곳",
-    "subTitle": "마포 주민 직장인들은 주목!"
+    "img": "https://t1.daumcdn.net/liveboard/ziptoss/07dbf5e3c8dd43959b8fa04c4acfcdb0.JPG",
+    "title": "서울대 근처 베스트",
+    "subTitle": "누가 맛집에 미래를 묻는다면..",
+    "goto": "?locationId=5"
   },
   {
     "id": 8,
-    "img": "./images/ex_food.jpg",
-    "title": "마포역 맛집 베스트 40곳",
-    "subTitle": "마포 주민 직장인들은 주목!"
+    "img": "https://img1.daumcdn.net/thumb/R720x0.q80/?scode=mtistory2&fname=http%3A%2F%2Fcfile23.uf.tistory.com%2Fimage%2F991DC23D5E0C64C10EC20C",
+    "title": "거래처 사장님 대접 특화 식당",
+    "subTitle": "고량주 한잔과 함께 성사되는 거래",
+    "goto": "?servingPriceId=4&categoryId=2"
   },
   {
     "id": 9,
-    "img": "./images/ex_food.jpg",
-    "title": "마포역 맛집 베스트 40곳",
-    "subTitle": "마포 주민 직장인들은 주목!"
+    "img": "https://t1.daumcdn.net/liveboard/dailylife/667f0ffa9f3a412097cd80cbc01f51ee.jpg",
+    "title": "고터에서 이수까지 베스트",
+    "subTitle": "대충 골라도 맛집인증",
+    "goto": "?locationId=15"
   },
   {
     "id": 10,
-    "img": "./images/ex_food.jpg",
-    "title": "마포역 맛집 베스트 40곳",
-    "subTitle": "마포 주민 직장인들은 주목!"
+    "img": "https://t1.daumcdn.net/cfile/tistory/243CC04A590D1A4330",
+    "title": "가성비 한식 베스트",
+    "subTitle": "기사식당만 갓성비가 아닙니다",
+    "goto": "?servingPriceId=1&categoryId=1"
   },
   {
     "id": 11,
-    "img": "./images/ex_food.jpg",
-    "title": "마포역 맛집 베스트 40곳",
-    "subTitle": "마포 주민 직장인들은 주목!"
+    "img": "https://mp-seoul-image-production-s3.mangoplate.com/added_restaurants/8184_1487862589002630.jpg?fit=around|359:240&crop=359:240;*,*&output-format=jpg&output-quality=80",
+    "title": "강남 양식 베스트",
+    "subTitle": "오늘은 고기 좀 썰어볼까?",
+    "goto": "?locationId=2&categoryId=4"
   },
   {
     "id": 12,
-    "img": "./images/ex_food.jpg",
-    "title": "마포역 맛집 베스트 40곳",
-    "subTitle": "마포 주민 직장인들은 주목!"
+    "img": "https://post-phinf.pstatic.net/MjAxNzA5MjBfMjEx/MDAxNTA1ODg0OTgzOTAx.k-0hlp19YQb_nlqOCFY9SVE2ooU1crK3QiOoC18GNBYg.QUPqGi4HJhUfIAHzllpBDIu3kHLetekzMeD4lS3R0aYg.JPEG/IMG_6080.JPG?type=w1200",
+    "title": "갓성비 논현동 중국집 베스트",
+    "subTitle": "회사가 논현동이라면 추천",
+    "goto": "?servingPriceId=5&categoryId=2&locationId=9"
   }
 ]

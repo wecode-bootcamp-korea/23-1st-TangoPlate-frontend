@@ -7,15 +7,12 @@ class Nav extends React.Component {
     return (
       <nav className="menu">
         <div className="leftWrapper">
+          <img src="/images/tangoLogo.png" alt="tangoPlate로고" />
           <Link to="#">
-            <img src="images/tangoLogo.png" alt="tangoPlate로고" />
-          </Link>
-          <Link to="#">
-            <i className="fas fa-search"></i>
+            <i className="fas fa-search" />
           </Link>
           <input placeholder="지역, 식당 또는 음식" type="text" />
         </div>
-
         <ul className="rightWrapper">
           <li>
             <Link to="#">

@@ -16,9 +16,8 @@ class ShopListContainer extends React.Component {
     fetch('/data/listInfoData.json')
       .then(res => res.json())
       .then(data => {
-        this.setState({
-          listData: data,
-        });
+        // console.log(data);
+        this.setState({ listData: data });
       });
   }
 
@@ -27,7 +26,21 @@ class ShopListContainer extends React.Component {
       isLeftSide: !this.state.isLeftSide,
     });
   };
-
+  // gotoshop = name => {
+  //   this.props.history.push(`/shoplist/${name}`);
+  //   fetch(`http://10.58.0.96:8000/${goto}`)
+  //     .then(res => res.json())
+  //     .then(res => {
+  //       this.setState({
+  //         shoplist: res,
+  //       });
+  //       const { shoplist } = this.state;
+  //       this.props.history.push({
+  //         pathname: `/shopList/${goto}`,
+  //         state: { shoplist: shoplist },
+  //       });
+  //   });
+  // };
   render() {
     const { listData, isLeftSide } = this.state;
     return (
@@ -35,9 +48,10 @@ class ShopListContainer extends React.Component {
         <span className="containerTitle">믿고 보는 맛집 리스트</span>
         <div className="rowContainer">
           <div className={isLeftSide ? 'filterListLeft' : 'filterListRight'}>
-            {listData.map((data, idx) => {
-              return <ListInfo info={data} key={idx} />;
-            })}
+            {listData.length &&
+              listData.map((data, idx) => {
+                return <ListInfo info={data} key={idx} />;
+              })}
           </div>
         </div>
         <SlideButton click={this.moveImg} isLeftSide={isLeftSide} />

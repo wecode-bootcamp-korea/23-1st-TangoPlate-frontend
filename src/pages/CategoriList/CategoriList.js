@@ -3,25 +3,22 @@ import Nav from '../../components/Nav/Nav';
 import ShopListHeader from './ShopListHeader';
 import ShopListMain from './ShopListMain';
 import Footer from '../../components/Footer/Footer';
-import { FILTER_LIST_URL } from './config.js';
+// import { FILTER_LIST_URL } from './config.js';
 
-class ShopList extends React.Component {
+class CategoriList extends React.Component {
   constructor() {
     super();
     this.state = {
-      shopInfo: [],
+      add: [],
     };
   }
 
   componentDidMount() {
-    let url = this.props.match.params.id
-      ? `search?search=${this.props.match.params.id}`
-      : this.props.location.search;
-    fetch(FILTER_LIST_URL + url)
+    fetch(`http://10.58.0.96:8000/${this.props.match.params.id}`)
       .then(res => res.json())
       .then(res => {
         this.setState({
-          shopInfo: res,
+          add: res,
         });
       });
   }
@@ -51,46 +48,28 @@ class ShopList extends React.Component {
   };
 
   render() {
-    const { shopInfo } = this.state;
+    const { categori } = this.props.location.state;
+    // const { add } = this.state;
+    console.log(this.props);
     return (
       <div className="shopList">
         <Nav />
         <ShopListHeader />
-        {shopInfo.MESSAGE &&
-          shopInfo.MESSAGE.map(list => {
+        {categori.restaurant &&
+          categori.restaurant.map(list => {
             return (
               <ShopListMain
                 key={list.id}
                 shopId={list.id}
                 shopName={list.name}
-                shopImage={list.review.image}
+                // shopImage={list.review.image}
                 shopRating={list.rating.rating__avg}
                 shopAddress={list.address}
                 isWished={list.is_wished}
                 buttonToggle={list.btn_toggle}
-                userName={list.review.user_name}
-                userReview={list.review.description}
-                handler
-                likeHandle={this.handleWishButton}
-                buttonHandle={this.handleButton}
-              />
-            );
-          })}
-        {shopInfo.restaurant &&
-          shopInfo.restaurant.map(list => {
-            return (
-              <ShopListMain
-                key={list.id}
-                shopId={list.id}
-                shopName={list.name}
-                shopImage={list.review.image}
-                shopRating={list.rating.rating__avg}
-                shopAddress={list.address}
-                isWished={list.is_wished}
-                buttonToggle={list.btn_toggle}
-                userName={list.review.user_name}
-                userReview={list.review.description}
-                handler
+                // userName={list.review.user_name}
+                // userReview={list.review.description}
+                // handler
                 likeHandle={this.handleWishButton}
                 buttonHandle={this.handleButton}
               />
@@ -102,4 +81,4 @@ class ShopList extends React.Component {
   }
 }
 
-export default ShopList;
+export default CategoriList;

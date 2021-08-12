@@ -11,7 +11,7 @@ class Footer extends React.Component {
               <img
                 className="footerLogo"
                 alt="탱고플레이트 로고"
-                src="images/tangoGreyLogo.svg"
+                src="/images/tangoGreyLogo.svg"
               />
               <p className="subtitle">Eat, Share, Be Happy</p>
             </div>
@@ -36,10 +36,10 @@ class Footer extends React.Component {
             </div>
             <div className="snsLink">
               <span>
-                <i className="fab fa-facebook-f"></i>
+                <i className="fab fa-facebook-f" />
               </span>
               <span>
-                <i className="fab fa-instagram"></i>
+                <i className="fab fa-instagram" />
               </span>
             </div>
           </div>
