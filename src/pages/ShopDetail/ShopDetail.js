@@ -119,9 +119,9 @@ class ShopDetail extends React.Component {
   }
 
   getData = () => {
-    fetch(RESTAURANT_DETAIL_URL, {
-      headers: { authorization: localStorage.getItem('token') },
-    })
+    console.log(this.props.match.params.id);
+
+    fetch(RESTAURANT_DETAIL_URL)
       .then(res => res.json())
       .then(response => {
         let updateReviewdata = [];

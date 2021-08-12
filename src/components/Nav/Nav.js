@@ -1,6 +1,6 @@
 import React from 'react';
 import './Nav.scss';
-
+import { withRouter } from 'react-router';
 import Signin from '../../pages/Login/Signin';
 import Signup from '../../pages/Login/Signup';
 import SigninUser from '../../pages/Login/SignInUser';
@@ -16,6 +16,7 @@ class Nav extends React.Component {
       isSignUpModalOn: false,
       isUserLogin: false,
       isUserLogout: true,
+      isNavListClick: true,
     };
   }
   componentDidMount() {
@@ -31,6 +32,13 @@ class Nav extends React.Component {
     }
   }
 
+  goToShopList = () => {
+    const { isNavListClick } = this.state;
+
+    console.log(isNavListClick);
+
+    this.props.history.push('/shopList', isNavListClick);
+  };
   // componentDidUpdate(_, prevState) {
   //   if (prevState.userLogin !== this.state.userLogin) {
   //     if (localStorage.getItem('token') && this.state.userLogin) {
@@ -105,7 +113,7 @@ class Nav extends React.Component {
             </li>
 
             <li>
-              <button>
+              <button onClick={this.goToShopList}>
                 <span>맛집 리스트</span>
               </button>
             </li>
@@ -162,4 +170,4 @@ class Nav extends React.Component {
   }
 }
 
-export default Nav;
+export default withRouter(Nav);

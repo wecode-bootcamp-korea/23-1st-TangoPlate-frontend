@@ -1,5 +1,5 @@
 import React from 'react';
-import Nav from '../../components/Nav/Nav';
+// import Nav from '../../components/Nav/Nav';
 import ShopListHeader from './ShopListHeader';
 import ShopListMain from './ShopListMain';
 import Footer from '../../components/Footer/Footer';
@@ -20,16 +20,27 @@ class ShopList extends React.Component {
   }
 
   componentDidMount() {
-    let url = this.props.match.params.id
-      ? `search?search=${this.props.match.params.id}`
-      : this.props.location.search;
-    fetch(FILTER_LIST_URL + url)
-      .then(res => res.json())
-      .then(res => {
-        this.setState({
-          shopInfo: res,
+    console.log(this.props.match.params);
+    if (this.props.location.state === true) {
+      fetch(FILTER_LIST_URL + '?categoryId')
+        .then(res => res.json())
+        .then(res => {
+          this.setState({ shopInfo: res.restaurant });
         });
-      });
+    } else {
+      let url = this.props.match.params.id
+        ? `search?search=${this.props.match.params.id}`
+        : this.props.location.search;
+      console.log(url);
+      fetch(FILTER_LIST_URL + url)
+        .then(res => res.json())
+        .then(res => {
+          console.log(res);
+          this.setState({
+            shopInfo: res,
+          });
+        });
+    }
   }
 
   handleCategoryButton = e => {
@@ -168,22 +179,28 @@ class ShopList extends React.Component {
   };
 
   render() {
-    const { shopInfo } = this.state;
+    console.log(this.state.shopInfo);
     let update = [];
-    update =
-      this.state.category || this.state.location
-        ? [...this.state.updateShopInfo]
-        : [...this.state.shopInfo];
-    update.sort((a, b) => {
-      return b.rating - a.rating;
-    });
+    if (this.props.location.state === true) {
+      update =
+        this.state.category || this.state.location
+          ? [...this.state.updateShopInfo]
+          : [...this.state.shopInfo];
+      update.sort((a, b) => {
+        return b.rating - a.rating;
+      });
+    }
+    const { shopInfo } = this.state;
+    console.log(shopInfo.MESSAGE);
+    console.log(shopInfo.restaurant);
     return (
       <div className="shopList">
-        <Nav />
+        {/* <Nav /> */}
         <ShopListHeader
           handleCategoryButton={this.handleCategoryButton}
           handleLocationButton={this.handleLocationButton}
           shopInfo={update.length}
+          hidden={this.props.location.state}
           toggleLocation={this.state.location}
           toggleCategory={this.state.category}
         />
@@ -214,13 +231,13 @@ class ShopList extends React.Component {
                 key={list.id}
                 shopId={list.id}
                 shopName={list.name}
-                shopImage={list.review.image}
+                shopImage={list.latest_review.image}
                 shopRating={list.rating.rating__avg}
                 shopAddress={list.address}
                 isWished={list.is_wished}
                 buttonToggle={list.btn_toggle}
-                userName={list.review.user_name}
-                userReview={list.review.description}
+                userName={list.latest_review.user_name}
+                userReview={list.latest_review.description}
                 handler
                 likeHandle={this.handleWishButton}
                 buttonHandle={this.handleButton}
@@ -235,7 +252,7 @@ class ShopList extends React.Component {
                 key={index}
                 shopId={list.id}
                 shopName={list.name}
-                shopImage={list.review.image}
+                shopImage={list.latest_review.image}
                 shopRating={list.rating.rating__avg}
                 shopAddress={list.address}
                 isWished={list.is_wished}

@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { withRouter } from 'react-router';
 import './ShopListMain.scss';
 
 export class ShopListMain extends Component {
+  gotoDetail = shopId => {
+    this.props.history.push('/shopdetail');
+  };
   render() {
     const {
       shopId,
@@ -22,11 +25,23 @@ export class ShopListMain extends Component {
     return (
       <div className="shopListMain">
         <main>
-          <img className="reviewPicture" alt="식당 사진" src={shopImage} />
+          <img
+            className="reviewPicture"
+            alt="식당 사진"
+            src={shopImage}
+            onClick={() => {
+              this.gotoDetail(shopId);
+            }}
+          />
           <div className="reviewContainer">
             <div className="reviewInner">
               <div className="reviewTitleWrapper">
-                <div className="shopTitle">
+                <div
+                  className="shopTitle"
+                  onClick={() => {
+                    this.gotoDetail(shopId);
+                  }}
+                >
                   {index + 1}. {shopName} <span>{shopRating}</span>
                 </div>
                 <span className="shopAddress">{shopAddress}</span>
@@ -67,9 +82,13 @@ export class ShopListMain extends Component {
             </div>
             <h3 className="goToDetail">
               <span>
-                <Link to="#">
+                <div
+                  onClick={() => {
+                    this.gotoDetail(shopId);
+                  }}
+                >
                   {shopName} 더보기 {'>'}
-                </Link>
+                </div>
               </span>
             </h3>
           </div>
@@ -79,4 +98,4 @@ export class ShopListMain extends Component {
   }
 }
 
-export default ShopListMain;
+export default withRouter(ShopListMain);
