@@ -1,0 +1,80 @@
+{
+  "results": [
+    {
+      "id": 1,
+      "name": "맛짱조개",
+      "rating": "4.3",
+      "address": "서울특별시 강남구 언주로136길 10",
+      "phone_number": "02-516-4787",
+      "category": "한식",
+      "location": "논현동",
+      "serving_price": 20000,
+
+      "menus": [
+        {
+          "item": "조개찜(중)",
+          "item_price": 48000
+        },
+        {
+          "item": "해물모듬",
+          "item_price": 35000
+        },
+        {
+          "item": "가리비숙회",
+          "item_price": 25000
+        }
+      ],
+      "is_wished": true,
+      "review": [
+        {
+          "user_id": 1,
+          "description": "JMTGR sdfgsfdgsfgsdfgsdfg",
+          "created_at": "2021-08-05",
+          "images": " 안녕하세요"
+        },
+        {
+          "user_id": 99,
+          "description": "JMTGR sdfgsfdgsfgsdfgsdfg",
+          "created_at": "2021-08-05",
+          "images": " 안녕하세요"
+        },
+        {
+          "user_id": 78,
+          "description": "JMTGR sdfgsfdgsfgsdfgsdfg",
+          "created_at": "2021-08-05",
+          "images": " 안녕하세요"
+        },
+        {
+          "user_id": 2,
+          "description": "JMTGR5",
+          "created_at": "2021-08-05",
+          "images": "/images/shopDetail/도현님.png"
+        },
+        {
+          "user_id": 3,
+          "description": "JMTGR4",
+          "created_at": "2021-08-05",
+          "images": {}
+        },
+        {
+          "user_id": 4,
+          "description": "JMTGR3",
+          "created_at": "2021-08-05",
+          "images": {}
+        },
+        {
+          "user_id": 5,
+          "description": "JMTGR2",
+          "created_at": "2021-08-05",
+          "images": {}
+        },
+        {
+          "user_id": 6,
+          "description": "JMTGR1",
+          "created_at": "2021-08-05",
+          "images": {}
+        }
+      ]
+    }
+  ]
+}
