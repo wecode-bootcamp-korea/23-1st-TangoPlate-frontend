@@ -23,7 +23,7 @@ class SigninUser extends React.Component {
     let wnt = true;
     search.forEach(el => {
       if (el.id === e.target.id) {
-        wnt = el.btn_toggle;
+        wnt = el.is_wished;
       }
     });
     if (!wnt) {
