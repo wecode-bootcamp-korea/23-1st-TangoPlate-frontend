@@ -8,9 +8,10 @@
     padding-bottom: 60px;
 
     img {
-      width: 400px;
-      height: 340px;
+      width: 300px;
+      height: 250px;
       padding: 5px;
+      margin-top: 90px;
     }
   }
 
@@ -40,7 +41,7 @@
         margin: auto 0;
         display: flex;
 
-        .reveiwAndLikeIcon {
+        .reviewAndLikeIcon {
           display: flex;
           flex-direction: column;
           align-items: center;

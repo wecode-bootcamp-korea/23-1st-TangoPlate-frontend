@@ -8,11 +8,11 @@ class ShopDetail extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      isWanted: false,
       data: [],
       updateReviewdata: [],
       quantity: 9,
       isMoreButtonHidden: false,
+      wanted: false,
     };
   }
   goToWrtingPage = () => {
@@ -29,28 +29,35 @@ class ShopDetail extends React.Component {
   };
 
   handleWanted = () => {
-    fetch(`${WISH_URL}${this.state.data.id}2/wish`, {
-      method: 'POST',
-      headers: { authorization: localStorage.getItem('token') },
-    })
-      .then(response => response.json())
-      .then(response => console.log(response));
-
-    this.setState({
-      is_wished: !this.state.is_wished,
-    });
+    if (!this.state.wanted) {
+      fetch(`${WISH_URL}${this.state.data.id}/wish`, {
+        method: 'POST',
+        headers: { authorization: localStorage.getItem('token') },
+      })
+        .then(response => response.json())
+        .then(response => {
+          console.log(response);
+          this.getData();
+        });
+    } else {
+      fetch(`${WISH_URL}${this.state.data.id}/wish`, {
+        method: 'DELETE',
+        headers: { authorization: localStorage.getItem('token') },
+      })
+        .then(response => response.json())
+        .then(response => this.getData());
+    }
   };
 
   handleDelete = response => {
     let Reviewdata = [];
     for (let i = 0; i <= 4; i++) {
       if (response.results.reviews[i]) {
-        Reviewdata = Reviewdata.concat(response.results.reviews[i]);
+        Reviewdata = Reviewdata.concat(response.result.reviews[i]);
       }
     }
-
     this.setState({
-      data: response.results,
+      data: response.result,
       updateReviewdata: [...Reviewdata],
     });
   };
@@ -118,37 +125,32 @@ class ShopDetail extends React.Component {
       .then(res => res.json())
       .then(response => {
         let updateReviewdata = [];
-
-        // for (let i = 0; i <= 4; i++) {
-        //   if (response.results.reviews[i]) {
-        //     updateReviewdata = updateReviewdata.concat(
-        //       response.results.reviews[i]
-        //     );
-        //   }
-
-        //   if (response.results.reviews.length <= 5) {
-        //     this.setState({
-        //       isMoreButtonHidden: true,
-        //     });
-        //   }
-        // }
-        console.log(response);
-
+        for (let i = 0; i <= 4; i++) {
+          if (response.result.reviews[i]) {
+            updateReviewdata = updateReviewdata.concat(
+              response.result.reviews[i]
+            );
+          }
+          if (response.result.reviews.length <= 5) {
+            this.setState({
+              isMoreButtonHidden: true,
+            });
+          }
+        }
         this.setState({
-          data: response.results,
+          data: response.result,
           updateReviewdata: [...updateReviewdata],
-          isWanted: response.results.is_wished,
+          wanted: response.result.is_wished,
         });
       });
   };
 
   render() {
     console.log(this.state.data);
-    const { data, updateReviewdata, isMoreButtonHidden, is_wished } =
-      this.state;
-    const { name, rating } = data;
+    const { data, updateReviewdata, isMoreButtonHidden } = this.state;
+    const { name, rating, is_wished } = data;
     const reviews = updateReviewdata.map(
-      ({ description, created_at, image_url, rating, id, user }) => {
+      ({ description, created_at, images_url, rating, id, user }) => {
         return (
           <RestaurantReview
             key={id}
@@ -157,7 +159,7 @@ class ShopDetail extends React.Component {
             Restaurantid={data.id}
             description={description}
             created_at={created_at}
-            images={image_url}
+            images={images_url}
             rating={rating}
             handleDelete={this.handleDelete}
             getData={this.getData}
@@ -165,20 +167,18 @@ class ShopDetail extends React.Component {
         );
       }
     );
-    // const images = updateReviewdata.map(
-    //   ({ alt, created_at, image_url, rating, id, user }) => {
-    //     return <img alt="스시작이미지" src="/images/shopDetail/1.jpeg" />;
-    //   }
-    // );
-
+    const reveiwimages = updateReviewdata.map(({ images_url }) => {
+      return <img alt="스시작이미지" src={images_url} />;
+    });
     return (
       <div className="shopDetail">
         <div>
           <aside className="foodimg">
-            <img alt="스시작이미지" src="/images/shopDetail/1.jpeg" />
+            {/* <img alt="스시작이미지" src="/images/shopDetail/1.jpeg" />
             <img alt="스시작이미지" src="/images/shopDetail/2.jpeg" />
             <img alt="스시작이미지" src="/images/shopDetail/3.jpeg" />
-            <img alt="스시작이미지" src="/images/shopDetail/4.jpeg" />
+            <img alt="스시작이미지" src="/images/shopDetail/4.jpeg" /> */}
+            {reveiwimages}
           </aside>
         </div>
         <div className="inner">
@@ -189,14 +189,16 @@ class ShopDetail extends React.Component {
             </div>
             <div className="restaurantTitleButton">
               <button
-                className="reveiwAndLikeIcon write"
+                className="reviewAndLikeIcon write"
                 onClick={this.goToWrtingPage}
               >
                 <i className="far fa-edit "></i>
                 리뷰쓰기
               </button>
               <button
-                className={`reviewAndLikeIcon ${is_wished ? 'isWanted' : ''}`}
+                className={`reviewAndLikeIcon write ${
+                  is_wished ? 'isWanted' : ''
+                }`}
                 onClick={this.handleWanted}
               >
                 <i className={is_wished ? 'fas fa-star' : 'far fa-star'}></i>

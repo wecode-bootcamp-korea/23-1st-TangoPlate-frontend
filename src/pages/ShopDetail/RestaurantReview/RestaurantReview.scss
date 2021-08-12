@@ -63,3 +63,11 @@
 .review:hover {
   background-color: rgba(79, 79, 79, 0.1);
 }
+
+.reviewItemEditButton {
+  visibility: hidden;
+}
+
+.reviewItemEditButton:hover {
+  visibility: visible;
+}

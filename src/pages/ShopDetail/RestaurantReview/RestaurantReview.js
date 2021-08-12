@@ -41,6 +41,8 @@ class RestaurantReview extends React.Component {
   render() {
     const { description, created_at, images, rating, user } = this.props;
     const IsUser = localStorage.getItem('email') === user.email;
+    console.log(images);
+
     return (
       <li className="review">
         <div className="reviewUser">
