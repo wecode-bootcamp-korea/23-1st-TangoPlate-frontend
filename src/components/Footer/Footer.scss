@@ -1,3 +1,109 @@
-* {
-  width: 100%;
+.footer {
+  background-color: #3e3e3e;
+
+  .footerContainer {
+    padding-top: 65px;
+    margin: 0 20px;
+
+    .footerTop {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 40px;
+
+      .logoAndSlogan {
+        height: 103px;
+        width: 137px;
+
+        .footerLogo {
+          width: 120px;
+        }
+
+        .subtitle {
+          margin-top: 28px;
+          padding-top: 15px;
+          color: #9b9b9b;
+          font-size: 13px;
+
+          &:before {
+            display: block;
+            width: 30px;
+            height: 2px;
+            margin: -20px 0 20px 0;
+            background-color: #6a6a6a;
+            content: '';
+          }
+        }
+      }
+
+      .companyIntro {
+        line-height: 30px;
+        color: #9b9b9b;
+      }
+
+      .siteInfo {
+        line-height: 30px;
+        color: #9b9b9b;
+      }
+
+      .snsLink {
+        .fa-facebook-f {
+          padding: 15px 17px 15px;
+          border: 1px solid #9b9b9b;
+          border-radius: 50%;
+          color: #9b9b9b;
+          font-size: 15px;
+        }
+
+        .fa-instagram {
+          padding: 15px;
+          border: 1px solid #9b9b9b;
+          border-radius: 50%;
+          margin-left: 30px;
+          color: #9b9b9b;
+          font-size: 15px;
+        }
+      }
+    }
+    .footerMiddle {
+      padding: 15px 0;
+      margin-bottom: 30px;
+      border-top: 1px solid #9b9b9b;
+      border-bottom: 1px solid #9b9b9b;
+      line-height: 30px;
+      color: #9b9b9b;
+    }
+
+    .footerBottom {
+      display: flex;
+      justify-content: space-between;
+
+      .companyInfo {
+        p {
+          color: #9b9b9b;
+          font-size: 15px;
+          line-height: 20px;
+        }
+
+        .copyright {
+          margin-top: 20px;
+        }
+      }
+
+      .foreignLanguage {
+        display: flex;
+        justify-content: space-between;
+
+        .supportLanguage {
+          font-size: 17px;
+          color: #9b9b9b;
+
+          .support {
+            &:hover {
+              color: white;
+            }
+          }
+        }
+      }
+    }
+  }
 }
