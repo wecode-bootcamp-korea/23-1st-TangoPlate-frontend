@@ -3,9 +3,9 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Main from './pages/Main/Main';
 import FilterList from './pages/FilterList/FilterList';
 import ShopList from './pages/ShopList/ShopList';
-import ShopDetail from './pages/ShopDetail/ShopDetail';
-import ReviewWritingPage from './pages/ShopDetail/ReviewWritingPage/ReviewWritingPage';
 import Nav from './components/Nav/Nav';
+import ReviewWritingPage from './pages/ShopDetail/ReviewWritingPage/ReviewWritingPage';
+import ShopDetail from './pages/ShopDetail/ShopDetail';
 
 class Routes extends React.Component {
   render() {

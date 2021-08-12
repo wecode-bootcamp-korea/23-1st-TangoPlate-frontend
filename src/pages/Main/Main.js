@@ -25,7 +25,6 @@ class Main extends React.Component {
     return (
       <div className="main">
         <SearchFocus modalActive={isSearchModalActive} />
-
         <header className="mainHeader">
           <div className="mainTitle">
             <h2>솔직한 리뷰, 믿을 수 있는 평점!</h2>

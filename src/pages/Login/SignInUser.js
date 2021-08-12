@@ -1,4 +1,5 @@
 import React from 'react';
+import { WISH_URL, WISHED_LIST } from '../../config';
 import Button from './InputContainer/Button/Button';
 import './SignInUser.scss';
 
@@ -7,8 +8,73 @@ class SigninUser extends React.Component {
     super(props);
     this.state = {
       isUserInfo: true,
+      data: [],
+      isWanted: false,
+      isamty: true,
     };
   }
+
+  componentDidMount() {
+    this.getdata();
+  }
+
+  handleWanted = e => {
+    const search = [...this.state.data];
+    let wnt = true;
+    search.forEach(el => {
+      if (el.id === e.target.id) {
+        wnt = el.is_wished;
+      }
+    });
+    if (!wnt) {
+      fetch(`${WISH_URL}${this.state.data.id}/wish`, {
+        method: 'POST',
+        headers: { authorization: localStorage.getItem('token') },
+      })
+        .then(response => response.json())
+        .then(response => {
+          console.log(response);
+          this.getData();
+        });
+    } else {
+      fetch(`${WISH_URL}${this.state.data.id}/wish`, {
+        method: 'DELETE',
+        headers: { authorization: localStorage.getItem('token') },
+      })
+        .then(response => response.json())
+        .then(response => this.getData());
+    }
+  };
+
+  getdata = () => {
+    console.log(WISHED_LIST);
+    fetch(WISHED_LIST, {
+      headers: { authorization: localStorage.getItem('token') },
+    })
+      .then(res => res.json())
+      .then(response => {
+        // console.log(response.MESSAGE === 'no_wish');
+        if (response.MESSAGE === 'no_wish') {
+          this.setState({
+            isamty: true,
+          });
+
+          console.log(response);
+
+          // } else {
+          //   this.setState({
+          //     data: response.MESSAGE,
+          //     isamty: false,
+          //   });
+        } else {
+          this.setState({
+            data: [...response.MESSAGE],
+            isamty: false,
+          });
+        }
+        console.log(response.MESSAGE);
+      });
+  };
   finish = e => {
     e.stopPropagation();
   };
@@ -26,13 +92,49 @@ class SigninUser extends React.Component {
     this.setState({
       isUserInfo: !this.state.isUserInfo,
     });
+    if (!this.state.isUserInfo) {
+      this.getdata();
+    }
   };
 
   render() {
+    console.log(this.state.data);
     const { username, email } = this.props;
     const { onOffModal } = this.props;
     const { finish, goToLogout } = this;
-    const { isUserInfo } = this.state;
+    const { isUserInfo, data, isamty, isWanted } = this.state;
+    const wanted =
+      data &&
+      data.map(
+        ({ id, name, images, category, rating, location, is_wished }) => {
+          return (
+            <div className="wantedItem" key={id}>
+              <img className="wantedItemImg" src={images} alt="userimg" />
+              <div className="wantedItemInfo">
+                <div class="wantedItemTitleAndRating">
+                  <span class="wantedItemTitle">{name}</span>
+                  <span class="wantedItemRating">{rating}</span>
+                </div>
+                <span class="wantedAdressAndCategory">{`${location} - ${category}`}</span>
+              </div>
+              <button
+                className="wantedButton"
+                onClick={this.handleWanted}
+                id={id}
+              >
+                {/* <i className="far fa-star starButton"></i> */}
+                <i
+                  className={
+                    is_wished
+                      ? 'fas fa-star starButton '
+                      : 'far fa-star starButton'
+                  }
+                ></i>
+              </button>
+            </div>
+          );
+        }
+      );
     return (
       <div
         className="signPage modalback"
@@ -72,28 +174,9 @@ class SigninUser extends React.Component {
               />
             </div>
           )}
-          {!isUserInfo && (
-            <div className="wantedItem">
-              <img
-                className="wantedItemImg"
-                src="/images/shopDetail/도현님.png"
-                alt="userimg"
-              />
-              <div className="wantedItemInfo">
-                <div class="wantedItemTitleAndRating">
-                  <span class="wantedItemTitle">영명국밥</span>
-                  <span class="wantedItemRating">4.2</span>
-                </div>
-                <span class="wantedAdressAndCategory">광주 광산구 - 한식</span>
-              </div>
-              <button className="wantedButton" onClick={this.handleWanted}>
-                <i className="far fa-star starButton"></i>
-                {/* <i className={is_wished ? 'fas fa-star ' : 'far fa-star'}></i> */}
-              </button>
-            </div>
-          )}
-          {/* 
-          {!isUserInfo && (
+          {!isUserInfo && !isamty && wanted}
+
+          {!isUserInfo && isamty && (
             <div className="content">
               <i className="far fa-star wantedIcon"></i>
               <p class="EmptyWatedListTitle">격하게 가고싶다..</p>
@@ -102,7 +185,7 @@ class SigninUser extends React.Component {
                 있습니다.
               </p>
             </div>
-          )} */}
+          )}
         </div>
       </div>
     );
