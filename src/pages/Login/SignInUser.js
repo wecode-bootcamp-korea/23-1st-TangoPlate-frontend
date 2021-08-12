@@ -23,9 +23,10 @@ class SigninUser extends React.Component {
     let wnt = true;
     search.forEach(el => {
       if (el.id === e.target.id) {
-        wnt = el.is_wished;
+        wnt = !el.is_wished;
       }
     });
+    console.log(wnt);
     if (!wnt) {
       fetch(`${WISH_URL}${this.state.data.id}/wish`, {
         method: 'POST',
@@ -102,7 +103,7 @@ class SigninUser extends React.Component {
     const { username, email } = this.props;
     const { onOffModal } = this.props;
     const { finish, goToLogout } = this;
-    const { isUserInfo, data, isamty, isWanted } = this.state;
+    const { isUserInfo, data, isamty } = this.state;
     const wanted =
       data &&
       data.map(
