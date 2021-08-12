@@ -10,13 +10,12 @@
       height: 30px;
       border: 1px solid #ff7002;
       border-radius: 50px;
-      background-color: white;
+      // background-color: white;
       color: #ff7002;
       font-size: 20px;
-
-      &:hover {
-        background-color: #ff700244;
-      }
+    }
+    .keepFoodButton {
+      background-color: #ff700260;
     }
   }
 
@@ -29,13 +28,11 @@
       height: 30px;
       border: 1px solid #ff7002;
       border-radius: 50px;
-      background-color: white;
       color: #ff7002;
       font-size: 20px;
-
-      &:hover {
-        background-color: #ff700244;
-      }
+    }
+    .keepLocationButton {
+      background-color: #ff700244;
     }
   }
 }

@@ -1,36 +1,39 @@
 .menu {
   position: fixed;
   display: flex;
-  align-items: center;
   justify-content: space-between;
-  height: 61px;
+  align-items: center;
   width: 100%;
+  height: 61px;
   background-color: #ffffff;
   border: 0;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 11px 0px;
   z-index: 1;
 
   .leftWrapper {
-    position: relative;
     display: flex;
-    align-items: center;
     justify-content: flex-start;
-    margin: 0 25px;
+    align-items: center;
+
+    button {
+      margin: 0 25px;
+    }
 
     .fa-search {
       position: absolute;
-      top: 20px;
-      left: 150px;
-      height: 25px;
+      top: 17px;
+      left: 180px;
+      margin-right: 13px;
       width: 24px;
-      color: #cecece;
+      height: 25px;
       font-size: 25px;
+      color: #cecece;
     }
 
     input {
-      height: 28px;
-      width: 390px;
       padding-left: 60px;
+      width: 390px;
+      height: 28px;
       border: none;
       font-size: 16px;
     }
@@ -39,64 +42,68 @@
       outline: none;
     }
   }
-
   .rightWrapper {
-    position: relative;
     display: flex;
     align-items: center;
     justify-content: flex-end;
+    width: 600px;
     height: 60px;
 
     li {
+      display: flex;
       height: 100%;
-      border-left: 1px solid #cecece;
-      text-align: center;
       line-height: 60px;
-      text-decoration: none;
+      border-left: 1px solid #cecece;
 
-      span {
+      button {
         display: block;
-        width: 130px;
         color: #888888;
+
+        span {
+          display: block;
+          width: 130px;
+        }
       }
     }
 
-    .eatDealMenu {
+    .firstChild {
       position: relative;
-
       img {
         position: absolute;
-        top: 10px;
-        right: 35px;
+        top: -8px;
+        right: 23%;
         width: 15px;
       }
     }
 
-    .fa-user {
-      position: relative;
-      width: 85px;
-      line-height: 60px;
-      border-left: 1px solid #cecece;
-      color: #888888;
-      font-weight: 400;
-      font-size: 20px;
-      text-align: center;
-
-      .userInfoAlarm {
-        position: absolute;
-        top: 8px;
-        right: 20px;
-        height: 18px;
-        width: 18px;
-        border: 1px solid white;
-        border-radius: 50%;
+    button {
+      .fa-user {
+        height: 100%;
+        width: 85px;
+        line-height: 60px;
+        border-left: 1px solid #cecece;
+        color: #888888;
+        font-size: 20px;
+        font-weight: 400;
         text-align: center;
-        line-height: 20px;
-        background-color: #ff792a;
-        color: #ffffff;
-        font-size: 14px;
-        font-weight: 600;
       }
+    }
+
+    .userInfoAlarm {
+      position: fixed;
+      right: 25px;
+      top: 5px;
+      height: 18px;
+      width: 18px;
+      line-height: 20px;
+      border: 1px solid white;
+      color: #ffffff;
+      border-radius: 50%;
+      background-color: #ff792a;
+      font-size: 14px;
+      font-weight: 600;
+      text-align: center;
+      z-index: 1;
     }
   }
 }

@@ -1,16 +1,28 @@
 import React, { Component } from 'react';
+import { withRouter } from 'react-router';
 import './FilterButton.scss';
 
 export class FilterButton extends Component {
-  handleFilterButton = e => {};
-
   render() {
+    const { toggleLocation, toggleCategory } = this.props;
+    console.log('categoty', toggleCategory, 'location', toggleLocation);
+    // const buttonDisable = Number(toggleCategory);
     return (
       <div className="filterButton">
         <div className="foodButton">
           {FOOD_BUTTON_LIST.map(list => {
             return (
-              <button key={list.id} className="foodButtonList">
+              <button
+                onClick={this.props.handleCategoryButton}
+                key={list.id}
+                id={list.id}
+                className={
+                  Number(toggleCategory) === list.id
+                    ? 'foodButtonList keepFoodButton'
+                    : 'foodButtonList'
+                }
+                // Number(toggleCategory) ===list.id?disabled:""
+              >
                 {list.buttonName}
               </button>
             );
@@ -19,7 +31,16 @@ export class FilterButton extends Component {
         <div className="locationButton">
           {LOCATION_BUTTON_LIST.map(list => {
             return (
-              <button key={list.id} className="locationButtonList">
+              <button
+                onClick={this.props.handleLocationButton}
+                key={list.id}
+                id={list.id}
+                className={
+                  Number(toggleLocation) === list.id
+                    ? 'locationButtonList keepLocationButton'
+                    : 'locationButtonList'
+                }
+              >
                 {list.buttonName}
               </button>
             );
@@ -30,7 +51,7 @@ export class FilterButton extends Component {
   }
 }
 
-export default FilterButton;
+export default withRouter(FilterButton);
 
 const FOOD_BUTTON_LIST = [
   {
@@ -39,19 +60,15 @@ const FOOD_BUTTON_LIST = [
   },
   {
     id: 2,
-    buttonName: '#양식',
-  },
-  {
-    id: 3,
     buttonName: '#중식',
   },
   {
-    id: 4,
+    id: 3,
     buttonName: '#일식',
   },
   {
-    id: 5,
-    buttonName: '#세계음식',
+    id: 4,
+    buttonName: '#양식',
   },
 ];
 
