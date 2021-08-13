@@ -16,15 +16,16 @@ class ShopDetail extends React.Component {
     };
   }
   goToWrtingPage = () => {
+    const { id, name } = this.state.data;
     if (!localStorage.getItem('token')) {
       alert('로그인이 필요합니다 !');
     } else {
       const edit = false;
-      this.props.history.push(
-        '/shopdetail-reviewwritingpage',
-        this.state.data.id,
-        edit
-      );
+      this.props.history.push('/shopdetail-reviewwritingpage', {
+        id,
+        name,
+        edit,
+      });
     }
   };
 
@@ -36,7 +37,7 @@ class ShopDetail extends React.Component {
       })
         .then(response => response.json())
         .then(response => {
-          console.log(response);
+          // console.log(response);
           this.getData();
         });
     } else {
@@ -45,7 +46,10 @@ class ShopDetail extends React.Component {
         headers: { authorization: localStorage.getItem('token') },
       })
         .then(response => response.json())
-        .then(response => this.getData());
+        .then(response => {
+          console.log('asdf');
+          this.getData();
+        });
     }
   };
 
@@ -119,11 +123,12 @@ class ShopDetail extends React.Component {
   }
 
   getData = () => {
-    console.log(this.props.match.params.id);
-
-    fetch(RESTAURANT_DETAIL_URL)
+    fetch(`${RESTAURANT_DETAIL_URL}/${this.props.location.state}`, {
+      headers: { authorization: localStorage.getItem('token') },
+    })
       .then(res => res.json())
       .then(response => {
+        console.log(response.result);
         let updateReviewdata = [];
         for (let i = 0; i <= 4; i++) {
           if (response.result.reviews[i]) {
@@ -163,6 +168,7 @@ class ShopDetail extends React.Component {
             rating={rating}
             handleDelete={this.handleDelete}
             getData={this.getData}
+            name={data.name}
           />
         );
       }
@@ -173,13 +179,7 @@ class ShopDetail extends React.Component {
     return (
       <div className="shopDetail">
         <div>
-          <aside className="foodimg">
-            {/* <img alt="스시작이미지" src="/images/shopDetail/1.jpeg" />
-            <img alt="스시작이미지" src="/images/shopDetail/2.jpeg" />
-            <img alt="스시작이미지" src="/images/shopDetail/3.jpeg" />
-            <img alt="스시작이미지" src="/images/shopDetail/4.jpeg" /> */}
-            {reveiwimages}
-          </aside>
+          <aside className="foodimg">{reveiwimages}</aside>
         </div>
         <div className="inner">
           <header className="restaurantHeader">

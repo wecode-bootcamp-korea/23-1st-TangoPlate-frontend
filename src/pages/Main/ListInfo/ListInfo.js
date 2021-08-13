@@ -13,24 +13,6 @@ class ListInfo extends React.Component {
     let categori = e.target.id;
     console.log(categori);
     this.props.history.push(`/shoplist/${categori}`);
-
-    // const { id } = e.target.id;
-    // this.history.push(`/shoplist/${e.target.id}`);
-    // const { name } = e.target;
-    // this.props.gotoshop(e.target.id);
-    // this.props.history.push(`/shoplist/${e.target.id}`);
-    // fetch(`http://10.58.0.96:8000/${goto}`)
-    //   .then(res => res.json())
-    //   .then(res => {
-    //     this.setState({
-    //       shoplist: res,
-    //     });
-    //     const { shoplist } = this.state;
-    //     this.props.history.push({
-    //       pathname: `/shopList/${goto}`,
-    //       state: { shoplist: shoplist },
-    //     });
-    // });
   };
 
   render() {

@@ -66,6 +66,10 @@ class Nav extends React.Component {
     });
   };
 
+  goToMain = () => {
+    this.props.history.push('/');
+  };
+
   onOffModal = name => {
     if (name === 'signup') {
       this.setState({
@@ -92,8 +96,8 @@ class Nav extends React.Component {
       <div className="Nav">
         <nav className="menu">
           <div className="leftWrapper">
-            <button>
-              <img src="images/tangoLogo.png" alt="tangoPlate로고" />
+            <button onClick={this.goToMain}>
+              <img src="/images/tangoLogo.png" alt="tangoPlate로고" />
             </button>
             <i className="fas fa-search"></i>
             <input placeholder="지역, 식당 또는 음식" type="text" />

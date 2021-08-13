@@ -3,7 +3,7 @@ import React from 'react';
 import ShopListHeader from './ShopListHeader';
 import ShopListMain from './ShopListMain';
 import Footer from '../../components/Footer/Footer';
-import { FILTER_LIST_URL } from './config.js';
+import { FILTER_LIST_URL } from '../../config';
 
 class ShopList extends React.Component {
   constructor() {
@@ -31,7 +31,7 @@ class ShopList extends React.Component {
       let url = this.props.match.params.id
         ? `search?search=${this.props.match.params.id}`
         : this.props.location.search;
-      console.log(url);
+      console.log(FILTER_LIST_URL + url);
       fetch(FILTER_LIST_URL + url)
         .then(res => res.json())
         .then(res => {
@@ -179,7 +179,7 @@ class ShopList extends React.Component {
   };
 
   render() {
-    console.log(this.state.shopInfo);
+    console.log('들어와라', this.state.shopInfo);
     let update = [];
     if (this.props.location.state === true) {
       update =
@@ -205,10 +205,11 @@ class ShopList extends React.Component {
           toggleCategory={this.state.category}
         />
         {shopInfo.MESSAGE &&
-          shopInfo.MESSAGE.map(list => {
+          shopInfo.MESSAGE.map((list, index) => {
             return (
               <ShopListMain
                 key={list.id}
+                index={index}
                 shopId={list.id}
                 shopName={list.name}
                 shopImage={list.review.image}
@@ -225,7 +226,7 @@ class ShopList extends React.Component {
             );
           })}
         {shopInfo.restaurant &&
-          shopInfo.restaurant.map(list => {
+          shopInfo.restaurant.map((list, index) => {
             return (
               <ShopListMain
                 key={list.id}
@@ -238,7 +239,7 @@ class ShopList extends React.Component {
                 buttonToggle={list.btn_toggle}
                 userName={list.latest_review.user_name}
                 userReview={list.latest_review.description}
-                handler
+                index={index}
                 likeHandle={this.handleWishButton}
                 buttonHandle={this.handleButton}
               />

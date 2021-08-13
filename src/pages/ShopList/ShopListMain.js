@@ -4,7 +4,7 @@ import './ShopListMain.scss';
 
 export class ShopListMain extends Component {
   gotoDetail = shopId => {
-    this.props.history.push('/shopdetail');
+    this.props.history.push('/shopdetail', shopId);
   };
   render() {
     const {
