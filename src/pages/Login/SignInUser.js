@@ -18,35 +18,40 @@ class SigninUser extends React.Component {
     this.getdata();
   }
 
-  handleWanted = e => {
+  handleWanted = id => {
     const search = [...this.state.data];
     let wnt = true;
     search.forEach(el => {
-      if (el.id === e.target.id) {
-        wnt = el.is_wished;
+      if (el.id === id) {
+        wnt = !el.is_wished;
       }
     });
-    if (!wnt) {
-      fetch(`${WISH_URL}${this.state.data.id}/wish`, {
+    console.log(wnt);
+    if (wnt) {
+      fetch(`${WISH_URL}${id}/wish`, {
         method: 'POST',
         headers: { authorization: localStorage.getItem('token') },
       })
         .then(response => response.json())
         .then(response => {
           console.log(response);
-          this.getData();
+          this.getdata();
         });
     } else {
-      fetch(`${WISH_URL}${this.state.data.id}/wish`, {
+      fetch(`${WISH_URL}${id}/wish`, {
         method: 'DELETE',
         headers: { authorization: localStorage.getItem('token') },
       })
         .then(response => response.json())
-        .then(response => this.getData());
+        .then(response => {
+          console.log(response);
+          this.getdata();
+        });
     }
   };
 
   getdata = () => {
+    console.log(this.state.data);
     console.log(WISHED_LIST);
     fetch(WISHED_LIST, {
       headers: { authorization: localStorage.getItem('token') },
@@ -72,7 +77,6 @@ class SigninUser extends React.Component {
             isamty: false,
           });
         }
-        console.log(response.MESSAGE);
       });
   };
   finish = e => {
@@ -98,11 +102,10 @@ class SigninUser extends React.Component {
   };
 
   render() {
-    console.log(this.state.data);
     const { username, email } = this.props;
     const { onOffModal } = this.props;
     const { finish, goToLogout } = this;
-    const { isUserInfo, data, isamty, isWanted } = this.state;
+    const { isUserInfo, data, isamty } = this.state;
     const wanted =
       data &&
       data.map(
@@ -119,7 +122,7 @@ class SigninUser extends React.Component {
               </div>
               <button
                 className="wantedButton"
-                onClick={this.handleWanted}
+                onClick={() => this.handleWanted(id)}
                 id={id}
               >
                 {/* <i className="far fa-star starButton"></i> */}
@@ -181,7 +184,7 @@ class SigninUser extends React.Component {
               <i className="far fa-star wantedIcon"></i>
               <p class="EmptyWatedListTitle">격하게 가고싶다..</p>
               <p class="EmptyWatedListDescription">
-                식당의 ‘별’ 아이콘을 누르면 가고싶은 곳을 쉽게 저장할 수
+                식당의 '별' 아이콘을 누르면 가고싶은 곳을 쉽게 저장할 수
                 있습니다.
               </p>
             </div>

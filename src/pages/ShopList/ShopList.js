@@ -1,14 +1,13 @@
 import React from 'react';
+// import Nav from '../../components/Nav/Nav';
 import ShopListHeader from './ShopListHeader';
 import ShopListMain from './ShopListMain';
-import Nav from '../../components/Nav/Nav';
 import Footer from '../../components/Footer/Footer';
-import { FILTER_LIST_URL } from './config.js';
+import { FILTER_LIST_URL } from '../../config';
 
 class ShopList extends React.Component {
-  constructor(props) {
-    super(props);
-
+  constructor() {
+    super();
     this.state = {
       shopInfo: [],
       updateShopInfo: [],
@@ -19,13 +18,29 @@ class ShopList extends React.Component {
       index: 0,
     };
   }
+
   componentDidMount() {
-    fetch(FILTER_LIST_URL + '?categoryId')
-      .then(res => res.json())
-      .then(res => {
-        this.setState({ shopInfo: res.restaurant });
-      });
-    console.log('CDM');
+    console.log(this.props.match.params);
+    if (this.props.location.state === true) {
+      fetch(FILTER_LIST_URL + '?categoryId')
+        .then(res => res.json())
+        .then(res => {
+          this.setState({ shopInfo: res.restaurant });
+        });
+    } else {
+      let url = this.props.match.params.id
+        ? `search?search=${this.props.match.params.id}`
+        : this.props.location.search;
+      console.log(FILTER_LIST_URL + url);
+      fetch(FILTER_LIST_URL + url)
+        .then(res => res.json())
+        .then(res => {
+          console.log(res);
+          this.setState({
+            shopInfo: res,
+          });
+        });
+    }
   }
 
   handleCategoryButton = e => {
@@ -164,28 +179,72 @@ class ShopList extends React.Component {
   };
 
   render() {
-    console.log(this.state.index);
-    console.log('렌더');
-    // const { shopInfo } = this.state;
+    console.log('들어와라', this.state.shopInfo);
     let update = [];
-    update =
-      this.state.category || this.state.location
-        ? [...this.state.updateShopInfo]
-        : [...this.state.shopInfo];
-    update.sort((a, b) => {
-      return b.rating - a.rating;
-    });
-    // const { matchResult } = this.props.location.state;
+    if (this.props.location.state === true) {
+      update =
+        this.state.category || this.state.location
+          ? [...this.state.updateShopInfo]
+          : [...this.state.shopInfo];
+      update.sort((a, b) => {
+        return b.rating - a.rating;
+      });
+    }
+    const { shopInfo } = this.state;
+    console.log(shopInfo.MESSAGE);
+    console.log(shopInfo.restaurant);
     return (
       <div className="shopList">
-        <Nav />
+        {/* <Nav /> */}
         <ShopListHeader
           handleCategoryButton={this.handleCategoryButton}
           handleLocationButton={this.handleLocationButton}
           shopInfo={update.length}
+          hidden={this.props.location.state}
           toggleLocation={this.state.location}
           toggleCategory={this.state.category}
         />
+        {shopInfo.MESSAGE &&
+          shopInfo.MESSAGE.map((list, index) => {
+            return (
+              <ShopListMain
+                key={list.id}
+                index={index}
+                shopId={list.id}
+                shopName={list.name}
+                shopImage={list.review.image}
+                shopRating={list.rating.rating__avg}
+                shopAddress={list.address}
+                isWished={list.is_wished}
+                buttonToggle={list.btn_toggle}
+                userName={list.review.user_name}
+                userReview={list.review.description}
+                handler
+                likeHandle={this.handleWishButton}
+                buttonHandle={this.handleButton}
+              />
+            );
+          })}
+        {shopInfo.restaurant &&
+          shopInfo.restaurant.map((list, index) => {
+            return (
+              <ShopListMain
+                key={list.id}
+                shopId={list.id}
+                shopName={list.name}
+                shopImage={list.latest_review.image}
+                shopRating={list.rating.rating__avg}
+                shopAddress={list.address}
+                isWished={list.is_wished}
+                buttonToggle={list.btn_toggle}
+                userName={list.latest_review.user_name}
+                userReview={list.latest_review.description}
+                index={index}
+                likeHandle={this.handleWishButton}
+                buttonHandle={this.handleButton}
+              />
+            );
+          })}
         {update &&
           update.map((list, index) => {
             return (
@@ -194,8 +253,8 @@ class ShopList extends React.Component {
                 key={index}
                 shopId={list.id}
                 shopName={list.name}
-                shopImage={list.image}
-                shopRating={list.rating}
+                shopImage={list.latest_review.image}
+                shopRating={list.rating.rating__avg}
                 shopAddress={list.address}
                 isWished={list.is_wished}
                 buttonToggle={list.btn_toggle}

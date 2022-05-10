@@ -1,11 +1,8 @@
 import React, { Component } from 'react';
-import { withRouter } from 'react-router';
+import { Link } from 'react-router-dom';
 import './ShopListMain.scss';
 
 export class ShopListMain extends Component {
-  gotoDetail = shopId => {
-    this.props.history.push('/shopdetail', shopId);
-  };
   render() {
     const {
       shopId,
@@ -20,29 +17,16 @@ export class ShopListMain extends Component {
       // handler
       likeHandle,
       buttonHandle,
-      index,
     } = this.props;
     return (
       <div className="shopListMain">
         <main>
-          <img
-            className="reviewPicture"
-            alt="식당 사진"
-            src={shopImage}
-            onClick={() => {
-              this.gotoDetail(shopId);
-            }}
-          />
+          <img className="reviewPicture" alt="식당 사진" src={shopImage} />
           <div className="reviewContainer">
             <div className="reviewInner">
               <div className="reviewTitleWrapper">
-                <div
-                  className="shopTitle"
-                  onClick={() => {
-                    this.gotoDetail(shopId);
-                  }}
-                >
-                  {index + 1}. {shopName} <span>{shopRating}</span>
+                <div className="shopTitle">
+                  {shopId}. {shopName} <span>{shopRating}</span>
                 </div>
                 <span className="shopAddress">{shopAddress}</span>
               </div>
@@ -82,13 +66,9 @@ export class ShopListMain extends Component {
             </div>
             <h3 className="goToDetail">
               <span>
-                <div
-                  onClick={() => {
-                    this.gotoDetail(shopId);
-                  }}
-                >
+                <Link to="#">
                   {shopName} 더보기 {'>'}
-                </div>
+                </Link>
               </span>
             </h3>
           </div>
@@ -98,4 +78,4 @@ export class ShopListMain extends Component {
   }
 }
 
-export default withRouter(ShopListMain);
+export default ShopListMain;

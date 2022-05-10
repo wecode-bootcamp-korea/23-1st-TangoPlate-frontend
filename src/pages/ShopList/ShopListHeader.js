@@ -5,13 +5,17 @@ import FilterButton from './FilterButton';
 
 export class ShopListHeader extends Component {
   render() {
+    console.log(this.props.location.state);
     return (
       <div className="headerContainer">
         <header className="headLine">
           <div className="innerWrapper">
             <h4 className="clickCountAndDate">탱고플레이트</h4>
             <h2 className="headerTitle">
-              추천 맛집 베스트 {this.props.shopInfo}곳
+              추천 맛집 베스트{' '}
+              {this.props.location.state === true && (
+                <span>{this.props.shopInfo}곳</span>
+              )}
             </h2>
             <h3 className="headerSubTitle">"Food 1 + Location 1 골라주세요"</h3>
           </div>

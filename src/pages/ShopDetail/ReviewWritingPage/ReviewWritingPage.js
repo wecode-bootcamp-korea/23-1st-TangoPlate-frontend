@@ -16,7 +16,6 @@ class ReviewWritingPage extends React.Component {
       edit: false,
     };
   }
-
   SelectGrade = score => {
     this.setState({
       grade: score,
@@ -26,13 +25,14 @@ class ReviewWritingPage extends React.Component {
   postingOrCancel = e => {
     // const { review_id, Restaurantid } = this.props.location.state;
     const { reviewEditorText, img, grade } = this.state;
+    const { review_id, Restaurantid, id } = this.props.location.state;
+    console.log(this.props.location.state);
     if (e.target.name === '취소') {
       this.props.history.push('/shopdetail');
     } else if (this.state.edit) {
-      const { review_id, Restaurantid } = this.props.location.state;
       console.log(review_id, Restaurantid);
       fetch(`${NEWREVIEW_URL}${Restaurantid}/review/${review_id}`, {
-        method: 'PUT',
+        method: 'PATCH',
         body: JSON.stringify({
           description: reviewEditorText,
           image: img,
@@ -42,10 +42,10 @@ class ReviewWritingPage extends React.Component {
       })
         .then(response => response.json())
         .then(response => {
-          this.props.history.push('/shopdetail');
+          this.props.history.push('/shopdetail', Restaurantid);
         });
     } else {
-      fetch(`${NEWREVIEW_URL}${this.props.location.state}/review`, {
+      fetch(`${NEWREVIEW_URL}${id}/review`, {
         method: 'POST',
         body: JSON.stringify({
           description: reviewEditorText,
@@ -56,7 +56,7 @@ class ReviewWritingPage extends React.Component {
       })
         .then(response => response.json())
         .then(response => {
-          this.props.history.push('/shopdetail');
+          this.props.history.push('/shopdetail', id);
         });
     }
   };
@@ -80,11 +80,12 @@ class ReviewWritingPage extends React.Component {
   render() {
     const { grade, img, reviewEditorText } = this.state;
     const { SelectGrade, postingOrCancel, changeState } = this;
+    const { name } = this.props.location.state;
     return (
       <section className="reviewWritingPage">
         <div className="reviewWritingPageInner">
           <div className="reviewWritingPageTitle">
-            <strong className="restaurantName">스시작</strong>
+            <strong className="restaurantName">{name}</strong>
             <span className="subMessage">에 대한 솔직한 리뷰를 써주세요.</span>
           </div>
           <div className="reviewBox">

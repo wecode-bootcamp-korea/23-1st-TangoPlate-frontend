@@ -7,7 +7,8 @@ import './RestaurantReview.scss';
 
 class RestaurantReview extends React.Component {
   handleEdit = e => {
-    const { description, rating, images, review_id, Restaurantid } = this.props;
+    const { description, rating, images, review_id, Restaurantid, name } =
+      this.props;
     const edit = true;
     if (e.target.name === '수정') {
       this.props.history.push('/shopdetail-reviewwritingpage', {
@@ -17,31 +18,25 @@ class RestaurantReview extends React.Component {
         review_id,
         Restaurantid,
         edit,
+        name,
       });
     }
     if (e.target.name === '삭제') {
       if (window.confirm('삭제하실건가요?')) {
         fetch(`${NEWREVIEW_URL}${Restaurantid}/review/${review_id}`, {
           method: 'DELETE',
-          headers: {
-            authorization: localStorage.getItem('token'),
-          },
+          headers: { authorization: localStorage.getItem('token') },
         })
           .then(response => response.json())
           .then(response => {
             this.props.getData();
           });
       }
-
-      // } else {
-      //   console.log('안돼애ㅐ애');
-      // }
     }
   };
   render() {
     const { description, created_at, images, rating, user } = this.props;
     const IsUser = localStorage.getItem('email') === user.email;
-    console.log(images);
 
     return (
       <li className="review">

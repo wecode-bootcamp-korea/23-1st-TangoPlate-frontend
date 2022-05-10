@@ -7,7 +7,7 @@ class SearchForm extends React.Component {
     super();
     this.state = {
       searchValue: '',
-      matchResult: [],
+      shoplist: [],
     };
   }
 
@@ -23,18 +23,7 @@ class SearchForm extends React.Component {
     if (searchValue.length === 0) {
       alert('검색어를 입력해 주세요.');
     } else {
-      fetch(`http://10.58.2.176:8000/restaurants/search?search=${searchValue}`)
-        .then(res => res.json())
-        .then(data => {
-          this.setState({
-            matchResult: data,
-          });
-          const { matchResult } = this.state;
-          this.props.history.push({
-            pathname: './ShopList',
-            state: { searchValue: searchValue, matchResult: matchResult },
-          });
-        });
+      this.props.history.push(`/shoplist/${searchValue}`, 'search?search=');
     }
   };
 
