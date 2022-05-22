@@ -23,10 +23,10 @@
 }
 
 @mixin imageTopText($font-size) {
-  z-index: 1;
+  z-index: 0;
   font-size: $font-size;
   color: white;
-  backgroung-color: rgba(104, 104, 104, 0.4);
+  background-color: rgba(1, 1, 1, 0.3);
 }
 
 @mixin sort(
